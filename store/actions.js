@@ -2,6 +2,9 @@ import axios from "axios";
 import cookies from 'js-cookie';
 
 const api_url = 'http://dellmat.jim/api/'
+
+
+
 export default {
 
   alertEvent(context, payload) {
@@ -15,20 +18,29 @@ export default {
   },
 
 
-  async getItems({ commit }, payload) {
+  async getItems({ commit, state }, payload) {
+
+    console.log(payload);
+    var headers = {
+      'Content-type': 'Application/json',
+      'Accept': 'Application/json',
+      'Authorization': state.access_local
+    }
+
     var model = payload.model
     var update = payload.update
 
-    let response = await axios.get(api_url + model)
-    console.log(payload);
+    let response = await axios.get(api_url + model, {
+      'headers': headers
+    })
 
     commit(update, response.data)
   },
 
 
   // Get Single items
-  async showItem({commit}, payload) {
-// console.log(payload);
+  async showItem({ commit }, payload) {
+    // console.log(payload);
 
 
     var model = payload.model
@@ -273,25 +285,25 @@ export default {
   },
 
 
-// Auth
- setToken({commit}, payload) {
-   console.log(payload);
+  // Auth
+  setToken({ commit }, payload) {
+    console.log(payload);
 
-   var token = payload.token
-   var expiresIn = payload.expiresIn
+    var token = payload.token
+    var expiresIn = payload.expiresIn
 
     // axios.setToken(token, 'Bearer');
     const expiryTime = new Date(new Date().getTime() + expiresIn * 1000);
-    cookies.set('x-access-token', token, {expires: expiryTime});
+    cookies.set('x-access-token', token, { expires: expiryTime });
     commit('SET_TOKEN', token);
   },
 
-  async refreshToken({dispatch}) {
+  async refreshToken({ dispatch }) {
     const payload = await axios.$post('refresh-token');
     dispatch('setToken', payload);
   },
 
-  logout({commit}) {
+  logout({ commit }) {
     axios.setToken(false);
     cookies.remove('x-access-token');
     commit('REMOVE_TOKEN');

@@ -12,7 +12,7 @@
             <ul class="header-cart-wrapitem">
             <li class="header-cart-item" v-for="cart in carts" :key="cart.id" style="cursor: pointer;border-bottom: 1px solid rgba(153, 153, 153, 0.31)">
                 <div class="header-cart-item-img" >
-                    <!-- <img :src=" cart.product.image" alt="IMG"> -->
+                    <img :src="cart.name.image" alt="IMG" style="border-radius: 10px">
                 </div>
 
                 <div class="header-cart-item-txt">

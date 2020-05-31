@@ -1,5 +1,5 @@
 <template>
-<v-card id="login">
+<v-card id="login" style="margin-top: 200px;">
     <v-card-title primary-title style="margin-left: 25%;" class="text-center">Login Page</v-card-title>
     <v-card-text style="width:50%; margin:auto">
         <div>
@@ -57,6 +57,20 @@ export default {
         //         // });
         //     })
         // },
+        // login(){
+        //     this.$axios.get('/api/auth/login', {
+        //         headers: {
+        //             'X-Requested-With': 'XMLHttpRequest'
+        //         },
+        //         withCredentials: true,
+        //     })
+        //     .then( function(){
+        //         this.$auth.loginWith('local', {
+        //             data: this.form,
+        //         });
+        //     }.bind(this))
+        // }
+
         async login() {
             try {
                 // const data = {

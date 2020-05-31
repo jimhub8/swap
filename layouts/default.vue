@@ -10,14 +10,17 @@
 <script>
 import NavBar from "~/components/include/NavbarVue";
 // import NavBar from "~/components/example";
+import {
+    mapState
+} from "vuex";
 export default {
     components: {
         NavBar
     },
     computed: {
-        isLoggedIn() {
-            return this.$store.state.token;
-        }
+        ...mapState(['loggedIn'])
     },
+
+
 };
 </script>

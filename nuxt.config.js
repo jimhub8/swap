@@ -72,24 +72,54 @@ export default {
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-//  admin.jim/api/auth/login
-// http://admin.jim/api/auth/login
+  //  admin.jim/api/auth/login
+  // http://admin.jim/api/auth/login
   axios: {
     baseURL: 'http://dellmat.jim'
   },
+
   // auth: {
   //   strategies: {
   //     local: {
   //       endpoints: {
-  //         login: { url: 'api/auth/login', method: 'post', propertyName: 'token' },
-  //         user: { url: 'api/auth/user', method: 'get' }
-  //       }
+  //         login: { url: '/api/auth/login', method: 'post', propertyName: 'access_token' },
+  //         logout: { url: '/api/auth/logout', method: 'post' },
+  //         user: { url: '/api/auth/user', method: 'get', propertyName: false },
+  //       },
+
+  //       tokenRequired: true,
+  //       tokenType: 'bearer',
+  //       globalToken: true,
+  //       autoFetchUser: true
   //     }
   //   }
   // },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          // login: { url: 'login', method: 'post', propertyName: 'token' },
+          // logout: { url: 'logout', method: 'post' },
+
+          login: { url: '/api/auth/login', method: 'post', propertyName: 'access_token' },
+          logout: { url: '/api/auth/logout', method: 'post' },
+          user: { url: '/api/auth/user', method: 'get', propertyName: false },
+        }
+      }
+    },
+    redirect: {
+      login: '/login',
+      logout: '/',
+      callback: '/login',
+      home: '/'
+    },
+    token: {
+      prefix: 'access_'
+    },
+  },
 
   router: {
-    // middleware: ['auth']
+    middleware: ['auth']
   },
   /*
   ** vuetify module configuration

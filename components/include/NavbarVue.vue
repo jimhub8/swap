@@ -11,7 +11,7 @@
                         <nuxt-link to="/shop" class="nav-link">Shop</nuxt-link>
                     </li>
                     <li class="nav-item">
-                        <nuxt-link to="/cart" class="nav-link">Cart</nuxt-link>
+                        <nuxt-link to="/category" class="nav-link">Category</nuxt-link>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
@@ -55,18 +55,15 @@
                     <div class="col-lg-3 col-sm-3 col-4">
                         <div class="widgets-wrap float-md-right">
                             <div class="widget-header  mr-3">
-                                <a href="#" class="icon icon-sm rounded-circle border">
-                                    <!-- <i class="fa fa-shopping-cart"></i> -->
-                                    <!-- <v-icon>shopping_cart</v-icon> -->
+                                <div class="icon icon-sm rounded-circle border">
                                     <myCart />
-                                </a>
+                                </div>
                                 <span class="badge badge-pill badge-danger notify">{{ cart_count }}</span>
                             </div>
                             <div class="widget-header icontext">
-                                <a href="#" class="icon icon-sm rounded-circle border">
-                                    <!-- <i class="far fa-user"></i> -->
+                                <div class="icon icon-sm rounded-circle border">
                                     <v-icon>account_circle</v-icon>
-                                </a>
+                                </div>
                                 <div class="text">
                                     <span class="text-muted">Welcome!</span>
                                     <div>
@@ -148,7 +145,7 @@ export default {
         },
 
         update_cart(data) {
-          console.log(data);
+            console.log(data);
             // var cart = data.cart
             // cart.quantity = data.order_qty
             var payload = {
@@ -189,7 +186,7 @@ export default {
     },
 
     computed: {
-        ...mapState(['cart_count'])
+        ...mapState(['cart_count', 'user'])
     },
     mounted() {
         window.addEventListener('scroll', this.updateScroll);

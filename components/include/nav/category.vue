@@ -34,12 +34,14 @@
                                 <v-col sm="4" v-for="category in categories" :key="category.id">
                                     <v-list-item>
                                         <v-list-item-content>
-                                            <nuxt-link :to="'/shop/' + category.id">
+                                            <nuxt-link :to="'/category/' + category.id">
                                                 <v-list-item-title>{{ category.category }}</v-list-item-title>
                                             </nuxt-link>
-                                            <nuxt-link :to="'/shop/' + category.id">
-                                                <v-list-item-subtitle v-for="sub in category.subcategories" :key="sub.id">{{ sub.subcategory }} </v-list-item-subtitle>
-                                            </nuxt-link>
+                                            <v-list-item-subtitle v-for="sub in category.subcategories" :key="sub.id">
+                                                <nuxt-link :to="'/subcategories/' + sub.id">
+                                                    {{ sub.subcategory }}
+                                                </nuxt-link>
+                                            </v-list-item-subtitle>
                                         </v-list-item-content>
                                     </v-list-item>
                                 </v-col>

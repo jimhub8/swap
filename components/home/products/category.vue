@@ -136,7 +136,7 @@ export default {
         },
         handleClick(data) {
             // console.log(data);
-            console.log(this.categories && this.selected_name == '');
+            // console.log(this.categories && this.selected_name == '');
 
             var payload = {
                 model: 'category_products',
@@ -201,47 +201,7 @@ export default {
     position: absolute;
     width: 100%;
 }
-
-/*
-.box-title h3 {
-    position: relative;
-    float: none;
-    text-align: center;
-    font-size: 20px !important;
-    text-transform: uppercase;
-    font-weight: 700;
+.v-menu__content--fixed {
+    margin-top: 40px;
 }
-
-.box-title h3:before {
-    right: auto;
-}
-
-.box-title h3:before {
-    content: "\f005";
-    font-family: FontAwesome;
-    font-size: 16px;
-    color: #18bcec;
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    margin-left: -15px;
-    border: 1px #ccc solid;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    line-height: 23px;
-    background: #fff;
-    z-index: 9;
-    margin-top: 20px;
-}
-
-.box-title h3:after {
-    content: "";
-    height: 2px;
-    background: #ebebeb;
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    right: 0;
-} */
 </style>
