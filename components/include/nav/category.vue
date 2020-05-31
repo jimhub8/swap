@@ -25,7 +25,7 @@
                         </v-list-item>
                     </v-list>
                 </v-col>
-                <!-- <VDivider vertical /> -->
+                <!-- <v-divider vertical /> -->
                 <v-col sm="7" v-if="display_menu">
                     <v-card class="mx-auto" outlined>
                         <v-list subheader three-line>

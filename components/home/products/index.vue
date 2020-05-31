@@ -1,5 +1,5 @@
 <template>
-<!-- <VBtn color="success" @click="getProducts">text</VBtn> -->
+<!-- <v-btn color="success" @click="getProducts">text</v-btn> -->
 <div>
     <img src="http://dellmat.jim/banners/banner1.jpg" style="margin: 20px 0; width: 100vw" />
     <div>

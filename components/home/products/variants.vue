@@ -11,7 +11,7 @@
                     <v-layout row wrap>
                         <v-flex sm4 v-for="variant in variants" :key="variant.id">
                             {{ variant.attribute.option_name }}
-                            <VDivider />
+                            <v-divider />
                             <!-- <div v-for="(variant_values, index) in variant.tags" :key="variant_values.id"> -->
                             <!-- {{ variant_values.option_name }} -->
 

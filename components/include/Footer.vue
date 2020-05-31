@@ -26,7 +26,7 @@
                     <input type="text" class="form-control" v-model="form.email" placeholder="Your email">
                     <br>
                     <textarea v-model="form.message" cols="10" rows="5" class="form-control" placeholder="message"></textarea>
-                    <VBtn color="primary">Submit</VBtn>
+                    <v-btn color="primary">Submit</v-btn>
                 </div>
             </div>
         </div>

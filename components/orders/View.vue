@@ -65,7 +65,7 @@
                                     <td colspan="5">{{ total }}</td>
                                 </tfoot>
                             </table>
-                            <VDivider />
+                            <v-divider />
                             <span class="headline text-center" style="margin: auto;">Shipping Details</span>
                             <table class="table table-striped table-hover table-responsive">
                                 <thead>

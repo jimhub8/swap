@@ -1,5 +1,5 @@
 <template>
-<VCard>
+<v-card>
     <div class="container" style="margin-top: 30px">
         <el-tabs :tab-position="tabPosition">
             <el-tab-pane label="My Account">
@@ -40,7 +40,7 @@
         </div> -->
         <!-- </v-layout> -->
     </div>
-</VCard>
+</v-card>
 </template>
 
 <script>

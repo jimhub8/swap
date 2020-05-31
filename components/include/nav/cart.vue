@@ -2,9 +2,9 @@
 <div class="text-center">
     <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y>
         <template v-slot:activator="{ on }">
-            <VBtn text icon color="white" style="color: white" v-on="on">
+            <v-btn text icon color="white" style="color: white" v-on="on">
               <VIcon>shopping_cart</VIcon>
-            </VBtn>
+            </v-btn>
 
         </template>
 

@@ -1,6 +1,6 @@
 <template>
 <div>
-    <VCard style="padding: 20px;width: 80%; margin: auto;box-shadow: 7px 7px 8px -4px rgb(210, 225, 246),0 12px 17px 2px rgb(210, 225, 246),0 5px 22px 4px rgb(210, 225, 246) !important;" v-if="user">
+    <v-card style="padding: 20px;width: 80%; margin: auto;box-shadow: 7px 7px 8px -4px rgb(210, 225, 246),0 12px 17px 2px rgb(210, 225, 246),0 5px 22px 4px rgb(210, 225, 246) !important;" v-if="user">
         <v-stepper v-model="e6" vertical>
             <v-stepper-step :complete="e6 > 1" step="1">User information</v-stepper-step>
             <v-stepper-content step="1" style="background: #fff;">
@@ -28,18 +28,18 @@
                 <v-btn text @click="e6 = 2">Back</v-btn>
             </v-stepper-content>
         </v-stepper>
-    </VCard>
+    </v-card>
     <div v-else style="padding: 20px 0;">
-        <VCard style="padding: 20px;width: 80%; margin: auto;box-shadow: 7px 7px 8px -4px rgb(210, 225, 246),0 12px 17px 2px rgb(210, 225, 246),0 5px 22px 4px rgb(210, 225, 246) !important;" class="text-center">
-            <VCardText>
+        <v-card style="padding: 20px;width: 80%; margin: auto;box-shadow: 7px 7px 8px -4px rgb(210, 225, 246),0 12px 17px 2px rgb(210, 225, 246),0 5px 22px 4px rgb(210, 225, 246) !important;" class="text-center">
+            <v-card-text>
                 You are not loged in! Please login to proceed.
-            </VCardText>
+            </v-card-text>
             <v-card-actions style="width: 15%;margin: auto;">
 
                 <v-btn text href="/login" color="primary">Login</v-btn>
                 <v-btn text href="/register" color="primary">Sign up</v-btn>
             </v-card-actions>
-        </VCard>
+        </v-card>
     </div>
 </div>
 </template>

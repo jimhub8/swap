@@ -57,9 +57,9 @@
             <!-- <myWish></myWish> -->
         </div>
         <Logout :user="user" style="margin-left: 100px;"></Logout>
-        <!-- <VBtn icon color="primary" v-else  style="margin-left: 20px;">
+        <!-- <v-btn icon color="primary" v-else  style="margin-left: 20px;">
             <VIcon>update</VIcon>
-        </VBtn> -->
+        </v-btn> -->
         <!-- <v-btn color="primary"href="/login" style="margin-left: 20px;">Login</v-btn> -->
     </div>
 

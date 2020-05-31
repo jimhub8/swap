@@ -1,6 +1,6 @@
 <template>
 <v-layout row wrap>
-    <VFlex sm2>
+    <v-flex sm2>
         <img src="http://dellmat.jim/banners/banner-left2.jpg" />
 
         <div>
@@ -8,7 +8,7 @@
                 <h3><span>On sale</span></h3>
             </div>
 
-            <VLayout row wrap v-for="sale in onSale.data" :key="sale.id" style="margin-top: 30px; background: #fff">
+            <v-layout row wrap v-for="sale in onSale.data" :key="sale.id" style="margin-top: 30px; background: #fff">
                 <v-flex sm7 style="text-align: right">
                     <el-rate v-model="value" disabled></el-rate>
                     <small> {{ sale.price }} </small>
@@ -18,15 +18,15 @@
                     <img :src="sale.image" style="width:80px; height:80px" />
                 </v-flex>
                 <v-flex sm12>
-                    <VDivider />
+                    <v-divider />
                 </v-flex>
-            </VLayout>
+            </v-layout>
             <!-- <ul class="list-group">
                 <li class="list-group-item" v-for="sale in onSale.data" :key="sale.id">{{ sale.product_name }}</li>
             </ul> -->
         </div>
-    </VFlex>
-    <VFlex sm9 style="margin-left: 20px">
+    </v-flex>
+    <v-flex sm9 style="margin-left: 20px">
         <el-tabs v-model="selected_category" @input="handleClick">
             <el-tab-pane :label="item.category" :name="item.category" v-for="item in categories.data" :key="item.id">
                 <v-row>
@@ -77,7 +77,7 @@
                 </v-row>
             </el-tab-pane>
         </el-tabs>
-    </VFlex>
+    </v-flex>
 </v-layout>
 </template>
 

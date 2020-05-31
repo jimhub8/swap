@@ -87,11 +87,11 @@
                             <option>KSH</option>
                         </select>
                     </div> -->
-                    <!-- <VDivider vertical /> -->
+                    <!-- <v-divider vertical /> -->
                     <!--  -->
                     <!-- <a href="/seller/register" class="v-btn v-btn--text theme--light primary--text" style="text-decoration: none;margin: 0 10px">Become a seller</a> -->
                     <v-btn color="primary" href="/seller/register" style="margin: 0 10px">Become a seller</v-btn>
-                    <!-- <VDivider vertical /> -->
+                    <!-- <v-divider vertical /> -->
 
                     <Logout :user="user" v-if="user"></Logout>
 

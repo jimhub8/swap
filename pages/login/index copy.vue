@@ -1,7 +1,7 @@
 <template>
 <v-card id="login">
-    <VCardTitle primary-title style="margin-left: 25%;" class="text-center">Login Page</VCardTitle>
-    <VCardText style="width:50%; margin:auto">
+    <v-card-title primary-title style="margin-left: 25%;" class="text-center">Login Page</v-card-title>
+    <v-card-text style="width:50%; margin:auto">
         <div>
             <label for="">Email</label>
             <el-input placeholder="jane@gmail.com" v-model="form.name"></el-input>
@@ -11,13 +11,13 @@
             <el-input placeholder="..." type="password" v-model="form.password"></el-input>
         </div>
 
-    </VCardText>
-    <VCardActions>
+    </v-card-text>
+    <v-card-actions>
         <VBtn color="primary" text class="text-center" @click="login">Login</VBtn>
         <nuxt-link to="/register">
             <VBtn color="primary" text class="text-center">Register</VBtn>
         </nuxt-link>
-    </VCardActions>
+    </v-card-actions>
 </v-card>
 </template>
 
