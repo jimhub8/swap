@@ -15,7 +15,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'http://dellmat.jim/css/all.css' },
+      // { rel: 'stylesheet', href: 'http://dellmat.jim/css/all.css' },
 
       { rel: 'stylesheet', href: 'http://bootstrap-ecommerce.com/bootstrap-ecommerce-html/css/ui.css' },
       { rel: 'stylesheet', href: 'http://bootstrap-ecommerce.com/bootstrap-ecommerce-html/css/responsive.css' },
@@ -40,7 +40,9 @@ export default {
   */
   css: [
     '@/assets/sass/app.scss',
-    '~/assets/css/main.css'
+    '~/assets/css/main.css',
+    '~/assets/css/all.css',
+    '~/assets/css/responsive.css',
   ],
 
   /*

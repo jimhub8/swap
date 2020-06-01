@@ -21,7 +21,7 @@ export default {
 
   async getItems({ commit, state }, payload) {
 
-    console.log(payload);
+    // console.log(payload);
     // var headers = {
     //   'Content-type': 'Application/json',
     //   'Accept': 'Application/json',
@@ -89,7 +89,7 @@ export default {
 
   // Post Items
   postItems(context, payload) {
-    console.log(payload);
+    // console.log(payload);
     context.commit('errors', [])
 
     var model = payload.model
@@ -134,7 +134,7 @@ export default {
 
   // Post Items
   postItem(context, payload) {
-    console.log(payload);
+    // console.log(payload);
     context.commit('errors', [])
 
     var model = payload.model
@@ -156,7 +156,7 @@ export default {
         // $nuxt.$emit("StoprogEvent");
         resolve(response)
       }).catch((error) => {
-        console.log(error);
+        // console.log(error);
         // $nuxt.$emit("StoprogEvent");
         reject(error);
 
@@ -229,7 +229,7 @@ export default {
         $nuxt.$emit("StoprogEvent");
         resolve(response)
       }).catch((error) => {
-        console.log(error);
+        // console.log(error);
         $nuxt.$emit("StoprogEvent");
         reject(error);
 
@@ -266,7 +266,7 @@ export default {
         $nuxt.$emit("StoprogEvent");
         resolve(response)
       }).catch((error) => {
-        console.log(error);
+        // console.log(error);
         $nuxt.$emit("StoprogEvent");
         reject(error);
 
@@ -289,7 +289,7 @@ export default {
 
   // Auth
   setToken({ commit }, payload) {
-    console.log(payload);
+    // console.log(payload);
 
     var token = payload.token
     var expiresIn = payload.expiresIn
