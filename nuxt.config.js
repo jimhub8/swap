@@ -75,7 +75,7 @@ export default {
   //  admin.jim/api/auth/login
   // http://admin.jim/api/auth/login
   axios: {
-    baseURL: 'http://dellmat.jim'
+    baseURL: 'http://swapstore.co.ke'
   },
 
   // auth: {
@@ -119,7 +119,7 @@ export default {
   },
 
   router: {
-    middleware: ['auth']
+    // middleware: ['auth']
   },
   /*
   ** vuetify module configuration
