@@ -22,18 +22,19 @@ export default {
   async getItems({ commit, state }, payload) {
 
     console.log(payload);
-    var headers = {
-      'Content-type': 'Application/json',
-      'Accept': 'Application/json',
-      'Authorization': state.access_local
-    }
+    // var headers = {
+    //   'Content-type': 'Application/json',
+    //   'Accept': 'Application/json',
+    //   'Authorization': state.access_local
+    // }
 
     var model = payload.model
     var update = payload.update
 
-    let response = await axios.get(api_url + model, {
-      'headers': headers
-    })
+    // let response = await axios.get(api_url + model, {
+    //   'headers': headers
+    // })
+    let response = await axios.get(api_url + model)
 
     commit(update, response.data)
   },

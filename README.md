@@ -1,6 +1,6 @@
 # ecommerce
 
-> My groovy Nuxt.js project
+> multi-vendor ecommerce website
 
 ## Build Setup
 
