@@ -1,7 +1,8 @@
 import axios from "axios";
 import cookies from 'js-cookie';
 
-const api_url = 'http://dellmat.jim/api/'
+const api_url = 'https://swapstore.co.ke/api/'
+// const api_url = 'http://dellmat.jim/api/'
 
 
 
