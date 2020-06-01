@@ -17,8 +17,8 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       // { rel: 'stylesheet', href: 'http://dellmat.jim/css/all.css' },
 
-      { rel: 'stylesheet', href: 'http://bootstrap-ecommerce.com/bootstrap-ecommerce-html/css/ui.css' },
-      { rel: 'stylesheet', href: 'http://bootstrap-ecommerce.com/bootstrap-ecommerce-html/css/responsive.css' },
+      // { rel: 'stylesheet', href: 'http://bootstrap-ecommerce.com/bootstrap-ecommerce-html/css/ui.css' },
+      // { rel: 'stylesheet', href: 'http://bootstrap-ecommerce.com/bootstrap-ecommerce-html/css/responsive.css' },
 
       { rel: 'script', href: 'http://dellmat.jim/js/jquery.js' },
       { rel: 'script', href: 'http://dellmat.jim/js/bootstrap.min.js' },
@@ -77,7 +77,7 @@ export default {
   //  admin.jim/api/auth/login
   // http://admin.jim/api/auth/login
   axios: {
-    baseURL: 'http://swapstore.co.ke'
+    baseURL: 'https://swapstore.co.ke'
   },
 
   // auth: {
