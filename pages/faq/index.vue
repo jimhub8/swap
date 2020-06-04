@@ -1,16 +1,26 @@
 <template>
 <div>
-    <VueFaqAccordion :items="myItems" />
+<myHeader />
+    <div class="box-title" style="margin: 30px 0;">
+        <h3><span>FAQS</span></h3>
+    </div>
+<el-collapse accordion class="container">
+    <el-collapse-item v-for="(item, index) in myItems" :key="index" :name="index + 1">
+        <template slot="title">
+            {{ item.title }}<i class="header-icon el-icon-info"></i>
+        </template>
+        <div>{{item.value}}</div>
+    </el-collapse-item>
+</el-collapse>
 </div>
 </template>
 
 <script>
-import VueFaqAccordion from 'vue-faq-accordion'
-
+import myHeader from '../../components/include/Headerpartial'
 export default {
 
     components: {
-        VueFaqAccordion
+        myHeader
     },
     data() {
         return {
@@ -18,7 +28,7 @@ export default {
                 // HELP CENTER
                 {
                     title: 'How to buy',
-                    value: `Buying on Dellmat.com is as easy as 1, 2, 3, and 4
+                    value: `Buying on {{ process.env.APP_NAME }}.com is as easy as 1, 2, 3, and 4
                     <br />
                     <b>Step 1: Login</b>
                     Locate the Login button to sign in or register.
@@ -38,7 +48,7 @@ export default {
                 },
                 {
                     title: 'Returns & Refunds',
-                    value: `Thank you for shopping with us on Dellmat.com
+                    value: `Thank you for shopping with us on {{ process.env.APP_NAME }}.com
                     <br />
                     In the case that you are not entirely satisfied with your purchase, we’re here to help. Kindly use the following guidelines
                     `,
@@ -90,18 +100,18 @@ export default {
 
                 // FAQS
                 {
-                    title: 'Q1. What is Dellmat all about?',
-                    value: 'Dellmat Group is hoped to dominate the world’s e-commerce market by operating through a unique combination of business models. It will act as a middle man between buyers and sellers only and facilitate the sale of goods between the two parties through its extensive network of website. It will also champion small businesses, in the belief that the internet would level the playing ground by enabling small enterprises to leverage innovation and technology to grow and dominate effectively in the domestic and global economies.',
+                    title: 'Q1. What is {{ process.env.APP_NAME }} all about?',
+                    value: '{{ process.env.APP_NAME }} Group is hoped to dominate the world’s e-commerce market by operating through a unique combination of business models. It will act as a middle man between buyers and sellers only and facilitate the sale of goods between the two parties through its extensive network of website. It will also champion small businesses, in the belief that the internet would level the playing ground by enabling small enterprises to leverage innovation and technology to grow and dominate effectively in the domestic and global economies.',
                     category: 'Faqs'
                 },
                 {
                     title: 'Q2. Are the products all new & genuine?',
-                    value: 'Yes, all products listed by sellers on Dellmat are 100% genuine and original products.',
+                    value: 'Yes, all products listed by sellers on {{ process.env.APP_NAME }} are 100% genuine and original products.',
                     category: 'Faqs'
                 },
                 {
                     title: 'Q3. What payment methods are available?',
-                    value: 'There are different payment methods available Dellmat.  Choose a preferable method for you from the following;' + '<br />' + '<b>Cash on delivery (COD)</b>' + '<br />' +
+                    value: 'There are different payment methods available {{ process.env.APP_NAME }}.  Choose a preferable method for you from the following;' + '<br />' + '<b>Cash on delivery (COD)</b>' + '<br />' +
                         '<b>Mobile money (MPESA)</b>' + '<br />' +
                         '<b>Online payment (PayPal)</b>',
                     category: 'Faqs'
@@ -117,12 +127,12 @@ export default {
                     category: 'Faqs'
                 },
                 {
-                    title: 'Q6. Which currencies does Dellmat accept?',
+                    title: 'Q6. Which currencies does {{ process.env.APP_NAME }} accept?',
                     value: 'We accept Kenya Shillings (KES) and US Dollars (USD)',
                     category: 'Faqs'
                 },
                 {
-                    title: 'Q7. Do products on Dellmat come with a warranty?',
+                    title: 'Q7. Do products on {{ process.env.APP_NAME }} come with a warranty?',
                     value: 'Warranty sticker will be displayed on the product description page or on the product itself.',
                     category: 'Faqs'
                 },
@@ -136,7 +146,7 @@ export default {
                 {
                     title: 'Shipping',
                     value: `
-                            The following defines the terms of use of Dellmat.com website. While standard website rules of use apply, please ensure you have read and understood the information below.
+                            The following defines the terms of use of {{ process.env.APP_NAME }}.com website. While standard website rules of use apply, please ensure you have read and understood the information below.
                     <br />
 
                     • You must be at least 13 years of age to use this website and no less than 18 years to shop and transact on this website
@@ -153,9 +163,9 @@ export default {
                      <br />
                     • You must ensure you check, report any inconsistencies that may affect your use of the website as intended
                      <br />
-                    • The logo, information and all content shared on the website remains the intellectual property of Dellmat.com
+                    • The logo, information and all content shared on the website remains the intellectual property of {{ process.env.APP_NAME }}.com
                      <br />
-                    • Dellmat takes no responsibility for the accuracy or use of information accessed or shared via external links to other sites from this website
+                    • {{ process.env.APP_NAME }} takes no responsibility for the accuracy or use of information accessed or shared via external links to other sites from this website
                      <br />
 
                 The owners and managers of this site reserve the right to terminate any account or transaction that may be ethically, legally or otherwise be in violation of the above or general stated terms of use.
@@ -168,7 +178,7 @@ export default {
                 // policy
                 {
                     title: '1. Privacy Policy',
-                    value: 'Dellmat, is committed to making your search for the perfect product as simple and comfortable as possible. Respecting your privacy is an extension of this service and this policy outlines the types and use of information that you have shared with us as part of using our online services.' + '<br />' + 'In continuing to use this website, you agree to the collection, use and selective disclosure of your personally identifiable information as described below. If you do not agree to the terms of this Privacy Policy, please do not continue to use this website.',
+                    value: '{{ process.env.APP_NAME }}, is committed to making your search for the perfect product as simple and comfortable as possible. Respecting your privacy is an extension of this service and this policy outlines the types and use of information that you have shared with us as part of using our online services.' + '<br />' + 'In continuing to use this website, you agree to the collection, use and selective disclosure of your personally identifiable information as described below. If you do not agree to the terms of this Privacy Policy, please do not continue to use this website.',
                     category: 'PRIVACY POLICY'
                 },
                 {
@@ -183,7 +193,7 @@ export default {
                 {
                     title: '3. When do we collect this information?',
                     value: `We only collect personal information from you when you <br />
-                    1) Register on the Dellmat website and create an account, including any account created using already established social networking accounts such as Facebook  <br />
+                    1) Register on the {{ process.env.APP_NAME }} website and create an account, including any account created using already established social networking accounts such as Facebook  <br />
                     2) Complete a survey.  <br />
                     3) Sign up for our e-mail list, offers, promotions or newsletter.  <br />
                     4) Share content from this website with your friends and family.  <br />
@@ -217,14 +227,14 @@ export default {
                 },
                 {
                     title: '5. How do we use the information?',
-                    value: `We may share your personal information across our departments, affiliate and subsidiary companies in order to improve your shopping experience on this website. At other times, we may also share your personal information with service providers and other third parties that need access to your personal information to provide us with operational or other support services, such as payment processors, shipping agents, other vendors and fraud prevention service providers, or for marketing research analytics. Dellmat.com takes steps to ensure that the third parties agree to appropriate restrictions on the disclosure and use of your information. Unless otherwise disclosed to you, these third parties are prohibited from using your personal information for their own marketing purposes. We do not rent or sell your personal information to marketers outside of our network and partners, unless indicated in this Privacy Policy or you otherwise authorize us to do so.
+                    value: `We may share your personal information across our departments, affiliate and subsidiary companies in order to improve your shopping experience on this website. At other times, we may also share your personal information with service providers and other third parties that need access to your personal information to provide us with operational or other support services, such as payment processors, shipping agents, other vendors and fraud prevention service providers, or for marketing research analytics. {{ process.env.APP_NAME }}.com takes steps to ensure that the third parties agree to appropriate restrictions on the disclosure and use of your information. Unless otherwise disclosed to you, these third parties are prohibited from using your personal information for their own marketing purposes. We do not rent or sell your personal information to marketers outside of our network and partners, unless indicated in this Privacy Policy or you otherwise authorize us to do so.
                     <br/>
                     We may also use your personal and non-personal information collected for the following purposes:
                     <br/>
 
                     1) to fulfill your requests for products and services; <br/>
                     2) to provide you with targeted offers and advertising; <br/>
-                    3) to contact you with information, promotions from Dellmat as well as from our subsidiaries, affiliates, marketing partners, advertisers and other third parties; <br/>
+                    3) to contact you with information, promotions from {{ process.env.APP_NAME }} as well as from our subsidiaries, affiliates, marketing partners, advertisers and other third parties; <br/>
                     4) to contact you if there is a problem with your order; <br/> 5) to ask you to review your in-store experience with us; <br/> 6) to review this website’s usage and operations; <br/>
                     7) to conduct marketing research in order to optimize our search engine marketing strategies; and
                     8) to guard against fraud, we may verify and/or supplement your personal information with information from third party sources.
@@ -263,7 +273,7 @@ export default {
                     <br />
                     These advertising service providers may collect non-identifiable information about your visits to our website, and your interactions with our products and services. Such non-identifiable information does not include your name, address, e-mail address or other personal information. The information is collected through the use of cookies and pixel tags.
                     <br />
-                    In addition to the information about your visits to our website, our service providers may also use the information about your visits to other websites to target advertisements for products and services available from Dellmat.com
+                    In addition to the information about your visits to our website, our service providers may also use the information about your visits to other websites to target advertisements for products and services available from {{ process.env.APP_NAME }}.com
                     Currently, we use third party-placed tracking pixels and cookies from the following advertising delivery partners: Google Ad Display Network, In the future we may partner with other companies to provide interest-based advertising, both on and off this website. You are at any time free to manage your third-party advertising preferences by clicking on the links below:
                     <br />
                     If you would like more information about this practice and to know your choices for not having this information used by third-party service providers, please

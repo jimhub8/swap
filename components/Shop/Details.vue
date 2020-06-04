@@ -255,7 +255,7 @@ export default {
         },
 
         imageUrlAlt(e) {
-                event.target.src = "http://dellmat.jim/assets/notfound/notfound.jpg"
+                event.target.src = "https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/notfound.jpg"
         },
 
         priceChange(data) {

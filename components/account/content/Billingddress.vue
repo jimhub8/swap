@@ -72,13 +72,15 @@
 
 <script>
 export default {
-    props: ['user'],
+    // props: ['user'],
     data() {
         return {
             address: {},
             errors: {},
             form: {},
             loading: false,
+            logged_in: false,
+            user: {},
         }
     },
     methods: {
@@ -104,7 +106,15 @@ export default {
             this.$store.dispatch('patchItems', payload)
 
         },
-        mounted() {},
-    }
+        user_logged() {
+            if (this.$store.state.auth.loggedIn) {
+                this.logged_in = true
+                this.user = this.$store.state.auth.user
+            }
+        }
+    },
+    mounted() {
+      this.user_logged()
+    },
 }
 </script>

@@ -8,12 +8,12 @@
 
             <div>
                 <p class="s-text7 w-size27">
-                    Our phone number: <b><a href="tel:+254792877803">+254792877803</a></b>
+                    Our phone number: <b><a href="tel:+254703484137">+254703484137</a></b>
                 </p>
                 Social media
                 <hr>
                 <div class="flex-m p-t-30">
-                    <a href="https://www.facebook.com/DellmatGroup" target="_blank" class="fs-18 color1 p-r-20 fa fa-facebook"></a>
+                    <a href="#" target="_blank" class="fs-18 color1 p-r-20 fa fa-facebook"></a>
                     <!-- <a href="#" class="fs-18 color1 p-r-20 fa fa-instagram"></a>
                     <a href="#" class="fs-18 color1 p-r-20 fa fa-pinterest-p"></a>
                     <a href="#" class="fs-18 color1 p-r-20 fa fa-snapchat-ghost"></a>
@@ -38,32 +38,32 @@
 
             <ul>
                 <li class="p-b-9">
-                    <router-link class="s-text7" to="/help_center">
-                        How to shop on Dellmat
+                    <router-link class="s-text7" to="/privacy">
+                        <!-- How to shop on {{ process.env.APP_NAME }} -->
                     </router-link>
                 </li>
                 <li class="p-b-9">
-                    <router-link class="s-text7" to="/help_center">
+                    <router-link class="s-text7" to="/privacy">
                         Track order
                     </router-link>
                 </li>
                 <li class="p-b-9">
-                    <router-link class="s-text7" to="/help_center">
+                    <router-link class="s-text7" to="/privacy">
                         Shipping and delivery
                     </router-link>
                 </li>
                 <li class="p-b-9">
-                    <router-link class="s-text7" to="/help_center">
+                    <router-link class="s-text7" to="/privacy">
                         Privacy policy
                     </router-link>
                 </li>
                 <li class="p-b-9">
-                    <router-link class="s-text7" to="/help_center">
+                    <router-link class="s-text7" to="/privacy">
                         Return policy
                     </router-link>
                 </li>
                 <li class="p-b-9">
-                    <router-link class="s-text7" to="/help_center">
+                    <router-link class="s-text7" to="/privacy">
                         FAQ's
                     </router-link>
                 </li>
@@ -94,7 +94,7 @@
             </h4>
             <ul>
                 <li class="p-b-9" v-for="rating in ratings" :key="rating.id">
-                    <router-link class="s-text7" to="/help_center">
+                    <router-link class="s-text7" to="/privacy">
                         {{ rating.product_name }}
                     </router-link>
                     <v-rating color="orange" readonly small v-model="rating.rating"></v-rating>
@@ -172,14 +172,14 @@ export default {
         //         this.errors = error.response.data.errors;
         //     });
 
-        axios
-            .get("/brands")
-            .then(response => {
-                this.brands = response.data;
-            })
-            .catch(error => {
-                this.errors = error.response.data.errors;
-            });
+        // axios
+        //     .get("/brands")
+        //     .then(response => {
+        //         this.brands = response.data;
+        //     })
+        //     .catch(error => {
+        //         this.errors = error.response.data.errors;
+        //     });
 
         // axios
         //     .get("/bestRated")

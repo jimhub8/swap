@@ -1,8 +1,8 @@
 <template>
 <div>
     <h2>Billing Address</h2>
-    <v-container grid-list-xl fluid>
-        <v-layout wrap v-if="user">
+     <v-container grid-list-xl fluid>
+        <v-layout wrap v-if="logged_in">
             <v-flex xs12 sm6>
                 <v-text-field v-model="user.billing.name" color="blue darken-2" label="Full name" required></v-text-field>
             </v-flex>
@@ -62,14 +62,29 @@
 
 <script>
 export default {
-    props: ['user', 'form'],
+    props: ['form'],
     data() {
         return {
-
+            logged_in: false,
+            user: {},
         }
     },
 
-    
+    methods: {
+        user_logged() {
+            if (this.$store.state.auth.loggedIn) {
+                this.logged_in = true
+                // console.log(this.$store.state.auth.user);
+
+                this.user = this.$store.state.auth.user
+            }
+        }
+    },
+    mounted() {
+      this.user_logged()
+    },
+
+
 }
 </script>
 

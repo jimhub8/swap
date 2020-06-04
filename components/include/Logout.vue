@@ -12,7 +12,7 @@
                     <!-- <avatar :fullname="user.name" style="font-size: 20px;margin: auto;padding: 0px;"></avatar> -->
                     <v-list-item-content>
                         <v-list-item-title>Hello {{ user.name }}</v-list-item-title>
-                        <v-list-item-subtitle>Welcome to Dellmat</v-list-item-subtitle>
+                        <v-list-item-subtitle>Welcome to {{ process.env.APP_NAME }}</v-list-item-subtitle>
                     </v-list-item-content>
                 </v-list-item>
 
@@ -77,7 +77,7 @@
 
                     <v-list-item-content>
                         <v-list-item-title>Hello</v-list-item-title>
-                        <v-list-item-subtitle>Welcome to Dellmat</v-list-item-subtitle>
+                        <v-list-item-subtitle>Welcome to {{ process.env.APP_NAME }}</v-list-item-subtitle>
                     </v-list-item-content>
                 </v-list-item>
             </v-list>

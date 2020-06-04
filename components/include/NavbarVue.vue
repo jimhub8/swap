@@ -15,13 +15,16 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a href="#" class="nav-link"> Call: +99812345678 </a></li>
+                    <li class="nav-item">
+                        <!-- <a href="#" class="nav-link"> Call: +254703484137 </a> -->
+                        <a class="nav-link" href="tel:+254703484137">Call: +254703484137</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> English </a>
-                        <ul class="dropdown-menu dropdown-menu-right" style="max-width: 100px;">
+                        <!-- <ul class="dropdown-menu dropdown-menu-right" style="max-width: 100px;">
                             <li><a class="dropdown-item" href="#">Arabic</a></li>
                             <li><a class="dropdown-item" href="#">Russian </a></li>
-                        </ul>
+                        </ul> -->
                     </li>
                 </ul> <!-- list-inline //  -->
             </div> <!-- navbar-collapse .// -->
@@ -33,7 +36,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-2">
                         <nuxt-link to="/" class="brand-wrap">
-                            <img class="logo" src="/logo.jpg">
+                            <img class="logo" :src="logo">
                         </nuxt-link>
                     </div>
                     <div class="col-lg-2 col-4">
@@ -41,7 +44,7 @@
                     </div>
 
                     <div class="col-lg-4 col-4 col-sm-12">
-                        <form action="#" class="search">
+                        <!-- <form action="#" class="search">
                             <div class="input-group w-100">
                                 <input type="text" class="form-control" placeholder="Search">
                                 <div class="input-group-append">
@@ -50,7 +53,8 @@
                                     </button>
                                 </div>
                             </div>
-                        </form> <!-- search-wrap .end// -->
+                        </form> -->
+                        <!-- <mySearch /> -->
                     </div> <!-- col.// -->
                     <div class="col-lg-3 col-sm-3 col-4">
                         <div class="widgets-wrap float-md-right">
@@ -61,15 +65,16 @@
                                 <span class="badge badge-pill badge-danger notify">{{ cart_count }}</span>
                             </div>
                             <div class="widget-header icontext">
-                                <div class="icon icon-sm rounded-circle border">
-                                    <v-icon>account_circle</v-icon>
+                                <div class="icon icon-sm rounded-circle border" v-if="this.$store.state.auth.loggedIn">
+                                    <!-- <v-icon>account_circle</v-icon> -->
+                                    <myAccount />
                                 </div>
                                 <div class="text">
-                                    <span class="text-muted">Welcome!</span>
-                                    <div>
-                                        <a href="#">Sign in</a> |
-                                        <a href="#"> Register</a>
+                                    <div v-if="!this.$store.state.auth.loggedIn">
+                                        <nuxt-link to="/login">Sign in</nuxt-link>
+                                        <nuxt-link to="/register">Register</nuxt-link>
                                     </div>
+                                    <span class="text-muted" v-else>Welcome {{ this.$store.state.auth.user.name }}! </span>
                                 </div>
                             </div>
                         </div> <!-- widgets-wrap.// -->
@@ -78,12 +83,19 @@
             </div> <!-- container.// -->
         </section> <!-- header-main .// -->
     </header>
+
+    <v-snackbar :timeout="timeout" bottom :color="Scolor" left v-model="snackbar">
+        {{ message }}
+        <v-icon dark right>check_circle</v-icon>
+    </v-snackbar>
 </div>
 </template>
 
 <script>
+// import mySearch from './Search'
 import myCategory from './nav/category'
 import myCart from "./nav/cart";
+import myAccount from "./nav/login";
 import {
     mapState
 } from 'vuex';
@@ -92,12 +104,18 @@ export default {
     components: {
         myCategory,
         myCart,
+        myAccount,
+        // mySearch
 
     },
     data() {
         return {
+            timeout: 5000,
+            snackbar: false,
+            message: '',
+            Scolor: 'black',
             scrollPosition: null,
-            // logo: 'http://dellmat.jim/logo/logo.jpg',
+            logo: process.env.LOGO,
             offsetTop: 0,
             duration: 1000,
             easing: "easeInOutCubic",
@@ -133,12 +151,24 @@ export default {
         },
 
         showerror(data) {
+            // this.$message({
+            //     showClose: true,
+            //     message: 'Congrats, this is a success message.',
+            //     type: 'success'
+            // });
+
             this.message = data;
-            this.Scolor = "red";
+            this.Scolor = "black";
             this.snackbar = true;
         },
 
         showalert(data) {
+            // this.$message({
+            //     showClose: true,
+            //     message: 'Congrats, this is a success message.',
+            //     type: 'success'
+            // });
+            // alert('test')
             this.message = data;
             this.Scolor = "black";
             this.snackbar = true;
@@ -186,7 +216,14 @@ export default {
     },
 
     computed: {
-        ...mapState(['cart_count', 'user'])
+        ...mapState(['cart_count', 'user']),
+
+        loggedIn() {
+            this.$store.state.auth.loggedIn
+        }
+
+        // console.log(this.$auth.$state.access_local);
+
     },
     mounted() {
         window.addEventListener('scroll', this.updateScroll);
@@ -213,6 +250,8 @@ export default {
             this.getCart()
         });
         this.$nuxt.$on("alertRequest", data => {
+          // console.log(data);
+
             this.showalert(data);
         });
         this.$nuxt.$on("errorRequest", data => {
@@ -281,7 +320,7 @@ header {
 .v-btn--outlined .v-btn__content .v-icon,
 .v-btn--round .v-btn__content .v-icon,
 .v-icon.v-icon {
-    color: #fff !important;
+    color: #00b5ff !important
 }
 
 .classA {
@@ -294,5 +333,8 @@ header {
 
 .bg-primary {
     background-color: #29425d !important;
+}
+.v-snack__content {
+  color: #fff !important;
 }
 </style>

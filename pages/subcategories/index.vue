@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="subcat">
     <headerP></headerP>
     <section class="bgwhite p-t-55 p-b-65" style="padding: 10px">
         <v-row wrap row>
@@ -97,19 +97,19 @@ export default {
 </script>
 
 <style>
-.wrap-pic-w img {
+#subcat .wrap-pic-w img {
     height: 300px;
 }
 
-.v-card {
+#subcat .v-card {
     transition: opacity .4s ease-in-out;
 }
 
-.v-card:not(.on-hover) {
+#subcat .v-card:not(.on-hover) {
     opacity: 0.6;
 }
 
-.show-btns {
+#subcat .show-btns {
     color: rgba(255, 255, 255, 1) !important;
 }
 </style>

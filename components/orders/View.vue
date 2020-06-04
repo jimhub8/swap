@@ -20,15 +20,6 @@
                 <v-container grid-list-md>
                     <v-layout row wrap>
                         <v-flex sm12>
-                            <!-- <ul class="list-group">
-                                <li class="list-group-item"><b>Leave type</b> <span style="float: right">{{ form.leave_type }}</span></li>
-                                <li class="list-group-item"><b>From</b> <span style="float: right">{{ form.date_from }}</span></li>
-                                <li class="list-group-item"><b>To</b> <span style="float: right">{{ form.date_to }}</span></li>
-                                <li class="list-group-item"><b>Days</b> <span style="float: right">{{ form.days }}</span></li>
-                                <li class="list-group-item"><b>Reason</b> <span style="float: right">{{ form.reason }}</span></li>
-                                <li class="list-group-item"><b>Remark</b> <span style="float: right">{{ form.remark }}</span></li>
-                                <li class="list-group-item"><b>Status</b> <span style="float: right">{{ form.status }}</span></li>
-                            </ul> -->
 
                             <table class="table table-striped table-hover table-responsive">
                                 <thead>
@@ -93,6 +84,10 @@
                     </v-layout>
                 </v-container>
             </v-card-text>
+
+            <v-card-actions>
+              <v-btn color="primary" text @click="close">Close</v-btn>
+            </v-card-actions>
         </v-card>
     </v-dialog>
 </v-layout>
@@ -100,6 +95,7 @@
 
 <script>
 export default {
+    name: 'showorder',
     data: () => ({
         dialog: false,
         loading: false,
@@ -110,9 +106,12 @@ export default {
     }),
     created() {
         this.$nuxt.$on("viewOrdEvent", data => {
+            console.log(data);
             this.dialog = true;
             this.form = data;
-            this.getOrderAddress()
+            if (data.ordershipping) {
+                this.getOrderAddress()
+            }
         });
     },
 
@@ -123,7 +122,7 @@ export default {
 
         getOrderAddress() {
             var payload = {
-                model: '/order_address',
+                model: 'order_address',
                 update: 'updateOrderAddressList',
                 id: this.form.ordershipping.id,
             }
@@ -134,9 +133,9 @@ export default {
     computed: {
         total() {
             var price = 0
-            this.form.products.forEach(element => {
-                price += parseFloat(element.pivot.price) * parseFloat(element.pivot.quantity)
-            });
+            // this.form.products.forEach(element => {
+            //     price += parseFloat(element.pivot.price) * parseFloat(element.pivot.quantity)
+            // });
             return price
         },
         order_address() {

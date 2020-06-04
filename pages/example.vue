@@ -1,6 +1,7 @@
 <template>
-<div style="margin-top: 200px">
-  <v-btn color="success" @click="getUser">User</v-btn>
+<div style="margin-top: 0px">
+  <!-- <v-btn color="success" @click="getUser">User  </v-btn> -->
+  <mysearch />
 </div>
 </template>
 
@@ -8,7 +9,11 @@
 import {
     mapState
 } from "vuex";
+import mysearch from '../components/include/Search'
 export default {
+  components: {
+    mysearch,
+  },
     name: 'Example',
     data: () => ({
 
@@ -19,9 +24,9 @@ export default {
     },
     methods: {
         getUser() {
-          console.log(this.$auth.$state.access_local);
-          // return;
-
+          // console.log(process.env.API_URL);
+          console.log(this.$store.state.auth.loggedIn);
+          return;
 
             // let accessToken = getCookie('auth._token.local', req.headers.cookie)
 

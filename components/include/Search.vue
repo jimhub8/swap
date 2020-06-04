@@ -1,47 +1,56 @@
 <template>
-<div>
-    <ais-index app-id="V4Q0BRYFL9" api-key="9f7c6c2a11bdfec5e7569c1e45e8fa2b" index-name="products" style="margin: auto;">
-        <ais-input placeholder="Find products..." class="form-control" @query="showMenu" autofocus></ais-input>
+<ais-instant-search :search-client="searchClient" index-name="instant_search">
+    <ais-search-box @focus="showMenu" />
+    <ais-stats />
+    <el-card class="box-card">
+    <!-- <v-card v-show="show_menu" style="width: 90%"> -->
+        <!-- <ais-refinement-list attribute="brand" /> -->
+        <ais-hits>
+            <!-- <v-list three-line> -->
+            <template slot="item" slot-scope="{ item }">
+                <!-- <p>
+                    <ais-highlight attribute="brand" :hit="item" />
+                </p> -->
+                <ul class="list-group">
+                    <li class="list-group-item">
+                      <span style="float: left">
+                      <img style="width:60px" src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" />
+                      </span>
+                      <span style="float: left; margin-left: 30px">
+                        <ais-highlight attribute="name" :hit="item" />
+                        <br>
+                        <small>100</small>
+                      </span>
+                    </li>
+                </ul>
 
-        <div class="container" style="col-xl-3 col-lg-3 hidden-md hidden-sm pull-left category-wrapper;position: absolute;z-index: 17;" v-if="show_menu">
-            <div class="categori-menu" @mouseleave="show_menu = false">
-                <v-list three-line style="max-height: 60vh; overflow: scroll">
-                    <template>
-                        <ais-results>
-                            <template slot-scope="{ result }">
-                                <v-divider></v-divider>
-                                <v-list-item @click="Productdetails(result.id)">
+            </template>
+            <!-- </v-list> -->
 
-                                    <v-img :src="result.image" style="height: 70px"></v-img>
-                                    <v-list-item-content>
-                                        <v-list-item-title v-html="result.product_name"></v-list-item-title>
-                                        <v-list-item-subtitle>
-                                            KSH {{ result.Price }}
-                                        </v-list-item-subtitle>
-                                    </v-list-item-content>
-                                </v-list-item>
-                            </template>
-                        </ais-results>
-                        <ais-no-results></ais-no-results>
-                        <ais-pagination></ais-pagination>
-                    </template>
-                </v-list>
+        </ais-hits>
+    </el-card>
 
-            </div>
-        </div>
-    </ais-index>
-</div>
+
+    <!-- <ais-pagination /> -->
+</ais-instant-search>
 </template>
 
 <script>
+import algoliasearch from 'algoliasearch/lite';
+const searchClient = algoliasearch(
+    'latency',
+    '6be0576ff61c053d5f9a3225e2a90f76'
+);
+
 export default {
 
     data() {
         return {
-            api_key: process.env.MIX_ALGOLIA_APP_KEY,
-            secret_key: process.env.MIX_ALGOLIA_SECRET,
-            show_menu: false,
+            // api_key: process.env.MIX_ALGOLIA_APP_KEY,
+            // secret_key: process.env.MIX_ALGOLIA_SECRET,
+            show_menu: true,
             search: '',
+            searchClient
         }
     },
     methods: {
@@ -67,7 +76,7 @@ export default {
 </script>
 
 <style>
-.ais-index .v-image__image {
+/* .ais-index .v-image__image {
     width: 50px !important;
     height: 50px !important;
 }
@@ -83,10 +92,12 @@ li {
     list-style-type: none;
     display: inline;
 }
+
 .theme--light.v-list {
     background: #f0f0f0;
     color: rgba(0, 0, 0, 0.87);
 }
+
 @media only screen and (max-width: 991px) {
 
     .ais-index .v-list--three-line .v-list-item .v-list-item__content,
@@ -97,5 +108,5 @@ li {
     .categori-menu {
         width: 100% !important;
     }
-}
+} */
 </style>

@@ -10,7 +10,7 @@
                     build your brand. It’s a great way to build your brand and increase engagement with your
                     followers.
                     If you’re already sharing your content and products on your Instagram page, all that’s left to do
-                    is place your Dellmat web shop link in your BIO and direct your follows to click on it to be able
+                    is place your {{ process.env.APP_NAME }} web shop link in your BIO and direct your follows to click on it to be able
                     to purchase from you.</p><br>
                 <p>If you don’t have an instagram account yet, simply download the Instagram app here and
                     create an account. Start by following other brands that inspire you, and also following their

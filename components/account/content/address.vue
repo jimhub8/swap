@@ -1,10 +1,10 @@
 <template>
  <el-tabs v-model="activeName" @tab-click="handleClick">
      <el-tab-pane label="Billing Address" name="first">
-         <myBilling :user="user"></myBilling>
+         <myBilling />
      </el-tab-pane>
      <el-tab-pane label="Shipping Address" name="second">
-         <myShipping :user="user"></myShipping>
+         <myShipping />
      </el-tab-pane>
  </el-tabs>
 </template>
@@ -14,9 +14,10 @@ import myBilling from './Billingddress'
 import myShipping from './Shippingaddress'
 export default {
     components: {
-        myShipping, myBilling
+        myShipping,
+         myBilling
     },
-    props: ['user'],
+    // props: ['user'],
     data() {
         return {
             activeName: 'first'

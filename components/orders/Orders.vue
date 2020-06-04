@@ -21,7 +21,7 @@
                 </v-tooltip>
             </template>
         </v-data-table>
-        <myView></myView>
+        <myView />
     </div>
 </v-app>
 </template>
@@ -63,7 +63,7 @@ export default {
 
     methods: {
         view(order) {
-            console.log(order);
+            // console.log(order);
 
             $nuxt.$emit("viewOrdEvent", order);
         },

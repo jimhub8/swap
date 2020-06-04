@@ -207,14 +207,34 @@ export default {
                     this.errors = error.response.data.errors;
                 });
         },
+        // subtructCart(cart) {
+        //     cart.order_qty = -1
+        //     $nuxt.$emit("subCartEvent", cart)
+        // },
+        // addToCart(cart) {
+        //     cart.order_qty = 1
+        //     $nuxt.$emit("subCartEvent", cart)
+        // },
+
+
         subtructCart(cart) {
-            cart.order_qty = -1
-            $nuxt.$emit("subCartEvent", cart)
+            var payload = {
+                order_qty: -1,
+                cart: cart
+            }
+            // cart.order_qty = -1
+            $nuxt.$emit("subCartEvent", payload)
         },
         addToCart(cart) {
-            cart.order_qty = 1
-            $nuxt.$emit("subCartEvent", cart)
+            var payload = {
+                order_qty: 1,
+                cart: cart
+            }
+            // cart.order_qty = 1
+            $nuxt.$emit("subCartEvent", payload)
         },
+
+
         couponApply() {
             axios
                 .post("/couponApply", this.coupon)

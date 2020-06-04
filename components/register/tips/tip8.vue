@@ -13,7 +13,7 @@
                     package! We recommend clean, new, gift bags with your branding printed on it. Recognition of
                     your brand when sending out products is important. But not to worry, if you don’t have
                     branded packaging, then any brand new gift bags like in the picture below will do.
-                    .Timely Delivery: Dellmat promises customers within Nairobi fast &amp; safe delivery, sometimes
+                    .Timely Delivery: {{ process.env.APP_NAME }} promises customers within Nairobi fast &amp; safe delivery, sometimes
                     as quick as 2 hours! So if you don’t want to disappoint your customers, then ensure that you
                     have your product packaged and ready for dispatch the moment you get your order. Our
                     customer service agents will notify you with the name of the delivery rider that will come and
@@ -22,7 +22,7 @@
                     a review on your Web Shop. This review will be public for other potential customers to see
                     before they make an order with you. It is important that you keep this in mind when
                     dispatching your products.
-                    .Payment: Dellmat pays merchants immediately the customer approves the product they have
+                    .Payment: {{ process.env.APP_NAME }} pays merchants immediately the customer approves the product they have
                     received. The product will be delivered to the customer, they will review that it’s what they
                     wanted, and give authorization for the payment to be made to the merchant. If the product is
                     not accepted then it will immediately delivered back to the you, the merchant, at no cost to you.

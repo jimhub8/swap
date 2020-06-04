@@ -1,6 +1,6 @@
 <template>
 <div>
-    <v-card style="padding: 20px;width: 80%; margin: auto;box-shadow: 7px 7px 8px -4px rgb(210, 225, 246),0 12px 17px 2px rgb(210, 225, 246),0 5px 22px 4px rgb(210, 225, 246) !important;">
+    <v-card style="padding: 20px;width: 80%; margin: auto;box-shadow: 7px 7px 8px -4px rgb(210, 225, 246),0 12px 17px 2px rgb(210, 225, 246),0 5px 22px 4px rgb(210, 225, 246) !important;margin-top: 200px;">
         <v-stepper v-model="e6" vertical>
             <v-stepper-step :complete="e6 > 1" step="1">User information</v-stepper-step>
             <v-stepper-content step="1" style="background: #fff;">
@@ -23,7 +23,7 @@
             <v-stepper-content step="3" style="background: #fff;">
                 <v-card color="white lighten-1" class="mb-5">
                     <!-- <no-ssr> -->
-                        <myComplete :account="account"></myComplete>
+                    <myComplete :account="account"></myComplete>
                     <!-- </no-ssr> -->
                 </v-card>
                 <!-- <v-btn color="primary" @click="finish">Place order</v-btn> -->

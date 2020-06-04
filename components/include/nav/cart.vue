@@ -2,7 +2,7 @@
 <div class="text-center">
     <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y>
         <template v-slot:activator="{ on }">
-            <v-btn text icon color="white" style="color: white" v-on="on">
+            <v-btn text icon color="primary" v-on="on">
               <VIcon>shopping_cart</VIcon>
             </v-btn>
 
@@ -24,8 +24,12 @@
             <v-divider></v-divider>
             <v-card-actions>
                 <v-spacer></v-spacer>
+                <nuxt-link to="/cart">
                 <v-btn text @click="menu = false">Go To Cart</v-btn>
+                </nuxt-link>
+                <nuxt-link to="/checkout">
                 <v-btn color="primary" text @click="menu = false">Checkout</v-btn>
+                </nuxt-link>
             </v-card-actions>
         </v-card>
     </v-menu>

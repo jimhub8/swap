@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="category">
     <headerP></headerP>
     <section class="bgwhite p-t-55 p-b-65" style="padding: 10px">
         <v-row wrap row>
@@ -101,11 +101,11 @@ export default {
     height: 300px;
 }
 
-.v-card {
+#category .v-card {
     transition: opacity .4s ease-in-out;
 }
 
-.v-card:not(.on-hover) {
+#category .v-card:not(.on-hover) {
     opacity: 0.6;
 }
 

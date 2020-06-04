@@ -1,7 +1,7 @@
 import axios from "axios";
 import cookies from 'js-cookie';
 
-const api_url = 'https://swapstore.co.ke/api/'
+const api_url = process.env.API_URL
 // const api_url = 'http://dellmat.jim/api/'
 
 
@@ -21,22 +21,25 @@ export default {
 
   async getItems({ commit, state }, payload) {
 
-    // console.log(payload);
-    // var headers = {
-    //   'Content-type': 'Application/json',
-    //   'Accept': 'Application/json',
-    //   'Authorization': state.access_local
-    // }
 
     var model = payload.model
     var update = payload.update
+    // console.log(state.auth.access_local);
+    if (state.auth.loggedIn) {
+      var headers = {
+        'Content-type': 'Application/json',
+        'Accept': 'Application/json',
+        'Authorization': state.auth.access_local
+      }
 
-    // let response = await axios.get(api_url + model, {
-    //   'headers': headers
-    // })
-    let response = await axios.get(api_url + model)
-
-    commit(update, response.data)
+      let response = await axios.get(api_url + model, {
+        'headers': headers
+      })
+      commit(update, response.data)
+    } else {
+      let response = await axios.get(api_url + model)
+      commit(update, response.data)
+    }
   },
 
 
@@ -88,25 +91,33 @@ export default {
 
 
   // Post Items
-  postItems(context, payload) {
+  postItems({ commit, state }, payload) {
     // console.log(payload);
-    context.commit('errors', [])
+    commit('errors', [])
 
     var model = payload.model
     var data = payload.data
+
+    var headers = {
+      'Content-type': 'Application/json',
+      'Accept': 'Application/json',
+      'Authorization': state.auth.access_local
+    }
 
     // console.log(data);
 
     // var data = payload['data']
     // console.log(data);
     // var update_ = payload['update_list']
-    context.commit('loading', true)
+    commit('loading', true)
     return new Promise((resolve, reject) => {
-      axios.post(api_url + model, data).then((response) => {
-        context.commit('loading', false)
+      axios.post(api_url + model, data, {
+        'headers': headers
+      }).then((response) => {
+        console.log(response.data);
         $nuxt.$emit('alertRequest', 'Created')
-        // console.log(response.data);
-        // context.commit(update_, response.data)
+        commit('loading', false)
+        // commit(update_, response.data)
         $nuxt.$emit("StoprogEvent");
         resolve(response)
       }).catch((error) => {
@@ -114,7 +125,7 @@ export default {
         $nuxt.$emit("StoprogEvent");
         reject(error);
 
-        context.commit('loading', false)
+        commit('loading', false)
         if (error.response.status === 500 || error.response.status === 405) {
           $nuxt.$emit('errorEvent', error.response.statusText)
           return
@@ -122,12 +133,12 @@ export default {
           $nuxt.$emit('reloadRequest', error.response.statusText)
         } else if (error.response.status === 422) {
           var errors_ = error.response.data.errors
-          context.commit('errors', errors_)
+          commit('errors', errors_)
           $nuxt.$emit('errorEvent', error.response.data.message + ': ' + error.response.statusText)
-          context.commit('errors', error.response.data.errors)
+          commit('errors', error.response.data.errors)
           return
         }
-        context.commit('errors', error.response.data.errors)
+        commit('errors', error.response.data.errors)
       })
     });
   },
@@ -150,6 +161,9 @@ export default {
     return new Promise((resolve, reject) => {
       axios.post(api_url + model + '/' + id, data).then((response) => {
         context.commit('loading', false)
+
+        console.log(response.data);
+        $nuxt.$emit('alertRequest', 'updated')
         // $nuxt.$emit('alertRequest', 'Created')
         // console.log(response.data);
         // context.commit(update_, response.data)
@@ -180,23 +194,34 @@ export default {
 
 
   // Patch Items
-  patchItems(context, payload) {
+  patchItems({ commit, state }, payload) {
+    // patchItems(context, payload) {
     // console.log(payload);
 
     var model = payload.model
     var data = payload.data
     var id = payload.id
-    context.commit('loading', true)
+
+    var headers = {
+      'Content-type': 'Application/json',
+      'Accept': 'Application/json',
+      'Authorization': state.auth.access_local
+    }
+
+
+    commit('loading', true)
     return new Promise((resolve, reject) => {
-      axios.patch(model + '/' + id, data).then((response) => {
+      axios.patch(api_url + model + '/' + id, data, {
+        'headers': headers
+      }).then((response) => {
         $nuxt.$emit('alertRequest', 'Updated')
-        context.commit('loading', false)
+        commit('loading', false)
         $nuxt.$emit("StoprogEvent");
         resolve(response)
       }).catch((error) => {
         $nuxt.$emit("StoprogEvent");
         reject(error);
-        context.commit('loading', false)
+        commit('loading', false)
         if (error.response.status === 500 || error.response.status === 405) {
           $nuxt.$emit('errorEvent', error.response.statusText)
           return
@@ -204,10 +229,10 @@ export default {
           $nuxt.$emit('reloadRequest', error.response.statusText)
         } else if (error.response.status === 422) {
           $nuxt.$emit('errorEvent', error.response.data.message + ': ' + error.response.statusText)
-          context.commit('errors', error.response.data.errors)
+          commit('errors', error.response.data.errors)
 
         }
-        context.commit('errors', error.response.data.errors)
+        commit('errors', error.response.data.errors)
       })
     });
 

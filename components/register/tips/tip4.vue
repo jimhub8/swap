@@ -18,8 +18,8 @@
                         features from day 1!</li>
                     <li><b>Share!</b> Your posts are going to show up on your followers timelines, so don’t hold back! Share some engaging content highlighting your business, your activities and your products.</li>
                     <li><b>Consider promoted posts:</b> Facebook also offers advertising tools that allows you to drive
-                        traffic to your Dellmat web shop and products. First create a normal post on your Facebook
-                        page timeline, and then select ‘BOOST POST’, select a budget and paste your Dellmat web shop
+                        traffic to your {{ process.env.APP_NAME }} web shop and products. First create a normal post on your Facebook
+                        page timeline, and then select ‘BOOST POST’, select a budget and paste your {{ process.env.APP_NAME }} web shop
                         link as the advert destination.</li>
                 </ol>
             </v-layout>
