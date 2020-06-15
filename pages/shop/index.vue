@@ -173,7 +173,7 @@ export default {
         store
     }) {
         var payload = {
-            model: 'products',
+            model: 'shop',
             update: 'updateProduct'
         }
         await store.dispatch("getItems", payload);

@@ -220,7 +220,7 @@ export default {
             // easings: Object.keys(easings),
             type: "number",
             wishItems: [],
-            logo: 'http://dellmat.jim/logo/logo.jpg',
+            logo: 'https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/logo.jpg',
             app_name: process.env.MIX_APP_NAME,
         };
     },

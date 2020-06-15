@@ -17,7 +17,7 @@ export default {
 
 <style scoped>
 .bg-title-page{
-    background-image: url(http://dellmat.jim/storage/8.jpg) !important;
+    background-image: url(https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/8.jpg) !important;
     background-attachment: fixed !important;
 }
 </style>

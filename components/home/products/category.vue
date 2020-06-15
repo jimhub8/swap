@@ -1,7 +1,7 @@
 <template>
 <v-layout row wrap>
     <v-flex sm2>
-        <img src="http://dellmat.jim/banners/banner-left2.jpg" />
+        <img src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-left2.jpg" />
 
         <div>
             <div class="box-title">
