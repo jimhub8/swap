@@ -6,7 +6,7 @@ export default {
   ** Headers of the page
   */
   head: {
-    titleTemplate: '%s - ' + process.env.APP_NAME,
+    titleTemplate: '%s ',
     title: 'Swap',
     meta: [
       { charset: 'utf-8' },
@@ -70,6 +70,8 @@ export default {
     '@nuxtjs/dotenv',
     'nuxt-material-design-icons',
     '@nuxtjs/auth',
+    '@nuxtjs/google-analytics',
+    '@nuxtjs/sitemap'
 
     // '@nuxtjs/bootstrap',
   ],
@@ -160,5 +162,30 @@ export default {
     extend(config, ctx) {
     }
   },
+  googleAnalytics: {
+    id: "{169626171}",
+    dev: true
+  },
 
+  sitemap: {
+    path: '/cryptoticker.cc.xml',
+    hostname: 'https://swapstore.co.ke',
+    cacheTime: 1000 * 60 * 15,
+    gzip: true,
+    generate: false,
+    routes: [
+      '/',
+      '/shop',
+      '/category',
+      '/cart',
+      '/checkout',
+      '/privacy',
+      '/account',
+    ].map(route => ({
+      url: route,
+      changefreq: 'monthly',
+      priority: 1,
+      lastmodISO: new Date().toISOString().split('T')[0]
+    }))
+  },
 }

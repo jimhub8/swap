@@ -8,8 +8,7 @@
         <myFeatured style="padding: 0 30px" />
         <!-- <mySlide style="padding: 0 30px" /> -->
         <myNew />
-        <img src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-02.jpg" style="margin: 20px 0; width: 100vw" />
-
+        <img src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-02.jpg" style="margin: 20px 0; width: 100vw; height: 300px" />
         <myBest style="padding: 0 30px" />
 
     </div>

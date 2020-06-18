@@ -1,7 +1,7 @@
 <template>
 <v-layout row wrap>
-    <v-flex sm2>
-        <img src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-left2.jpg" />
+    <v-flex sm3>
+        <img src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-left2.jpg" style="width: 25vw;height: 50vh;" />
 
         <div>
             <div class="box-title">
@@ -26,7 +26,7 @@
             </ul> -->
         </div>
     </v-flex>
-    <v-flex sm9 style="margin-left: 20px">
+    <v-flex sm8 style="margin-left: 20px">
         <el-tabs v-model="selected_category" @input="handleClick">
             <el-tab-pane :label="item.category" :name="item.category" v-for="item in categories.data" :key="item.id">
                 <v-row>
@@ -64,12 +64,12 @@
                                     </v-expand-transition>
                                 </v-img>
                                 <nuxt-link :to="'shop/' + product.id">
-                                <v-card-text class="pt-6" style="position: relative;">
-                                    <p>{{ product.product_name }}</p>
-                                    <div class="font-weight-light title mb-2">
-                                        {{ product.price }}
-                                    </div>
-                                </v-card-text>
+                                    <v-card-text class="pt-6" style="position: relative;">
+                                        <p>{{ product.product_name }}</p>
+                                        <div class="font-weight-light title mb-2">
+                                            {{ product.price }}
+                                        </div>
+                                    </v-card-text>
                                 </nuxt-link>
                             </v-card>
                         </v-hover>
@@ -151,10 +151,10 @@ export default {
         // },
     },
     mounted() {
-      setTimeout(() => {
+        setTimeout(() => {
             this.handleClick(this.selected_category)
 
-      }, 1000);
+        }, 1000);
         // this.getCategory();
         // this.getonSale();
     },
@@ -201,6 +201,7 @@ export default {
     position: absolute;
     width: 100%;
 }
+
 .v-menu__content--fixed {
     margin-top: 40px;
 }

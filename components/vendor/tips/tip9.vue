@@ -46,3 +46,13 @@
     </v-card-text>
 </div>
 </template>
+<script>
+export default {
+    data() {
+        return {
+            app_name: process.env.APP_NAME
+        }
+    },
+}
+</script>
+

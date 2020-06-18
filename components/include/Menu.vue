@@ -197,7 +197,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li><a href="https://www.facebook.com/DellmatGroup" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
                         <!-- <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="signin.html"><i class="fa fa-user"></i></a></li> -->

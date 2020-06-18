@@ -9,7 +9,7 @@
         <template slot="title">
             {{ item.title }}<i class="header-icon el-icon-info"></i>
         </template>
-        <div>{{item.value}}</div>
+        <div v-html="item.value"></div>
     </el-collapse-item>
 </el-collapse>
 </div>
@@ -28,7 +28,7 @@ export default {
                 // HELP CENTER
                 {
                     title: 'How to buy',
-                    value: `Buying on {{ process.env.APP_NAME }}.com is as easy as 1, 2, 3, and 4
+                    value: `Buying on ` +  process.env.APP_NAME   + `.com is as easy as 1, 2, 3, and 4
                     <br />
                     <b>Step 1: Login</b>
                     Locate the Login button to sign in or register.
@@ -48,7 +48,7 @@ export default {
                 },
                 {
                     title: 'Returns & Refunds',
-                    value: `Thank you for shopping with us on {{ process.env.APP_NAME }}.com
+                    value: `Thank you for shopping with us on`+  process.env.APP_NAME  +`.com
                     <br />
                     In the case that you are not entirely satisfied with your purchase, we’re here to help. Kindly use the following guidelines
                     `,
@@ -100,18 +100,18 @@ export default {
 
                 // FAQS
                 {
-                    title: 'Q1. What is {{ process.env.APP_NAME }} all about?',
+                    title: 'Q1. What is`+  process.env.APP_NAME  +` all about?',
                     value: '{{ process.env.APP_NAME }} Group is hoped to dominate the world’s e-commerce market by operating through a unique combination of business models. It will act as a middle man between buyers and sellers only and facilitate the sale of goods between the two parties through its extensive network of website. It will also champion small businesses, in the belief that the internet would level the playing ground by enabling small enterprises to leverage innovation and technology to grow and dominate effectively in the domestic and global economies.',
                     category: 'Faqs'
                 },
                 {
                     title: 'Q2. Are the products all new & genuine?',
-                    value: 'Yes, all products listed by sellers on {{ process.env.APP_NAME }} are 100% genuine and original products.',
+                    value: 'Yes, all products listed by sellers on`+  process.env.APP_NAME  +` are 100% genuine and original products.',
                     category: 'Faqs'
                 },
                 {
                     title: 'Q3. What payment methods are available?',
-                    value: 'There are different payment methods available {{ process.env.APP_NAME }}.  Choose a preferable method for you from the following;' + '<br />' + '<b>Cash on delivery (COD)</b>' + '<br />' +
+                    value: 'There are different payment methods available`+  process.env.APP_NAME  +`.  Choose a preferable method for you from the following;' + '<br />' + '<b>Cash on delivery (COD)</b>' + '<br />' +
                         '<b>Mobile money (MPESA)</b>' + '<br />' +
                         '<b>Online payment (PayPal)</b>',
                     category: 'Faqs'
@@ -127,12 +127,12 @@ export default {
                     category: 'Faqs'
                 },
                 {
-                    title: 'Q6. Which currencies does {{ process.env.APP_NAME }} accept?',
+                    title: 'Q6. Which currencies does`+  process.env.APP_NAME  +` accept?',
                     value: 'We accept Kenya Shillings (KES) and US Dollars (USD)',
                     category: 'Faqs'
                 },
                 {
-                    title: 'Q7. Do products on {{ process.env.APP_NAME }} come with a warranty?',
+                    title: 'Q7. Do products on`+  process.env.APP_NAME  +` come with a warranty?',
                     value: 'Warranty sticker will be displayed on the product description page or on the product itself.',
                     category: 'Faqs'
                 },
@@ -146,7 +146,7 @@ export default {
                 {
                     title: 'Shipping',
                     value: `
-                            The following defines the terms of use of {{ process.env.APP_NAME }}.com website. While standard website rules of use apply, please ensure you have read and understood the information below.
+                            The following defines the terms of use of`+  process.env.APP_NAME  +`.com website. While standard website rules of use apply, please ensure you have read and understood the information below.
                     <br />
 
                     • You must be at least 13 years of age to use this website and no less than 18 years to shop and transact on this website
@@ -163,9 +163,9 @@ export default {
                      <br />
                     • You must ensure you check, report any inconsistencies that may affect your use of the website as intended
                      <br />
-                    • The logo, information and all content shared on the website remains the intellectual property of {{ process.env.APP_NAME }}.com
+                    • The logo, information and all content shared on the website remains the intellectual property of`+  process.env.APP_NAME  +`.com
                      <br />
-                    • {{ process.env.APP_NAME }} takes no responsibility for the accuracy or use of information accessed or shared via external links to other sites from this website
+                    •`+  process.env.APP_NAME  +` takes no responsibility for the accuracy or use of information accessed or shared via external links to other sites from this website
                      <br />
 
                 The owners and managers of this site reserve the right to terminate any account or transaction that may be ethically, legally or otherwise be in violation of the above or general stated terms of use.
@@ -178,7 +178,7 @@ export default {
                 // policy
                 {
                     title: '1. Privacy Policy',
-                    value: '{{ process.env.APP_NAME }}, is committed to making your search for the perfect product as simple and comfortable as possible. Respecting your privacy is an extension of this service and this policy outlines the types and use of information that you have shared with us as part of using our online services.' + '<br />' + 'In continuing to use this website, you agree to the collection, use and selective disclosure of your personally identifiable information as described below. If you do not agree to the terms of this Privacy Policy, please do not continue to use this website.',
+                    value: process.env.APP_NAME  +', is committed to making your search for the perfect product as simple and comfortable as possible. Respecting your privacy is an extension of this service and this policy outlines the types and use of information that you have shared with us as part of using our online services.' + '<br />' + 'In continuing to use this website, you agree to the collection, use and selective disclosure of your personally identifiable information as described below. If you do not agree to the terms of this Privacy Policy, please do not continue to use this website.',
                     category: 'PRIVACY POLICY'
                 },
                 {
@@ -193,7 +193,7 @@ export default {
                 {
                     title: '3. When do we collect this information?',
                     value: `We only collect personal information from you when you <br />
-                    1) Register on the {{ process.env.APP_NAME }} website and create an account, including any account created using already established social networking accounts such as Facebook  <br />
+                    1) Register on the `+  process.env.APP_NAME  +` website and create an account, including any account created using already established social networking accounts such as Facebook  <br />
                     2) Complete a survey.  <br />
                     3) Sign up for our e-mail list, offers, promotions or newsletter.  <br />
                     4) Share content from this website with your friends and family.  <br />
@@ -287,14 +287,14 @@ export default {
                     <br />
                     <b>EMAIL MARKETING</b>
                     When you opt in by subscribing to our newsletters, offers and promotions, you receive marketing e-mails from us from time to time. Should you wish to unsubscribe, you can do so by clicking on the Unsubscribe hyperlink at the bottom of the marketing e-mail you receive. Your record may still remain in our database but you will not receive any future mailings from us.
-                    You can also opt out of e-mails by sending an e-mail to us at <a href="mailto:info@dellmat.com" target="_blank">info@dellmat.com</a>  requesting us to unsubscribe a specific e-mail address.`,
+                    You can also opt out of e-mails by sending an e-mail to us at <a href="mailto:info@swapstore.co.ke" target="_blank">info@swapstore.co.ke</a>  requesting us to unsubscribe a specific e-mail address.`,
                     category: 'PRIVACY POLICY'
                 },
                 {
                     title: '8. Changes to this Privacy Policy',
                     value: `We may change this Privacy Policy from time to time. Any significant changes will be posted online or shared with you via email. We will do our best to give ample notice for changes that affect you or the information, use of information you may have provided us with.
                     <br />
-                    If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:info@dellmat.com" target="_blank">info@dellmat.com</a>.`,
+                    If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:info@swapstore.co.ke" target="_blank">info@swapstore.co.ke</a>.`,
                     category: 'PRIVACY POLICY'
                 },
             ]

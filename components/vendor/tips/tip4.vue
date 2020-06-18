@@ -18,8 +18,8 @@
                         features from day 1!</li>
                     <li><b>Share!</b> Your posts are going to show up on your followers timelines, so don’t hold back! Share some engaging content highlighting your business, your activities and your products.</li>
                     <li><b>Consider promoted posts:</b> Facebook also offers advertising tools that allows you to drive
-                        traffic to your {{ process.env.APP_NAME }} web shop and products. First create a normal post on your Facebook
-                        page timeline, and then select ‘BOOST POST’, select a budget and paste your {{ process.env.APP_NAME }} web shop
+                        traffic to your app_name web shop and products. First create a normal post on your Facebook
+                        page timeline, and then select ‘BOOST POST’, select a budget and paste your app_name web shop
                         link as the advert destination.</li>
                 </ol>
             </v-layout>
@@ -27,3 +27,13 @@
     </v-card-text>
 </div>
 </template>
+<script>
+export default {
+    data() {
+        return {
+            app_name: process.env.APP_NAME
+        }
+    },
+}
+</script>
+

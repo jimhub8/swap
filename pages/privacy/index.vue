@@ -9,7 +9,7 @@
         <template slot="title">
             {{ item.title }}<i class="header-icon el-icon-info"></i>
         </template>
-        <div>{{item.value}}</div>
+        <div v-html="item.value"></div>
     </el-collapse-item>
 </el-collapse>
 </div>
@@ -26,7 +26,7 @@ export default {
         return {
             myItems: [{
                     title: '1. Privacy Policy',
-                    value: '{{ process.env.APP_NAME }}, is committed to making your search for the perfect mattress and a great night sleep as simple and comfortable as possible. Respecting your privacy is an extension of this service and this policy outlines the types and use of information that you have shared with us as part of using our online services.' + '<br />' + 'In continuing to use this website, you agree to the collection, use and selective disclosure of your personally identifiable information as described below. If you do not agree to the terms of this Privacy Policy, please do not continue to use this website.',
+                    value: process.env.APP_NAME + `, is committed to making your search for the perfect mattress and a great night sleep as simple and comfortable as possible. Respecting your privacy is an extension of this service and this policy outlines the types and use of information that you have shared with us as part of using our online services.' + '<br />' + 'In continuing to use this website, you agree to the collection, use and selective disclosure of your personally identifiable information as described below. If you do not agree to the terms of this Privacy Policy, please do not continue to use this website.`,
                     category: 'PRIVACY POLICY'
                 },
                 {
@@ -41,7 +41,7 @@ export default {
                 {
                     title: '3. When do we collect this information?',
                     value: `We only collect personal information from you when you <br />
-                    1) Register on the {{ process.env.APP_NAME }} website and create an account, including any account created using already established social networking accounts such as Facebook  <br />
+                    1) Register on the ` + process.env.APP_NAME +`  website and create an account, including any account created using already established social networking accounts such as Facebook  <br />
                     2) Complete a survey.  <br />
                     3) Sign up for our e-mail list, offers, promotions or newsletter.  <br />
                     4) Share content from this website with your friends and family.  <br />
@@ -135,14 +135,14 @@ export default {
                     <br />
                     <b>EMAIL MARKETING</b>
                     When you opt in by subscribing to our newsletters, offers and promotions, you receive marketing e-mails from us from time to time. Should you wish to unsubscribe, you can do so by clicking on the Unsubscribe hyperlink at the bottom of the marketing e-mail you receive. Your record may still remain in our database but you will not receive any future mailings from us.
-                    You can also opt out of e-mails by sending an e-mail to us at <a href="mailto:info@dellmat.com" target="_blank">info@dellmat.com</a>  requesting us to unsubscribe a specific e-mail address.`,
+                    You can also opt out of e-mails by sending an e-mail to us at <a href="mailto:info@swapstore.co.ke" target="_blank">info@swapstore.co.ke</a>  requesting us to unsubscribe a specific e-mail address.`,
                     category: 'PRIVACY POLICY'
                 },
                 {
                     title: '8. Changes to this Privacy Policy',
                     value: `We may change this Privacy Policy from time to time. Any significant changes will be posted online or shared with you via email. We will do our best to give ample notice for changes that affect you or the information, use of information you may have provided us with.
                     <br />
-                    If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:info@dellmat.com" target="_blank">info@dellmat.com</a>.`,
+                    If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:info@swapstore.co.ke" target="_blank">info@swapstore.co.ke</a>.`,
                     category: 'PRIVACY POLICY'
                 },
             ]

@@ -68,9 +68,9 @@
         <div class="container-menu-header-v2 p-t-26">
             <div class="topbar2" style="margin-top: -26px;padding-bottom: 20px;">
                 <div class="topbar-social">
-                    <a href="https://www.facebook.com/DellmatGroup" target="_blank" class="topbar-social-item fa fa-facebook"></a>
+                    <a href="#" target="_blank" class="topbar-social-item fa fa-facebook"></a>
 
-                    <span class="topbar-email" style="margin: 0 10px"><a href="mailto:info@dellmat.com" target="_blank">info@dellmat.com</a></span>
+                    <span class="topbar-email" style="margin: 0 10px"><a href="mailto:info@swapstore.co.ke" target="_blank">info@swapstore.co.ke</a></span>
                 </div>
                 <br>
                 <hr>
@@ -220,7 +220,7 @@ export default {
             // easings: Object.keys(easings),
             type: "number",
             wishItems: [],
-            logo: 'https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/logo.jpg',
+            logo: 'https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/logo_1.jpg',
             app_name: process.env.MIX_APP_NAME,
         };
     },

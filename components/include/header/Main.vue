@@ -3,7 +3,7 @@
     <div class="container-menu-header-v2 p-t-26">
         <div class="topbar2" style="margin-top: -26px;padding-bottom: 20px;">
             <div class="topbar-social">
-                <a href="https://www.facebook.com/DellmatGroup" target="_blank" class="topbar-social-item fa fa-facebook"></a>
+                <a href="#" target="_blank" class="topbar-social-item fa fa-facebook"></a>
                 <!-- <a href="#" class="topbar-social-item fa fa-instagram"></a>
                 <a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
                 <a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
@@ -14,11 +14,11 @@
 
             <!-- Logo2 -->
             <router-link to="/" class="logo2">
-                <img src="/storage/logo/dellmat.png" alt="Swap" style="height: 50px !important;">
+                <img :src="process.env.logo" alt="Swap" style="height: 50px !important;">
                 </router-link>
 
                 <div class="topbar-child2">
-                    <span class="topbar-email"><a href="mailto:info@dellmat.com" target="_blank">info@dellmat.com</a></span>
+                    <span class="topbar-email"><a href="mailto:info@swapstore.co.ke" target="_blank">info@swapstore.co.ke</a></span>
 
                     <div class="topbar-language rs1-select2" style="margin-left: 10px !important">
                         <select class="selection-1" name="time">

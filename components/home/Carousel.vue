@@ -2,7 +2,7 @@
 <div id="mainslider">
     <el-carousel indicator-position="outside">
         <el-carousel-item v-for="item in slider" :key="item.id">
-            <img :src="item.image" />
+            <img :src="item.image" style="width: 100%; height: 60vh" />
             <div class="container">
                 <div class="overlay" v-html="item.content"></div>
             </div>

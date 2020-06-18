@@ -2,7 +2,7 @@
 <v-layout row justify-center>
     <v-dialog v-model="dialog" persistent max-width="600px">
         <template v-slot:activator="{ on }">
-            <v-btn color="primary" dark v-on="on">{{ process.env.APP_NAME }} webshop owners selling tips</v-btn>
+            <v-btn color="primary" dark v-on="on">{{ app_name }} webshop owners selling tips</v-btn>
         </template>
         <v-card>
             <Tip1 v-if="count == 1"></Tip1>
@@ -55,6 +55,7 @@ export default {
         return {
             count: 1,
             dialog: true,
+            app_name: process.env.APP_NAME
         }
     },
     methods: {

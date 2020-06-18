@@ -8,7 +8,7 @@
 
             <div>
                 <p class="s-text7 w-size27">
-                    Our phone number: <b><a href="tel:+254703484137">+254703484137</a></b>
+                    Our phone number: <b><a href="tel:+254711272820">+254711272820</a></b>
                 </p>
                 Social media
                 <hr>
@@ -38,34 +38,34 @@
 
             <ul>
                 <li class="p-b-9">
-                    <router-link class="s-text7" to="/privacy">
+                    <nuxt-link class="s-text7" to="/privacy">
                         <!-- How to shop on {{ process.env.APP_NAME }} -->
-                    </router-link>
+                    </nuxt-link>
                 </li>
                 <li class="p-b-9">
-                    <router-link class="s-text7" to="/privacy">
+                    <nuxt-link class="s-text7" to="/privacy">
                         Track order
-                    </router-link>
+                    </nuxt-link>
                 </li>
                 <li class="p-b-9">
-                    <router-link class="s-text7" to="/privacy">
+                    <nuxt-link class="s-text7" to="/privacy">
                         Shipping and delivery
-                    </router-link>
+                    </nuxt-link>
                 </li>
                 <li class="p-b-9">
-                    <router-link class="s-text7" to="/privacy">
+                    <nuxt-link class="s-text7" to="/privacy">
                         Privacy policy
-                    </router-link>
+                    </nuxt-link>
                 </li>
                 <li class="p-b-9">
-                    <router-link class="s-text7" to="/privacy">
+                    <nuxt-link class="s-text7" to="/privacy">
                         Return policy
-                    </router-link>
+                    </nuxt-link>
                 </li>
                 <li class="p-b-9">
-                    <router-link class="s-text7" to="/privacy">
+                    <nuxt-link class="s-text7" to="/privacy">
                         FAQ's
-                    </router-link>
+                    </nuxt-link>
                 </li>
             </ul>
         </div>
@@ -77,14 +77,14 @@
 
             <ul>
                 <li class="p-b-9">
-                    <a class="s-text7" href="/vendors">
+                  <nuxt-link class="s-text7" to="/vendor">
                         Become a seller
-                    </a>
+                  </nuxt-link>
                 </li>
                 <li class="p-b-9">
-                    <a class="s-text7" href="/register">
+                  <nuxt-link class="s-text7" to="/register">
                         Become a buyer
-                    </a>
+                  </nuxt-link>
                 </li>
             </ul>
         </div>
@@ -94,9 +94,9 @@
             </h4>
             <ul>
                 <li class="p-b-9" v-for="rating in ratings" :key="rating.id">
-                    <router-link class="s-text7" to="/privacy">
+                    <nuxt-link class="s-text7" to="/privacy">
                         {{ rating.product_name }}
-                    </router-link>
+                    </nuxt-link>
                     <v-rating color="orange" readonly small v-model="rating.rating"></v-rating>
                     <!-- </span>
                     </a> -->

@@ -87,7 +87,7 @@
 
                 <div class="size15 trans-0-4">
                     <!-- Button -->
-                    <form action="http://dellmat.jim/createpayment" method="post" ref="paypal" v-if="account.payment === 'Paypal'" target="_blank">
+                    <form action="#" method="post" ref="paypal" v-if="account.payment === 'Paypal'" target="_blank">
                         <!-- <input type="hidden" name="_token" :value="csrf"> -->
                         <button type="submit" style="height: 44px;" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">Place Order</button>
                     </form>
@@ -145,16 +145,15 @@ export default {
                 model: 'getCart',
                 update: 'updateCartsList',
             }
-        this.$store.dispatch('getItems', payload)
+            this.$store.dispatch('getItems', payload)
         },
         cash_delivery() {
             var payload = {
                 model: 'cash_delivery',
                 data: this.account
             }
-        this.$store.dispatch('postItems', payload)
-        return
-
+            this.$store.dispatch('postItems', payload)
+            return
 
             $nuxt.$emit("progressEvent");
             this.account.total = parseInt(this.getSubTotal) - parseInt(this.getCouponT)
@@ -216,7 +215,6 @@ export default {
         //     $nuxt.$emit("subCartEvent", cart)
         // },
 
-
         subtructCart(cart) {
             var payload = {
                 order_qty: -1,
@@ -233,7 +231,6 @@ export default {
             // cart.order_qty = 1
             $nuxt.$emit("subCartEvent", payload)
         },
-
 
         couponApply() {
             axios

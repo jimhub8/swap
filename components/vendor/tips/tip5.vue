@@ -13,16 +13,26 @@
                 <ol>
                     <li><b>Create a WhatsApp Group for your customers:</b>  Over the years you’ve been doing business,
                         you must have collected a few customer contacts, take advantage of this group of recurring
-                        business and put them in one group where you can post your {{ process.env.APP_NAME }} links to new stock you
+                        business and put them in one group where you can post your app_name links to new stock you
                         have in your shop.</li>
                     <li><b>Join buying and selling WhatsApp Groups: </b>There are lots of buying and selling groups on
                         WhatsApp that allow people to join and broadcast their inventory for sale for anyone that’s
-                        interested. Get access to these groups and share your {{ process.env.APP_NAME }} links to quickly convert your
+                        interested. Get access to these groups and share your app_name links to quickly convert your
                         advertising to cash!</li>
-                    <li><b>Send links to customer privately: </b>If you have a customer that’s interested in your products and doesn’t know how to get them, simply send them a product link from your {{ process.env.APP_NAME }} Merchant App to click on and purchase.</li>
+                    <li><b>Send links to customer privately: </b>If you have a customer that’s interested in your products and doesn’t know how to get them, simply send them a product link from your app_name Merchant App to click on and purchase.</li>
                 </ol>
             </v-layout>
         </v-container>
     </v-card-text>
 </div>
 </template>
+<script>
+export default {
+    data() {
+        return {
+            app_name: process.env.APP_NAME
+        }
+    },
+}
+</script>
+

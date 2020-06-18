@@ -16,8 +16,8 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <!-- <a href="#" class="nav-link"> Call: +254703484137 </a> -->
-                        <a class="nav-link" href="tel:+254703484137">Call: +254703484137</a>
+                        <!-- <a href="#" class="nav-link"> Call: +254711272820 </a> -->
+                        <a class="nav-link" href="tel:+254711272820">Call: +254711272820</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> English </a>
