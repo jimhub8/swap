@@ -1,11 +1,11 @@
 <template>
-<div @mouseleave="showMenu(false)">
+<div @mouseleave="showMenu(false)" id="search-bar">
     <ais-instant-search :search-client="searchClient" index-name="products">
         <!-- <ais-search-box @input="showMenu" /> -->
         <ais-search-box @focus="showMenu(true)" id="myInput" />
         <!-- <ais-search-box @focus="showMenu"  @blur="show_menu = false"/> -->
-        <ais-stats style="color: #fff" v-show="show_menu" />
         <el-card class="box-card" v-show="show_menu" style="max-height: 80vh;overflow: scroll;">
+        <ais-stats style="color: #fff" v-show="show_menu" />
             <!-- <v-card v-show="show_menu" style="width: 90%"> -->
             <!-- <ais-refinement-list attribute="brand" /> -->
             <ais-hits>
@@ -16,7 +16,7 @@
                 </p> -->
                     <ul class="list-group">
                         <nuxt-link :to="'/shop/' + item.id">
-                            <li class="list-group-item" style="cursor: pointer">
+                            <li class="list-group-item" style="cursor: pointer" @click="showMenu(false)">
                                 <span style="float: left">
                                     <img v-if="item.images.length > 0" style="width:60px" :src="item.images[0].image" />
                                     <img v-else src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" style="width:60px" />
@@ -140,5 +140,23 @@ li {
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+@media only screen and (max-width: 991px) {
+    #search-bar {
+        margin-top: -30px;
+        width: 100%;
+    }
+
+    #search-bar .ais-InstantSearch {
+        position: absolute;
+    }
+
+    .ais-SearchBox button:not(:disabled) {
+        display: none;
+    }
+    .ais-Stats {
+      color: #000 !important;
+    }
 }
 </style>

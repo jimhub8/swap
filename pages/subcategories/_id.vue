@@ -107,11 +107,21 @@ import headerP from "../../components/include/Headerpartial";
 import myFilter from '../../components/Shop/details/filter'
 import myVariants from '../../components/home/products/variants'
 export default {
-    name: 'cat_details',
+    name: 'sub_details',
     components: {
         headerP,
         myFilter,
         myVariants
+    },
+    head() {
+        return {
+            title: 'Swap - ' + this.subcategory.subcategory,
+            meta: [{
+                hid: 'description',
+                name: 'description',
+                content: this.subcategory.description
+            }]
+        }
     },
     data() {
         return {
@@ -170,6 +180,13 @@ export default {
         }
         await store.dispatch("showItem", payload);
 
+        var payload = {
+            model: 'subcategory',
+            update: 'Subcategory',
+            id: route.params.id
+        }
+        await store.dispatch("showItem", payload);
+
         // var payload = {
         //     model: 'categories',
         //     update: 'updateCategoryList',
@@ -217,7 +234,7 @@ export default {
     },
 
     computed: {
-        ...mapState(['products'])
+        ...mapState(['products', 'subcategory'])
     },
 };
 </script>

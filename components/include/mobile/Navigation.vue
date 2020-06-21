@@ -1,12 +1,21 @@
 <template>
 <v-app id="inspire">
-    <v-app-bar app clipped-right color="black" dark>
-        <v-app-bar-nav-icon @click.stop="drawer = !drawer" color="primary"></v-app-bar-nav-icon>
-        <v-toolbar-title>
+    <v-app-bar app clipped-right color="black" dark id="light_theme">
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer" color="primary"  v-if="!search_show"></v-app-bar-nav-icon>
+        <v-toolbar-title  v-if="!search_show">
             <nuxt-link to="/" class="logo2">
                 <img :src="logo" alt="Swap" style="height: 50px !important;">
             </nuxt-link>
         </v-toolbar-title>
+        <v-spacer v-if="!search_show"></v-spacer>
+        <v-btn text icon color="primary" v-if="!search_show" @click="search_show = true">
+          <v-icon small>search</v-icon>
+        </v-btn>
+
+        <myAccount v-if="!search_show"/>
+        <myCart v-if="!search_show"/>
+
+        <mySearch v-else />
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" app temporary>
@@ -97,7 +106,13 @@
 import {
     mapGetters
 } from 'vuex'
+import mySearch from '../Search'
+import myCart from "../nav/cart";
+import myAccount from "../nav/login";
 export default {
+  components: {
+    mySearch, myCart, myAccount
+  },
     props: {
         source: String,
     },
@@ -109,7 +124,8 @@ export default {
         left: false,
         logo: process.env.LOGO,
         categories: [],
-        year: new Date().getFullYear()
+        year: new Date().getFullYear(),
+        search_show: false,
     }),
     computed: {
         ...mapGetters(['isAuthenticated', 'loggedInUser', 'menu']),

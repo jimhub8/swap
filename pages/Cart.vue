@@ -8,6 +8,7 @@
     <div v-show="loader" style="text-align: center; width: 100%; margin-top: 200px;">
         <v-progress-circular :width="3" indeterminate color="red" style="margin: 1rem"></v-progress-circular>
     </div>
+
     <v-tooltip bottom>
         <v-btn slot="activator" icon class="mx-0" @click="getCart">
             <v-icon small color="orange darken-2">refresh</v-icon>
@@ -17,7 +18,7 @@
     <section class="cart bgwhite" v-show="!loader">
         <v-card style="padding: 20px;width: 80%; margin: auto;box-shadow: 7px 7px 8px -4px rgb(210, 225, 246),0 12px 17px 2px rgb(210, 225, 246),0 5px 22px 4px rgb(210, 225, 246) !important;">
 
-            <div class="container" v-if="carts.length > 0">
+            <div class="container" v-if="Object.keys(carts).length > 0">
                 <!-- <div class="container" v-if="carts.length > 0"> -->
                 <!-- Cart item -->
 

@@ -24,6 +24,8 @@ export const state = () => ({
   option_values: [],
   orders: [],
   category_products: [],
+  category: [],
+  subcategory: [],
   product_slide: [],
   cart_total: null,
   // Deleted

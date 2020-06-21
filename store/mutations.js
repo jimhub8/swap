@@ -105,6 +105,13 @@ updateSliderList(state, payload) {
     state.slider = payload
 },
 
+CategoryList(state, payload) {
+  state.category = payload
+},
+Subcategory(state, payload) {
+  state.subcategory = payload
+},
+
 updateSliderSList(state, payload) {
     state.sliderS = payload
 },

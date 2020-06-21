@@ -7,10 +7,12 @@
             </div>
             <div class="widget-content">
                 <ul class="product-categories">
-                    <li class="cat-item" v-for="category in categories.data" :key="category.id">
-                        <p style="cursor: pointer" @click="FilterShop(category.id)">{{ category.category }}</p>
-                        <!-- <span class="count">(5)</span> -->
-                    </li>
+                    <nuxt-link :to="'/category/' + category.id"  v-for="category in categories.data" :key="category.id">
+                        <li class="cat-item">
+                            <p style="cursor: pointer" @click="FilterShop(category.id)">{{ category.category }}</p>
+                            <!-- <span class="count">(5)</span> -->
+                        </li>
+                    </nuxt-link>
                 </ul>
             </div>
             <div class="product-filter mb-30">
@@ -60,9 +62,9 @@ export default {
 
             }
             this.$store.dispatch('filterItems', payload)
-                // .then((res) => {
-                //     $nuxt.$emit("StoprogEvent");
-                // })
+            // .then((res) => {
+            //     $nuxt.$emit("StoprogEvent");
+            // })
         },
         getCategory() {
             var payload = {

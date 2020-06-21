@@ -265,10 +265,10 @@ export default {
             this.loadingalert();
         });
         this.$nuxt.$on("progressEvent", data => {
-            // this.$refs.topProgress.start();
+            this.$refs.topProgress.start();
         });
         this.$nuxt.$on("StoprogEvent", data => {
-            // this.$refs.topProgress.done();
+            this.$refs.topProgress.done();
         });
         this.$nuxt.$on("ScollEvent", data => {
             // window.scrollTo(0, 300);
@@ -346,9 +346,9 @@ header {
     color: #fff !important;
 }
 
-.ais-SearchBox [type=search] {
+/* .ais-SearchBox [type=search] {
     color: white !important;
-}
+} */
 
 .show_menu .logo {
     top: 8% !important;

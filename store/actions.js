@@ -20,6 +20,8 @@ export default {
 
 
   async getItems({ commit, state }, payload) {
+            // $nuxt.$emit("progressEvent");
+            // this.$emit('my-custom-event')
 
 
     var model = payload.model
@@ -40,6 +42,9 @@ export default {
       let response = await axios.get(api_url + model)
       commit(update, response.data)
     }
+
+            // $nuxt.$emit("StoprogEvent");
+
   },
 
 
