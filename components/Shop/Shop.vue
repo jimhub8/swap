@@ -251,7 +251,7 @@ export default {
         },
 
         imageUrlAlt(e) {
-                event.target.src = "https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/notfound.jpg"
+                event.target.src = "https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png"
         }
     },
     mounted() {

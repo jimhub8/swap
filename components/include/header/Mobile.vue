@@ -58,7 +58,7 @@
         </div>
         <Logout :user="user" style="margin-left: 100px;"></Logout>
         <!-- <v-btn icon color="primary" v-else  style="margin-left: 20px;">
-            <VIcon>update</VIcon>
+            <v-icon>update</v-icon>
         </v-btn> -->
         <!-- <v-btn color="primary"href="/login" style="margin-left: 20px;">Login</v-btn> -->
     </div>

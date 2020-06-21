@@ -3,10 +3,10 @@
     <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y>
         <template v-slot:activator="{ on }">
             <v-btn text icon color="success" v-on="on">
-              <VIcon>shopping_cart</VIcon>
+              
             </v-btn>
 
-        </template> 
+        </template>
 
         <v-card style="padding-right: 10px;">
             <ul class="header-cart-wrapitem">

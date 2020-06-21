@@ -1,45 +1,53 @@
 <template>
-<ais-instant-search :search-client="searchClient" index-name="instant_search">
-    <ais-search-box @focus="showMenu" />
-    <ais-stats />
-    <el-card class="box-card">
-    <!-- <v-card v-show="show_menu" style="width: 90%"> -->
-        <!-- <ais-refinement-list attribute="brand" /> -->
-        <ais-hits>
-            <!-- <v-list three-line> -->
-            <template slot="item" slot-scope="{ item }">
-                <!-- <p>
+<div @mouseleave="showMenu(false)">
+    <ais-instant-search :search-client="searchClient" index-name="products">
+        <!-- <ais-search-box @input="showMenu" /> -->
+        <ais-search-box @focus="showMenu(true)" id="myInput" />
+        <!-- <ais-search-box @focus="showMenu"  @blur="show_menu = false"/> -->
+        <ais-stats style="color: #fff" v-show="show_menu" />
+        <el-card class="box-card" v-show="show_menu" style="max-height: 80vh;overflow: scroll;">
+            <!-- <v-card v-show="show_menu" style="width: 90%"> -->
+            <!-- <ais-refinement-list attribute="brand" /> -->
+            <ais-hits>
+                <!-- <v-list three-line> -->
+                <template slot="item" slot-scope="{ item }">
+                    <!-- <p>
                     <ais-highlight attribute="brand" :hit="item" />
                 </p> -->
-                <ul class="list-group">
-                    <li class="list-group-item">
-                      <span style="float: left">
-                      <img style="width:60px" src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" />
-                      </span>
-                      <span style="float: left; margin-left: 30px">
-                        <ais-highlight attribute="name" :hit="item" />
-                        <br>
-                        <small>100</small>
-                      </span>
-                    </li>
-                </ul>
+                    <ul class="list-group">
+                        <nuxt-link :to="'/shop/' + item.id">
+                            <li class="list-group-item" style="cursor: pointer">
+                                <span style="float: left">
+                                    <img v-if="item.images.length > 0" style="width:60px" :src="item.images[0].image" />
+                                    <img v-else src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" style="width:60px" />
+                                </span>
+                                <span style="float: left; margin-left: 30px">
+                                    <ais-highlight attribute="product_name" :hit="item" />
+                                    <br>
+                                    <!-- <small>KES {{item.price}}</small> -->
+                                </span>
+                            </li>
+                        </nuxt-link>
+                    </ul>
 
-            </template>
-            <!-- </v-list> -->
+                </template>
+                <!-- </v-list> -->
 
-        </ais-hits>
-    </el-card>
+            </ais-hits>
+        </el-card>
 
-
-    <!-- <ais-pagination /> -->
-</ais-instant-search>
+        <!-- <ais-pagination /> -->
+    </ais-instant-search>
+</div>
 </template>
 
 <script>
+import $ from 'jquery'
+
 import algoliasearch from 'algoliasearch/lite';
 const searchClient = algoliasearch(
-    'latency',
-    '6be0576ff61c053d5f9a3225e2a90f76'
+    'V4Q0BRYFL9',
+    '9f7c6c2a11bdfec5e7569c1e45e8fa2b'
 );
 
 export default {
@@ -48,15 +56,16 @@ export default {
         return {
             // api_key: process.env.MIX_ALGOLIA_APP_KEY,
             // secret_key: process.env.MIX_ALGOLIA_SECRET,
-            show_menu: true,
+            show_menu: false,
             search: '',
             searchClient
         }
     },
     methods: {
-        showMenu() {
+        showMenu(data) {
             // alert('test')
-            this.show_menu = true
+            this.show_menu = data
+            $nuxt.$emit('showMenuEvent', data);
             // this.show_menu = !this.show_menu
         },
 
@@ -72,6 +81,9 @@ export default {
             $nuxt.$emit('Productdetails', data)
         }
     },
+    mounted() {
+        // $("#myInput").on('click', this.showMenu);
+    }
 }
 </script>
 
@@ -109,4 +121,24 @@ li {
         width: 100% !important;
     }
 } */
+.el-card__body .v-application ul,
+.v-application ol {
+    padding-left: 0 !important;
+}
+
+.ais-SearchBox [type=search] {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
 </style>

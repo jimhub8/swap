@@ -4,7 +4,7 @@
         <div class="categori-menu" @mouseleave="show_menu = false">
             <p @mouseover="show_menu = true" style="font-size: 23px;font-weight: 600;padding: 10px; color: #fff">
                 <span>
-                    <VIcon color="white">menu</VIcon>
+                    <v-icon color="white">menu</v-icon>
                 </span>
                 Categories
             </p>

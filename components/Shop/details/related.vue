@@ -1,26 +1,9 @@
 <template>
 <div>
+    <div class="box-title" style="margin: 30px 0;">
+        <h3><span>Related Products</span></h3>
+    </div>
     <v-data-iterator :items="related.data" :items-per-page.sync="itemsPerPage" :page="page" :search="search" :sort-by="sortBy.toLowerCase()" :sort-desc="sortDesc" hide-default-footer>
-        <template v-slot:header>
-            <v-toolbar dark color="blue darken-3" class="mb-1">
-                <!-- <v-text-field v-model="search" clearable flat solo-inverted hide-details prepend-inner-icon="search" label="Search"></v-text-field>
-                    <template v-if="$vuetify.breakpoint.mdAndUp">
-                        <v-spacer></v-spacer>
-                        <v-select v-model="sortBy" flat solo-inverted hide-details :items="keys" prepend-inner-icon="search" label="Sort by"></v-select>
-                        <v-spacer></v-spacer>
-                        <v-btn-toggle v-model="sortDesc" mandatory>
-                            <v-btn large depressed color="blue" :value="false">
-                                <v-icon>mdi-arrow-up</v-icon>
-                            </v-btn>
-                            <v-btn large depressed color="blue" :value="true">
-                                <v-icon>mdi-arrow-down</v-icon>
-                            </v-btn>
-                        </v-btn-toggle>
-                    </template> -->
-                Related Products
-            </v-toolbar>
-        </template>
-
         <template v-slot:default="props">
             <v-row>
                 <v-col v-for="item in props.items" :key="item.product_name" cols="12" sm="6" md="4" lg="3">
@@ -93,7 +76,7 @@
 
                 <span class="mr-4
             grey--text">
-                    Page {{ page }} of {{ numberOfPages }}
+                    <!-- Page {{ page }} of {{ numberOfPages }} -->
                 </span>
                 <v-btn fab dark color="blue darken-3" class="mr-1" @click="formerPage">
                     <v-icon>mdi-chevron-left</v-icon>
@@ -108,9 +91,11 @@
 </template>
 
 <script>
+import {
+    mapState
+} from 'vuex'
 export default {
-    components: {
-    },
+    components: {},
     data() {
         return {
             itemsPerPageArray: [4, 8, 12],
@@ -127,17 +112,27 @@ export default {
         }
     },
     computed: {
-        numberOfPages() {
-            return Math.ceil(this.related.data.length / this.itemsPerPage)
-        },
+        // numberOfPages() {
+        //     return Math.ceil(this.related.data.length / this.itemsPerPage)
+        // },
+        ...mapState(['related'])
 
-        related() {
-            return this.$store.getters.related
-        },
+    },
+    mounted() {
+        this.getRelated();
     },
     methods: {
+
+        getRelated() {
+            var payload = {
+                model: 'related',
+                update: 'updateRelatedList',
+                id: this.$route.params.id,
+            }
+            this.$store.dispatch('showItem', payload)
+        },
         nextPage() {
-            if (this.page + 1 <= this.numberOfPages) this.page += 1
+            // if (this.page + 1 <= this.numberOfPages) this.page += 1
         },
         formerPage() {
             if (this.page - 1 >= 1) this.page -= 1

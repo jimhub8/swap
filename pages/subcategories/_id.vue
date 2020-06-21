@@ -70,16 +70,16 @@
 
                                         <div class="block2-btn-addcart w-size1 trans-0-4">
                                             <!-- Button -->
-                                                <v-btn color="primary" @click="addToCart(product)">Add to Cart</v-btn>
+                                            <v-btn color="primary" @click="addToCart(product)">Add to Cart</v-btn>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="block2-txt p-t-20">
-                                            <nuxt-link :to="'/shop/' + product.id">
-                                    <button class="block2-name dis-block s-text3 p-b-5">{{ product.product_name }}</button>
-                                    <span class="block2-price m-text6 p-r-5">{{ product.price }}</span>
-                                            </nuxt-link>
+                                    <nuxt-link :to="'/shop/' + product.id">
+                                        <button class="block2-name dis-block s-text3 p-b-5">{{ product.product_name }}</button>
+                                        <span class="block2-price m-text6 p-r-5">{{ product.price }}</span>
+                                    </nuxt-link>
                                 </div>
                             </div>
                         </div>
@@ -212,6 +212,8 @@ export default {
     beforeRouteLeave(to, from, next) {
         // $nuxt.$emit("progressEvent");
         next();
+        window.scrollTo(0, 0);
+
     },
 
     computed: {

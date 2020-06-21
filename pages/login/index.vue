@@ -99,6 +99,11 @@ export default {
         loged_in() {
             this.$store.state.auth.loggedIn
         }
+    },    beforeRouteLeave(to, from, next) {
+        // $nuxt.$emit("progressEvent");
+        next();
+        window.scrollTo(0, 0);
+
     },
 
 };

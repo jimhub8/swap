@@ -3,13 +3,13 @@
     <v-dialog v-model="dialog" persistent max-width="1000px">
         <v-card v-if="dialogT">
             <v-card-title>
-                <h1 class="headline" style="margin-left: 43%;">{{ productD.name }}</h1>
+                <h1 class="headline" style="margin-left: 43%;">{{ productD.product_name }}</h1>
                 <v-spacer></v-spacer>
                 <v-btn icon dark @click="close">
                     <v-icon color="black">close</v-icon>
                 </v-btn>
             </v-card-title>
-            <v-divider></v-divider>
+            <v-divider style="border-color: rgba(53, 46, 46, 0.12);"></v-divider>
             <v-card-text>
                 <v-layout wrap>
                     <v-flex sm6>
@@ -32,12 +32,16 @@
             </v-card-text>
             <v-divider></v-divider>
             <v-card-actions>
+
                 <v-tooltip bottom>
-                    <v-btn icon class="mx-0" @click="addToCart(productD.id)" slot="activator">
-                        <v-icon color="orange darken-2">shopping_cart</v-icon>
-                    </v-btn>
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn text icon color="orange" v-bind="attrs" v-on="on"@click="addToCart(productD.id)">
+                        <v-icon>shopping_cart</v-icon>
+                      </v-btn>
+                    </template>
                     <span>Add To Cart</span>
                 </v-tooltip>
+
                 <v-spacer></v-spacer>
                 <v-btn color="blue darken-1" text @click.native="close">Close</v-btn>
             </v-card-actions>
@@ -126,7 +130,7 @@ export default {
                 });
         },
         imageUrlAlt(e) {
-                event.target.src = "https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/notfound.jpg"
+                event.target.src = "https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png"
 
         }
     },

@@ -10,8 +10,8 @@
   background-color: #f9f9f9 !important;
 }
 .theme--dark.v-card {
-  background-color: #fff !important;
-  color: #999 !important;
+  /* background-color: #fff !important; */
+  /* color: #999 !important; */
 }
 
 .theme--dark.v-stepper {
@@ -161,3 +161,4 @@ body {
 .v-btn__content {
   color:#5bd1fa !important
 }
+

@@ -1,6 +1,6 @@
 <template>
 <div>
-    <header class="section-header">
+    <header class="section-header" style="max-height: 180px;">
         <nav class="navbar navbar-dark navbar-expand p-0 bg-primary" :class="{classA: scrollPosition < 150, classB: scrollPosition > 150}">
             <div class="container">
                 <ul class="navbar-nav d-none d-md-flex mr-auto">
@@ -28,35 +28,28 @@
                     </li>
                 </ul> <!-- list-inline //  -->
             </div> <!-- navbar-collapse .// -->
+
             <!-- container //  -->
         </nav> <!-- header-top-light.// -->
 
         <section class="header-main border-bottom">
             <div class="">
-                <div class="row align-items-center">
-                    <div class="col-lg-2 col-2">
+                <v-row wrap>
+                    <!-- <div class="row align-items-center"> -->
+                    <v-col sm="4" md="2" lg="2" :class="{show_menu: show_menu}">
                         <nuxt-link to="/" class="brand-wrap">
                             <img class="logo" :src="logo">
                         </nuxt-link>
-                    </div>
-                    <div class="col-lg-2 col-4">
+                    </v-col>
+                    <v-col sm="6" md="2" lg="2">
                         <myCategory />
-                    </div>
+                    </v-col>
 
-                    <div class="col-lg-4 col-4 col-sm-12">
-                        <!-- <form action="#" class="search">
-                            <div class="input-group w-100">
-                                <input type="text" class="form-control" placeholder="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form> -->
-                        <!-- <mySearch /> -->
-                    </div> <!-- col.// -->
-                    <div class="col-lg-3 col-sm-3 col-4">
+                    <v-col sm="5" md="3" lg="3">
+                        <mySearch />
+                    </v-col>
+
+                    <v-col sm="6" md="4" lg="4">
                         <div class="widgets-wrap float-md-right">
                             <div class="widget-header  mr-3">
                                 <div class="icon icon-sm rounded-circle border">
@@ -78,8 +71,8 @@
                                 </div>
                             </div>
                         </div> <!-- widgets-wrap.// -->
-                    </div> <!-- col.// -->
-                </div> <!-- row.// -->
+                    </v-col>
+                </v-row>
             </div> <!-- container.// -->
         </section> <!-- header-main .// -->
     </header>
@@ -92,7 +85,7 @@
 </template>
 
 <script>
-// import mySearch from './Search'
+import mySearch from './Search'
 import myCategory from './nav/category'
 import myCart from "./nav/cart";
 import myAccount from "./nav/login";
@@ -105,11 +98,12 @@ export default {
         myCategory,
         myCart,
         myAccount,
-        // mySearch
+        mySearch
 
     },
     data() {
         return {
+            show_menu: false,
             timeout: 5000,
             snackbar: false,
             message: '',
@@ -121,6 +115,7 @@ export default {
             easing: "easeInOutCubic",
         }
     },
+
     methods: {
 
         updateScroll() {
@@ -132,6 +127,15 @@ export default {
                 update: 'updateCartsList',
             }
             this.$store.dispatch('getItems', payload)
+        },
+
+        getMenu() {
+            var payload = {
+                model: 'menu',
+                update: 'updateMenuList',
+            }
+
+            this.$store.dispatch("getItems", payload)
         },
 
         get_cart_total() {
@@ -233,7 +237,7 @@ export default {
         // this.get_cart_total()
         this.get_cart_count()
         // this.getCategory()
-        // this.getMenu
+        this.getMenu()
     },
 
     created() {
@@ -250,7 +254,7 @@ export default {
             this.getCart()
         });
         this.$nuxt.$on("alertRequest", data => {
-          // console.log(data);
+            // console.log(data);
 
             this.showalert(data);
         });
@@ -280,6 +284,9 @@ export default {
 
         this.$nuxt.$on("Productdetails", data => {
             this.redirect(data);
+        });
+        this.$nuxt.$on("showMenuEvent", data => {
+            this.show_menu = data
         });
 
         // this.timer = window.setInterval(() => {
@@ -314,7 +321,7 @@ header {
     position: fixed;
     width: 100%;
     background: #000;
-    z-index: 1000;
+    z-index: 100;
 }
 
 .v-btn--outlined .v-btn__content .v-icon,
@@ -334,7 +341,16 @@ header {
 .bg-primary {
     background-color: #29425d !important;
 }
+
 .v-snack__content {
-  color: #fff !important;
+    color: #fff !important;
+}
+
+.ais-SearchBox [type=search] {
+    color: white !important;
+}
+
+.show_menu .logo {
+    top: 8% !important;
 }
 </style>

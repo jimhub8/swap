@@ -1,8 +1,10 @@
 <template>
 <div>
     <headerP></headerP>
-    <h1 class="text-center">My Shopping Cart</h1>
-    <v-divider></v-divider>
+    <!-- <h1 class="text-center">My Shopping Cart</h1> -->
+    <div class="box-title" style="margin: 30px 0;">
+        <h3><span style="font-size:30px">My Shopping Cart</span></h3>
+    </div>
     <div v-show="loader" style="text-align: center; width: 100%; margin-top: 200px;">
         <v-progress-circular :width="3" indeterminate color="red" style="margin: 1rem"></v-progress-circular>
     </div>
@@ -12,108 +14,110 @@
         </v-btn>
         <span>Cart</span>
     </v-tooltip>
-    <section class="cart bgwhite p-t-70 p-b-100" v-show="!loader">
-        <div class="container">
-            <!-- <div class="container" v-if="carts.length > 0"> -->
-            <!-- Cart item -->
+    <section class="cart bgwhite" v-show="!loader">
+        <v-card style="padding: 20px;width: 80%; margin: auto;box-shadow: 7px 7px 8px -4px rgb(210, 225, 246),0 12px 17px 2px rgb(210, 225, 246),0 5px 22px 4px rgb(210, 225, 246) !important;">
 
-            <div class="container-table-cart pos-relative">
-                <div class="wrap-table-shopping-cart bgwhite">
-                    <table class="table-shopping-cart">
-                        <tr class="table-head">
-                            <th class="column-1"></th>
-                            <th class="column-2">Product</th>
-                            <th class="column-3">Price</th>
-                            <th class="column-4 p-l-70">Quantity</th>
-                            <th class="column-5">Total</th>
-                        </tr>
+            <div class="container" v-if="carts.length > 0">
+                <!-- <div class="container" v-if="carts.length > 0"> -->
+                <!-- Cart item -->
 
-                        <tr class="table-row" v-for="cart in carts" :key="cart.id">
-                            <td class="column-1">
-                                <div class="cart-img-product b-rad-4 o-f-hidden" @click="flashCart(cart)">
-                                    <!-- <img :src="cart.product.image" alt=""> -->
-                                </div>
-                                <div v-if="cart.attributes.length > 0">
-                                    <div v-for="(attribute, index) in cart.attributes" :key="index">
-                                        <el-tag v-for="(attr, key) in attribute" :key="key">{{ attr }}</el-tag>
+                <div class="container-table-cart pos-relative">
+                    <div class="wrap-table-shopping-cart bgwhite">
+                        <table class="table-shopping-cart">
+                            <tr class="table-head">
+                                <th class="column-1"></th>
+                                <th class="column-2">Product</th>
+                                <th class="column-3">Price</th>
+                                <th class="column-4 p-l-70">Quantity</th>
+                                <th class="column-5">Total</th>
+                            </tr>
+
+                            <tr class="table-row" v-for="cart in carts" :key="cart.id">
+                                <td class="column-1">
+                                    <div class="cart-img-product b-rad-4 o-f-hidden" @click="flashCart(cart)">
+                                        <!-- <img :src="cart.product.image" alt=""> -->
                                     </div>
-                                </div>
-                            </td>
-                            <td class="column-2">{{ cart.name.product_name }}</td>
-                            <td class="column-3">{{ cart.price }}</td>
-                            <td class="column-4">
-                                <div class="flex-w bo5 of-hidden w-size17">
-                                    <v-btn icon small @click="subtructCart(cart, -1)">
-                                        <i class="fa fa-minus"></i>
-                                    </v-btn>
-                                    <p style="text-align: center; margin: auto;">{{ cart.quantity }}</p>
-                                    <v-btn icon small @click="addToCart(cart, 1)">
-                                        <v-icon>add</v-icon>
-                                    </v-btn>
-                                </div>
-                            </td>
-                            <td class="column-5">{{ cart.quantity * cart.price }}</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-            <div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
-                <div class="flex-w flex-m w-full-sm">
-                    <div class="size11 bo4 m-r-10">
-                        <input class="sizefull s-text7 p-l-22 p-r-22" type="text" v-model="coupon.c_value" name="coupon-code" placeholder="Coupon Code">
-                        <small class="text-danger" v-if="err_ms">{{ err_ms }}</small>
-                    </div>
-
-                    <div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
-                        <!-- Button -->
-                        <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" @click="couponApply">Apply coupon</button>
+                                    <div v-if="cart.attributes.length > 0">
+                                        <div v-for="(attribute, index) in cart.attributes" :key="index">
+                                            <el-tag v-for="(attr, key) in attribute" :key="key">{{ attr }}</el-tag>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="column-2">{{ cart.name.product_name }}</td>
+                                <td class="column-3">{{ cart.price }}</td>
+                                <td class="column-4">
+                                    <div class="flex-w bo5 of-hidden w-size17">
+                                        <v-btn icon small @click="subtructCart(cart, -1)">
+                                            <i class="fa fa-minus"></i>
+                                        </v-btn>
+                                        <p style="text-align: center; margin: auto;">{{ cart.quantity }}</p>
+                                        <v-btn icon small @click="addToCart(cart, 1)">
+                                            <v-icon>add</v-icon>
+                                        </v-btn>
+                                    </div>
+                                </td>
+                                <td class="column-5">{{ cart.quantity * cart.price }}</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
 
-            </div>
+                <div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
+                    <div class="flex-w flex-m w-full-sm">
+                        <div class="size11 bo4 m-r-10">
+                            <input class="sizefull s-text7 p-l-22 p-r-22" type="text" v-model="coupon.c_value" name="coupon-code" placeholder="Coupon Code">
+                            <small class="text-danger" v-if="err_ms">{{ err_ms }}</small>
+                        </div>
 
-            <!-- Total -->
-            <div class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
-                <h5 class="m-text20 p-b-24">Cart Totals</h5>
-
-                <!--  -->
-                <div class="flex-w flex-sb-m p-b-12">
-                    <span class="s-text18 w-size19 w-full-sm">Subtotal:</span>
-
-                    <span class="m-text21 w-size20 w-full-sm">KSH {{ cart_total }}</span>
-                </div>
-                <div class="flex-w flex-sb-m p-b-12" v-if="couponSessin.length > 0">
-                    <span class="s-text18 w-size19 w-full-sm" style="color: red;">Coupon:</span>
-
-                    <span class="m-text21 w-size20 w-full-sm" style="color: red;">{{ parseFloat(totalCoupon)/parseFloat(cart_total)*100 }}% off</span>
-                </div>
-
-                <!--  -->
-                <hr>
-
-                <!--  -->
-                <div class="flex-w flex-sb-m p-t-26 p-b-30">
-                    <span class="m-text22 w-size19 w-full-sm">Total:</span>
-
-                    <span class="m-text21 w-size20 w-full-sm">KSH {{ parseFloat(cart_total) - parseFloat(totalCoupon) }}</span>
-                </div>
-
-                <button style="height: 44px;" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" @click="goToCheckout" v-if="checkout != 'checkout'">Proceed to Checkout</button>
-            </div>
-        </div>
-        <!-- <div v-else style="background: #f0f0f0;">
-            <p class="text-center" style="background: #f2dede; font-size: 13px; color: #a94442 !important;">Your hopping cart is empty!</p>
-            <v-list>
-                <router-link to="/shop" class="v-list__tile v-list__tile--link" style="width: 8%; margin: auto;">
-                    <div class="v-list__tile__content">
-                        <div class="v-list__tile__title">
-                            Go to Shop
+                        <div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
+                            <!-- Button -->
+                            <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" @click="couponApply">Apply coupon</button>
                         </div>
                     </div>
-                </router-link>
-            </v-list>
-        </div> -->
+
+                </div>
+
+                <!-- Total -->
+                <div class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
+                    <h5 class="m-text20 p-b-24">Cart Totals</h5>
+
+                    <!--  -->
+                    <div class="flex-w flex-sb-m p-b-12">
+                        <span class="s-text18 w-size19 w-full-sm">Subtotal:</span>
+
+                        <span class="m-text21 w-size20 w-full-sm">KSH {{ cart_total }}</span>
+                    </div>
+                    <div class="flex-w flex-sb-m p-b-12" v-if="couponSessin.length > 0">
+                        <span class="s-text18 w-size19 w-full-sm" style="color: red;">Coupon:</span>
+
+                        <span class="m-text21 w-size20 w-full-sm" style="color: red;">{{ parseFloat(totalCoupon)/parseFloat(cart_total)*100 }}% off</span>
+                    </div>
+
+                    <!--  -->
+                    <hr>
+
+                    <!--  -->
+                    <div class="flex-w flex-sb-m p-t-26 p-b-30">
+                        <span class="m-text22 w-size19 w-full-sm">Total:</span>
+
+                        <span class="m-text21 w-size20 w-full-sm">KSH {{ parseFloat(cart_total) - parseFloat(totalCoupon) }}</span>
+                    </div>
+
+                    <button style="height: 44px;" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" @click="goToCheckout" v-if="checkout != 'checkout'">Proceed to Checkout</button>
+                </div>
+            </div>
+            <div v-else style="background: #f0f0f0;">
+                <!-- <v-card slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`" class="mx-auto" width="100%"> -->
+                <div class="text-center">
+                    <p class="text-center" style="background: #f2dede; font-size: 13px; color: #a94442 !important;padding: 10px 0;">Your shopping cart is empty!</p>
+                    <nuxt-link to="/shop">
+                        <v-btn color="primary" rounded>Start Shopping</v-btn>
+                    </nuxt-link>
+                </div>
+                <!-- </v-card> -->
+
+            </div>
+        </v-card>
     </section>
 </div>
 </template>
@@ -123,6 +127,7 @@ import headerP from "../components/include/Headerpartial";
 // import headerP from "../include/Headerpartial";
 import axios from 'axios';
 export default {
+  name: 'cart_page',
     props: ['checkout'],
     components: {
         headerP
@@ -324,9 +329,18 @@ export default {
                 return parseInt(this.getSubTotal) - this.discount;
             }
         },
-    }
+    },
+    beforeRouteLeave(to, from, next) {
+        // $nuxt.$emit('progressEvent');
+        window.scrollTo(0, 0);
+        next();
+    },
 };
 </script>
 
 <style>
+.bgwhite,
+.bg-title-page {
+    margin-top: 0px !important;
+}
 </style>

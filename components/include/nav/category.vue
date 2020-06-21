@@ -85,7 +85,7 @@ export default {
     },
     methods: {
         changeCategory(data) {
-            console.log(data);
+            // console.log(data);
             this.categories = data.categories
         }
     },
@@ -94,8 +94,8 @@ export default {
 
 <style>
 .theme--dark.v-list {
-    background: #fff !important;
-    color: #999 !important;
+    /* background: #fff !important;
+    color: #999 !important; */
 }
 
 .v-list-item .v-list-item__title,

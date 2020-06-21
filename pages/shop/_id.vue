@@ -3,21 +3,21 @@
     <headerP></headerP>
     <!-- <div v-show="loader" style="text-align: center; width: 100%; margin-top: 200px;">
         <v-progress-circular :width="3" indeterminate color="red" style="margin: 1rem"></v-progress-circular>
-    </div> -->
+    </div>-->
     <div class="container bgwhite p-t-35 p-b-80">
         <div class="flex-w flex-sb">
             <div class="w-size13 p-t-30 respon5">
                 <div class="wrap-slick3 flex-sb flex-w">
                     <div class="wrap-slick3-dots" style="max-height: 60vh;overflow-y: scroll;overflow-x: hidden;">
                         <div class="wrap-pic-w" v-for="image in product.images" :key="image.id">
-                            <img :src="image.image" :alt="image.mimetype" style="height: 100px; margin-bottom: 10px;" @click="product.image = image.image" @error="imageUrlAlt">
+                            <img :src="image.image" :alt="image.mimetype" style="height: 100px; margin-bottom: 10px;" @click="displayImage = image.image" @error="imageUrlAlt" />
                         </div>
-                        <img :src="originalImage" style="height: 100px; margin-bottom: 10px;" @click="product.image = originalImage" @error="imageUrlAlt">
+                        <!-- <img :src="originalImage" style="height: 100px; margin-bottom: 10px;" @click="product.image = originalImage" @error="imageUrlAlt"> -->
                     </div>
                     <div class="slick3">
                         <div class="item-slick3">
                             <div class="wrap-pic-w">
-                                <img :src="product.image" :alt="product.product_name" @error="imageUrlAlt">
+                                <img :src="displayImage" :alt="product.product_name" style="width: 250px" />
                                 <div class="text-xs-center">
                                     <v-rating v-model="avgRating" readonly half-increments></v-rating>
                                 </div>
@@ -30,13 +30,9 @@
             <!-- <v-btn color="success" @click="getRelated">getRelated</v-btn> -->
 
             <div class="w-size14 p-t-30 respon5">
-                <h4 class="product-detail-name m-text16 p-b-13">
-                    {{ product.product_name }}
-                </h4>
+                <h4 class="product-detail-name m-text16 p-b-13">{{ product.product_name }}</h4>
 
-                <span class="m-text17">
-                    Price: {{ product.price }}
-                </span>
+                <span class="m-text17">Price: {{ product.price }}</span>
                 <p>Available: {{ product.quantity }}</p>
                 <div v-html="product.description"></div>
 
@@ -45,7 +41,7 @@
                     <div class="flex-r-m flex-w p-t-10">
                         <div class="w-size16 flex-m flex-w">
                             <div class="flex-w bo5 of-hidden m-r-22 m-t-10 m-b-10">
-                                <input v-model="form.quantity" class="size8 m-text18 t-center num-product" type="number" min="1" name="num-product" value="1">
+                                <input v-model="form.quantity" class="size8 m-text18 t-center num-product" type="number" min="1" name="num-product" value="1" />
                             </div>
 
                             <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
@@ -82,16 +78,17 @@
                     <v-pagination v-model="reviews.current_page" :length="reviews.last_page" total-visible="5" @input="next(reviews.path, reviews.current_page)" circle></v-pagination>
                 </div>
             </v-expansion-panel-content>
-        </v-expansion-panel> -->
+      </v-expansion-panel>-->
     </div>
     <!-- RELATED PRODUCT -->
+    <relatedProducts />
     <!-- <section class="relateproduct bgwhite p-t-45 p-b-138">
         <div class="container">
             <relatedProducts></relatedProducts>
         </div>
     </section>
     <Show></Show>
-    <myVariants></myVariants> -->
+    <myVariants></myVariants>-->
 </div>
 </template>
 
@@ -99,16 +96,28 @@
 import headerP from "../../components/include/Headerpartial";
 // import Review from "../../components/reviews/Review";
 // import Show from "../../components/home/Show";
-// import relatedProducts from '../../components/Shop/details/related'
+import relatedProducts from '../../components/Shop/details/related'
 // import myVariants from '../../components/home/products/variants'
 
 import {
     mapState
 } from "vuex";
 export default {
-    name: 'productDetails',
+
+    head() {
+        return {
+            title: 'Swap - ' + this.product.product_name,
+            meta: [{
+                hid: 'description',
+                name: 'description',
+                content: 'Swap, Books, Online Shopping, Book Store, Magazine, Subscription, Music, CDs, DVDs, Videos, Electronics, Video Games, Computers, Cell Phones, Toys, Games, Apparel, Accessories, Shoes, Jewelry, Watches, Office Products, Sports & Outdoors, Sporting Goods, Baby Products, Health, Personal Care, Beauty, Home, Garden, Bed & Bath, Furniture, Tools, Hardware, Vacuums, Outdoor Living, Automotive Parts, Pet Supplies, Broadband, DSL'
+            }]
+        }
+    },
+    name: "productDetails",
     components: {
         headerP,
+        relatedProducts
         // Show,
         // Review,
         // relatedProducts,
@@ -130,20 +139,26 @@ export default {
             reviews: [],
             sizes: [],
             avgRating: null,
+            displayImage: "",
             originalImage: ""
         };
     },
 
     async fetch({
-        store, route
+        store,
+        route
     }) {
-
         var payload = {
-            model: 'products',
-            update: 'updateShowProduct',
+            model: "products",
+            update: "updateShowProduct",
             id: route.params.id
-        }
-        await store.dispatch("showItem", payload);
+        };
+        let response = await store.dispatch("showItem", payload);
+
+        // this.displayImage = response.data.image
+
+        // console.log(this.displayImage);
+        // this.$emit("updateDataEvent", response.data.image);
 
         // var payload = {
         //     model: 'categories',
@@ -153,6 +168,9 @@ export default {
         // await store.dispatch('showItem', payload)
     },
     methods: {
+        update_data() {
+            this.displayImage = this.product.image
+        },
         redirect(proId) {
             // this.proId = this.$route.params.id
             this.$router.push({
@@ -165,13 +183,13 @@ export default {
         },
 
         addToCart() {
-            var cart = this.product
+            var cart = this.product;
             if (cart.product_variants.length > 0) {
-                $nuxt.$emit('selectVariantsEvent', cart)
+                $nuxt.$emit("selectVariantsEvent", cart);
                 // this.select_variants()
-                return
+                return;
             }
-            cart.order_qty = this.form.quantity
+            cart.order_qty = this.form.quantity;
             $nuxt.$emit("addCartEvent", cart);
         },
 
@@ -195,35 +213,35 @@ export default {
 
         getProduct() {
             var payload = {
-                model: 'products',
-                update: 'updateProductsList',
-                id: this.$route.params.id,
-            }
-            this.$store.dispatch('showItem', payload)
+                model: "products",
+                update: "updateProductsList",
+                id: this.$route.params.id
+            };
+            this.$store.dispatch("showItem", payload);
         },
 
         getRelated() {
             var payload = {
-                model: 'related',
-                update: 'updateRelatedList',
-                id: this.$route.params.id,
-            }
-            this.$store.dispatch('showItem', payload)
+                model: "related",
+                update: "updateRelatedList",
+                id: this.$route.params.id
+            };
+            this.$store.dispatch("showItem", payload);
         },
         getReviews() {
             var payload = {
-                model: 'reviews',
-                update: 'updateReviewsList',
-            }
-            this.$store.dispatch('getItems', payload)
+                model: "reviews",
+                update: "updateReviewsList"
+            };
+            this.$store.dispatch("getItems", payload);
         },
         getAvgReviews() {
             var payload = {
-                model: 'ratings',
-                update: 'updatAvgReviewsList',
-                id: this.proId,
-            }
-            this.$store.dispatch('showItem', payload)
+                model: "ratings",
+                update: "updatAvgReviewsList",
+                id: this.proId
+            };
+            this.$store.dispatch("showItem", payload);
         },
 
         next(page) {
@@ -242,15 +260,16 @@ export default {
 
         getCategory(id) {
             var payload = {
-                model: 'categories',
-                update: 'updateCategoryList',
-                id: id,
-            }
-            this.$store.dispatch('showItem', payload)
+                model: "categories",
+                update: "updateCategoryList",
+                id: id
+            };
+            this.$store.dispatch("showItem", payload);
         },
 
         imageUrlAlt(e) {
-            event.target.src = "https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/notfound.jpg"
+            event.target.src =
+                "https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png";
         },
 
         priceChange(data) {
@@ -259,7 +278,7 @@ export default {
                 .get(`product_attribute/${data}`)
                 .then(response => {
                     $nuxt.$emit("StoprogEvent");
-                    this.product.price = response.data.price
+                    this.product.price = response.data.price;
                 })
                 .catch(error => {
                     $nuxt.$emit("StoprogEvent");
@@ -268,6 +287,7 @@ export default {
         }
     },
     mounted() {
+        this.update_data()
         // this.getProduct();
         $nuxt.$emit("ScollEvent");
         // this.getRelated();
@@ -279,6 +299,10 @@ export default {
             this.getReviews();
             this.getAvgReviews();
         });
+
+        this.$nuxt.$on("updateDataEvent", data => {
+            this.displayImage = data
+        });
     },
     computed: {
         // categories() {
@@ -287,14 +311,14 @@ export default {
         // products() {
         //     return this.$store.getters.products
         // },
-        ...mapState(['product']),
+        ...mapState(["product"])
+    },
+    beforeRouteLeave(to, from, next) {
+        // $nuxt.$emit("progressEvent");
+        next();
+        window.scrollTo(0, 0);
 
     },
-    // beforeRouteEnter(to, from, next) {
-    //     next(vm => {
-    //         $nuxt.$emit('ScollTopEvent')
-    //     })
-    // }
 };
 </script>
 

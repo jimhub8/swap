@@ -3,7 +3,7 @@
     <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y v-if="user">
         <template v-slot:activator="{ on }">
             <v-btn text icon color="primary" v-on="on">
-                <VIcon>account_circle</VIcon>
+                <v-icon>account_circle</v-icon>
             </v-btn>
         </template>
         <v-card>
@@ -67,7 +67,7 @@
     <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y v-else>
         <template v-slot:activator="{ on }">
             <v-btn text icon color="primary" v-on="on">
-                <VIcon>account_circle</VIcon>
+                <v-icon>account_circle</v-icon>
             </v-btn>
         </template>
         <v-card>

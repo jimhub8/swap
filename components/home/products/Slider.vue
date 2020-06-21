@@ -62,6 +62,8 @@
 </template>
 
 <script>
+  import _ from 'lodash';
+
 export default {
   name: 'Slider',
     methods: {
@@ -95,9 +97,9 @@ export default {
     },
     computed: {
         chunkedItems() {
-            // if (this.product_slide.data) {
-            //     return _.chunk(this.product_slide.data, 6)
-            // }
+            if (this.product_slide.data) {
+                return _.chunk(this.product_slide.data, 6)
+            }
         },
         product_slide() {
             return this.$store.getters.product_slide;

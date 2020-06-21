@@ -82,12 +82,11 @@ export default {
             });
         },
     },
-    mounted() {
-
-    },
     beforeRouteLeave(to, from, next) {
         // $nuxt.$emit("progressEvent");
         next();
+        window.scrollTo(0, 0);
+
     },
 
     computed: {

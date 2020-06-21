@@ -3,7 +3,7 @@
     <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y>
         <template v-slot:activator="{ on }">
             <v-btn text icon color="primary" v-on="on">
-              <VIcon>shopping_cart</VIcon>
+              <v-icon>shopping_cart</v-icon>
             </v-btn>
 
         </template>

@@ -157,7 +157,7 @@ export default {
         },
         imageUrlAlt(e) {
             alert('tedst')
-            event.target.src = "https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/notfound.jpg"
+            event.target.src = "https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png"
 
         }
     },
