@@ -52,6 +52,7 @@ export default {
   */
   plugins: [
     '~/plugins/element-ui.js',
+    '~/plugins/vue-lazyload',
     {src: '~/plugins/instantSearch.js', ssr: false},
 
 

@@ -1,6 +1,6 @@
 <template>
 <div>
-    <v-card style="padding: 20px;width: 80%; margin: auto;box-shadow: 7px 7px 8px -4px rgb(210, 225, 246),0 12px 17px 2px rgb(210, 225, 246),0 5px 22px 4px rgb(210, 225, 246) !important;margin-top: 200px;">
+    <v-card style="padding: 20px;width: 80%; margin: auto;box-shadow: 7px 7px 8px -4px rgb(210, 225, 246),0 12px 17px 2px rgb(210, 225, 246),0 5px 22px 4px rgb(210, 225, 246) !important;margin-top: 200px;" v-if="loggedIn">
         <v-stepper v-model="e6" vertical>
             <v-stepper-step :complete="e6 > 1" step="1">User information</v-stepper-step>
             <v-stepper-content step="1" style="background: #fff;">
@@ -31,18 +31,18 @@
             </v-stepper-content>
         </v-stepper>
     </v-card>
-    <!-- <div v-else style="padding: 20px 0;">
+    <div v-else style="padding: 20px 0;margin-top: 200px;">
         <v-card style="padding: 20px;width: 80%; margin: auto;box-shadow: 7px 7px 8px -4px rgb(210, 225, 246),0 12px 17px 2px rgb(210, 225, 246),0 5px 22px 4px rgb(210, 225, 246) !important;" class="text-center">
             <v-card-text>
-                You are not loged in! Please login to proceed.
+              <strong style="color: #333">You are not loged in! Please login or sign up to checkout.</strong>
             </v-card-text>
             <v-card-actions style="width: 15%;margin: auto;">
-
-                <v-btn text href="/login" color="primary">Login</v-btn>
-                <v-btn text href="/register" color="primary">Sign up</v-btn>
+                <nuxt-link  to="/login" color="primary" style="color: #555 !important">Login</nuxt-link>
+                <v-spacer></v-spacer>
+                <nuxt-link  to="/register" color="primary" style="color: #555 !important">Sign up</nuxt-link>
             </v-card-actions>
         </v-card>
-    </div> -->
+    </div>
 </div>
 </template>
 
@@ -50,6 +50,7 @@
 import myAddress from '../../components/checkout/Address'
 import myPayment from '../../components/checkout/Payment'
 import myComplete from '../../components/checkout/Complete'
+import { mapState } from 'vuex'
 export default {
     props: ['user'],
     components: {
@@ -144,6 +145,15 @@ export default {
         },
 
     },
+    computed: {
+
+        loggedIn() {
+            this.$store.state.auth.loggedIn
+        }
+
+        // console.log(this.$auth.$state.access_local);
+
+    },
     created() {
         this.$nuxt.$on('userResponse', data => {
             window.location.replace('/thankyou')
@@ -156,7 +166,8 @@ export default {
         this.$nuxt.$on("errorEvent", data => {
             this.showerror(data);
         });
-    },    beforeRouteLeave(to, from, next) {
+    },
+    beforeRouteLeave(to, from, next) {
         // $nuxt.$emit("progressEvent");
         next();
         window.scrollTo(0, 0);

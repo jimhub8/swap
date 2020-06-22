@@ -1,7 +1,7 @@
 <template>
 <div>
-        <img src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-01.jpg" style="margin: 20px 0 20px -30px; width: 100vw; height: 300px" />
-        <!-- <img id="banner_img" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-01.jpg" /> -->
+    <img src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-01.jpg" style="margin: 20px 0 20px -30px; width: 100vw; height: 300px" />
+    <!-- <img id="banner_img" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-01.jpg" /> -->
 
     <div class="box-title" style="margin: 30px 0;">
         <h3><span>Trending items</span></h3>
@@ -12,7 +12,7 @@
                 <v-col v-for="product in item" :key="product.id" cols="12" sm="12" md="3" lg="3">
                     <v-hover v-slot:default="{ hover }">
                         <v-card class="mx-auto" color="grey lighten-4" max-width="800">
-                            <v-img :aspect-ratio="16/9" :src="product.image" height="300px">
+                            <v-img :aspect-ratio="16/9" :src="product.image" lazy-src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" height="300px">
                                 <v-btn color="primary" text>{{ product.product_name }}</v-btn>
                                 <v-expand-transition>
                                     <div v-if="hover" class="d-flex transition-fast-in-fast-out black darken-2 v-card--reveal display-3 white--text" style="height: 100%;">
@@ -24,14 +24,17 @@
                                             </template>
                                             <span>Quick preview</span>
                                         </v-tooltip>
-                                        <v-tooltip bottom>
-                                            <template v-slot:activator="{ on }">
-                                                <v-btn icon v-on="on" @click="addToWish(product)">
-                                                    <v-icon color="primary">favorite</v-icon>
-                                                </v-btn>
-                                            </template>
-                                            <span>add to wish list</span>
-                                        </v-tooltip>
+                                        <nuxt-link :to="'/shop/' + product.id">
+                                            <v-tooltip bottom>
+                                                <template v-slot:activator="{ on }">
+                                                    <v-btn icon v-on="on">
+                                                        <v-icon color="primary">mdi-view-array</v-icon>
+                                                    </v-btn>
+                                                </template>
+                                                <span>Go to product</span>
+                                            </v-tooltip>
+                                        </nuxt-link>
+
                                         <v-tooltip bottom>
                                             <template v-slot:activator="{ on }">
                                                 <v-btn icon v-on="on" @click="addToCart(product)">
@@ -65,10 +68,10 @@
 </template>
 
 <script>
-  import _ from 'lodash';
+import _ from 'lodash';
 
 export default {
-  name: 'Slider',
+    name: 'Slider',
     methods: {
 
         getProducts() {
@@ -127,7 +130,6 @@ export default {
     /* line-height: 300px; */
     margin: 0;
 }
-
 
 .el-carousel__item:nth-child(2n) {
     background-color: #fff;

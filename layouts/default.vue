@@ -1,6 +1,19 @@
 <template>
-<div id="app">
-    <v-app>
+<div id="app" v-loading="overlay" element-loading-text="Loading..."
+    element-loading-spinner="el-icon-loading"
+    element-loading-background="rgba(0, 0, 0, 0.8)">
+    <v-app >
+        <!-- <div class="text-center" v-if="overlay">
+            <v-btn color="deep-purple accent-4" class="blue--text" @click="overlay = !overlay">
+                Launch Application
+                <v-icon right>mdi-open-in-new</v-icon>
+            </v-btn>
+
+            <v-overlay :value="overlay">
+                <v-progress-circular indeterminate size="64"></v-progress-circular>
+            </v-overlay>
+        </div> -->
+
         <mobileBar v-if="isMobile" />
         <nav-bar v-else />
         <!-- <mobileBar /> -->
@@ -21,6 +34,7 @@ import {
     mapState
 } from "vuex";
 export default {
+
     name: 'default',
     data() {
         return {
@@ -33,7 +47,7 @@ export default {
         mobileBar
     },
     computed: {
-        ...mapState(['loggedIn']),
+        ...mapState(['loggedIn', 'overlay']),
         isMobile() {
             return this.windowWidth <= 768
         }

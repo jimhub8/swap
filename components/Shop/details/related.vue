@@ -43,10 +43,12 @@
                                 <!-- <v-btn absolute color="orange" class="white--text" fab large right top  @click="addToCart(item)">
                                 <v-icon>shopping_cart</v-icon>
                             </v-btn> -->
-                                <div class="font-weight-light grey--text title mb-2">{{ item.product_name }}</div>
-                                <div class="font-weight-light title mb-2">
-                                    {{ item.price }}
-                                </div>
+                                <nuxt-link :to="'/shop/' + item.id">
+                                    <div class="font-weight-light grey--text title mb-2">{{ item.product_name }}</div>
+                                    <div class="font-weight-light title mb-2">
+                                        {{ item.price }}
+                                    </div>
+                                </nuxt-link>
                             </v-card-text>
                         </v-card>
                     </v-hover>
@@ -74,8 +76,7 @@
 
                 <v-spacer></v-spacer>
 
-                <span class="mr-4
-            grey--text">
+                <span class="mr-4 grey--text">
                     <!-- Page {{ page }} of {{ numberOfPages }} -->
                 </span>
                 <v-btn fab dark color="blue darken-3" class="mr-1" @click="formerPage">
@@ -112,9 +113,9 @@ export default {
         }
     },
     computed: {
-        // numberOfPages() {
-        //     return Math.ceil(this.related.data.length / this.itemsPerPage)
-        // },
+        numberOfPages() {
+            return Math.ceil(this.related.data.length / this.itemsPerPage)
+        },
         ...mapState(['related'])
 
     },
@@ -132,7 +133,7 @@ export default {
             this.$store.dispatch('showItem', payload)
         },
         nextPage() {
-            // if (this.page + 1 <= this.numberOfPages) this.page += 1
+            if (this.page + 1 <= this.numberOfPages) this.page += 1
         },
         formerPage() {
             if (this.page - 1 >= 1) this.page -= 1

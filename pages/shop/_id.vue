@@ -10,14 +10,16 @@
                 <div class="wrap-slick3 flex-sb flex-w">
                     <div class="wrap-slick3-dots" style="max-height: 60vh;overflow-y: scroll;overflow-x: hidden;">
                         <div class="wrap-pic-w" v-for="image in product.images" :key="image.id">
-                            <img :src="image.image" :alt="image.mimetype" style="height: 100px; margin-bottom: 10px;" @click="displayImage = image.image" @error="imageUrlAlt" />
+                            <!-- <img :src="image.image" :alt="image.mimetype" style="height: 100px; margin-bottom: 10px;" @click="displayImage = image.image" @error="imageUrlAlt" /> -->
+                            <img v-lazy="image.image" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" style="height: 100px; margin-bottom: 10px;" @click="displayImage = image.image" @error="imageUrlAlt" />
                         </div>
                         <!-- <img :src="originalImage" style="height: 100px; margin-bottom: 10px;" @click="product.image = originalImage" @error="imageUrlAlt"> -->
                     </div>
                     <div class="slick3">
                         <div class="item-slick3">
                             <div class="wrap-pic-w">
-                                <img :src="displayImage" :alt="product.product_name" style="width: 250px" />
+                                <!-- <img v-lazy="displayImage" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" :alt="product.product_name" style="width: 250px" /> -->
+                                <img :src="displayImage" :alt="product.product_name" style="width: 250px" @error="imageUrlAlt" />
                                 <div class="text-xs-center">
                                     <v-rating v-model="avgRating" readonly half-increments></v-rating>
                                 </div>

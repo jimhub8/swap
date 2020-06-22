@@ -11,7 +11,7 @@
                 <v-col v-for="item in props.items" :key="item.id" cols="12" sm="6" md="4" lg="3" v-if="item.best_seller">
                     <v-hover v-slot:default="{ hover }">
                         <v-card class="mx-auto" color="grey lighten-4" max-width="800">
-                            <v-img :aspect-ratio="16/9" :src="item.image" height="300px">
+                            <v-img :aspect-ratio="16/9" :src="item.image" lazy-src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" height="300px">
                                 <v-expand-transition>
                                     <div v-if="hover" class="d-flex transition-fast-in-fast-out black darken-2 v-card--reveal display-3 white--text" style="height: 100%;">
                                         <v-tooltip bottom>

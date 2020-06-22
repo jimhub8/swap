@@ -41,6 +41,8 @@ export const state = () => ({
 
   product: [],
 
+  overlay: false,
+
 
 
   token: null,

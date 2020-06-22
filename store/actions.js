@@ -8,13 +8,24 @@ const api_url = process.env.API_URL
 
 export default {
 
+  overlayAction({ commit }, payload) {
+    commit('overlayLoader', payload)
+  },
+
+
   alertEvent(context, payload) {
     $nuxt.$emit('alertRequest', payload)
     // context.commit('alertEvent', payload)
   },
 
-  errorEvent(context, payload) {
-    $nuxt.$emit('errorEvent', payload)
+  errorEvent({ commit }, payload) {
+    console.log(payload.errors);
+    var error = payload.errors
+
+    // var errors_ = error.response.data.errors
+    commit('errors', error)
+
+    // $nuxt.$emit('errorEvent', payload)
     // context.commit('alertEvent', payload)
   },
 
@@ -24,7 +35,8 @@ export default {
             // this.$emit('my-custom-event')
 
 
-    var model = payload.model
+            commit('overlayLoader', true)
+            var model = payload.model
     var update = payload.update
     // console.log(state.auth.access_local);
     if (state.auth.loggedIn) {
@@ -42,6 +54,7 @@ export default {
       let response = await axios.get(api_url + model)
       commit(update, response.data)
     }
+    commit('overlayLoader', false)
 
             // $nuxt.$emit("StoprogEvent");
 

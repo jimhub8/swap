@@ -37,10 +37,9 @@
                                             <span>Wish list</span>
                                         </v-tooltip>
 
-
                                         <v-tooltip bottom style="margin-left: 90%;" v-else>
                                             <template v-slot:activator="{ on, attrs }">
-                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4"  style="margin-top: -20px;float: right;">
+                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4" style="margin-top: -20px;float: right;">
                                                     <v-icon color="grey lighten-1">mdi-heart</v-icon>
                                                 </v-btn>
                                             </template>
@@ -63,7 +62,8 @@
                                 </div>
 
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative" v-else>
-                                    <img :src="product.image" alt="IMG-PRODUCT">
+                                    <!-- <img :src="product.image" alt="IMG-PRODUCT"> -->
+                                    <img v-lazy="product.image" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" :alt="product.product_name" @error="imageUrlAlt" />
 
                                     <div class="block2-overlay trans-0-4">
                                         <v-tooltip bottom style="margin-left: 90%;" v-if="product.wish_list === 1">
@@ -75,7 +75,7 @@
 
                                         <v-tooltip bottom style="margin-left: 90%;" v-else>
                                             <template v-slot:activator="{ on, attrs }">
-                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4"  style="margin-top: -20px;float: right;">
+                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4" style="margin-top: -20px;float: right;">
                                                     <v-icon color="grey lighten-1">mdi-heart</v-icon>
                                                 </v-btn>
                                             </template>
@@ -84,7 +84,7 @@
 
                                         <div class="block2-btn-addcart w-size1 trans-0-4" style="text-align: center;">
                                             <!-- Button -->
-                                                <!-- <v-btn color="primary" @click="addToCart(product)">Add to Cart</v-btn> -->
+                                            <!-- <v-btn color="primary" @click="addToCart(product)">Add to Cart</v-btn> -->
 
                                             <v-tooltip top>
                                                 <template v-slot:activator="{ on, attrs }">
@@ -99,10 +99,10 @@
                                 </div>
 
                                 <div class="block2-txt p-t-20">
-                                            <nuxt-link :to="'/shop/' + product.id">
-                                    <button class="block2-name dis-block s-text3 p-b-5">{{ product.product_name }}</button>
-                                    <span class="block2-price m-text6 p-r-5">{{ product.price }}</span>
-                                            </nuxt-link>
+                                    <nuxt-link :to="'/shop/' + product.id">
+                                        <button class="block2-name dis-block s-text3 p-b-5">{{ product.product_name }}</button>
+                                        <span class="block2-price m-text6 p-r-5">{{ product.price }}</span>
+                                    </nuxt-link>
                                 </div>
                             </div>
                         </div>
@@ -221,6 +221,10 @@ export default {
     },
     methods: {
 
+        imageUrlAlt(e) {
+            event.target.src =
+                "https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png";
+        },
         addToCart(cart) {
             if (cart.product_variants.length > 0) {
                 $nuxt.$emit('selectVariantsEvent', cart)
@@ -251,7 +255,7 @@ export default {
     mounted() {
 
     },
-        beforeRouteLeave(to, from, next) {
+    beforeRouteLeave(to, from, next) {
         // $nuxt.$emit("progressEvent");
         next();
         window.scrollTo(0, 0);
@@ -268,6 +272,7 @@ export default {
 .wrap-pic-w img {
     height: 300px;
 }
+
 #shop_theme .theme--dark {
     color: #0276a5 !important;
     background-color: transparent !important;

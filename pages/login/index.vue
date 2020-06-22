@@ -5,10 +5,12 @@
         <div>
             <label for="">Email</label>
             <el-input placeholder="jane@gmail.com" v-model="form.email"></el-input>
+            <small class="text-danger" v-if="errors.email">{{ errors.email[0] }}</small>
         </div>
         <div>
             <label for="">Password</label>
             <el-input placeholder="..." type="password" v-model="form.password"></el-input>
+            <small class="text-danger" v-if="errors.password">{{ errors.password[0] }}</small>
         </div>
 
     </v-card-text>
@@ -78,6 +80,8 @@ export default {
                 //     password: this.form.password
                 // }
 
+                this.$store.dispatch('overlayAction', true)
+
                 let response = await this.$auth.loginWith('local', {
                     data: this.form
                 })
@@ -85,10 +89,22 @@ export default {
                 this.$router.push({
                     path: '/'
                 });
-                console.log(response)
+                // console.log(response)
+                this.$store.dispatch('overlayAction', false)
 
-            } catch (e) {
-                console.log(e);
+            } catch (error) {
+                console.log(error);
+                this.$store.dispatch('overlayAction', false)
+
+                if (error.response.status === 500 || error.response.status === 405) {
+                    $nuxt.$emit('errorEvent', error.response.statusText)
+                    return
+                } else if (error.response.status === 401 || error.response.status === 409) {
+                    $nuxt.$emit('errorEvent', 'The given credentials do not match our records')
+                } else if (error.response.status === 422) {
+                    this.$store.dispatch('errorEvent', error.response.data)
+                    return
+                }
 
             }
 
@@ -96,10 +112,12 @@ export default {
     },
 
     computed: {
+        ...mapState(['errors']),
         loged_in() {
             this.$store.state.auth.loggedIn
         }
-    },    beforeRouteLeave(to, from, next) {
+    },
+    beforeRouteLeave(to, from, next) {
         // $nuxt.$emit("progressEvent");
         next();
         window.scrollTo(0, 0);

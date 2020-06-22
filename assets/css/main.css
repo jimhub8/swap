@@ -184,3 +184,10 @@ body {
 .v-application a:hover {
   color: #54cafd !important;
 }
+
+.list-group-item:last-child {
+  color: #000;
+}
+.v-application .mb-2 {
+  color: #000000a1;
+}

@@ -162,5 +162,9 @@ SET_TOKEN(state, token) {
 
 REMOVE_TOKEN(state) {
   state.token = null;
-}
+},
+
+overlayLoader(state, payload) {
+  state.overlay = payload
+},
 }

@@ -1,26 +1,29 @@
 <template>
 <v-layout row wrap>
     <v-flex sm3>
-        <img id="banner_img" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-left2.jpg" style="width: 25vw;height: 50vh;margin-top: 68px;" />
+        <img id="banner_img" v-lazy="banner_img" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" style="width: 25vw;height: 50vh;margin-top: 68px;" />
 
         <div>
             <div class="box-title">
                 <h3><span>On sale</span></h3>
             </div>
 
-            <v-layout row wrap v-for="sale in onSale.data" :key="sale.id" style="margin-top: 30px; background: #fff">
-                <v-flex sm7 style="text-align: right">
-                    <el-rate v-model="value" disabled></el-rate>
-                    <small> {{ sale.price }} </small>
-                    <p> {{ sale.product_name }} </p>
-                </v-flex>
-                <v-flex sm4 offset-sm1>
-                    <img :src="sale.image" style="width:80px; height:80px" />
-                </v-flex>
-                <v-flex sm12>
-                    <v-divider />
-                </v-flex>
+                <nuxt-link :to="'/shop/' + sale.id" v-for="sale in onSale.data" :key="sale.id">
+            <v-layout row wrap style="margin-top: 30px; background: #fff">
+                    <v-flex sm7 style="text-align: right">
+                        <el-rate v-model="value" disabled></el-rate>
+                        <small> {{ sale.price }} </small>
+                        <p> {{ sale.product_name }} </p>
+                    </v-flex>
+                    <v-flex sm4 offset-sm1>
+                        <!-- <img v-lazy="displayImage" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" :alt="product.product_name" style="width: 250px" /> -->
+                        <img style="width:80px; height:80px" v-lazy="sale.image" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" />
+                    </v-flex>
+                    <v-flex sm12>
+                        <v-divider />
+                    </v-flex>
             </v-layout>
+                </nuxt-link>
             <!-- <ul class="list-group">
                 <li class="list-group-item" v-for="sale in onSale.data" :key="sale.id">{{ sale.product_name }}</li>
             </ul> -->
@@ -90,6 +93,7 @@ export default {
         return {
             selected_name: '',
             value: 3.7,
+            banner_img: 'https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-left2.jpg',
 
         };
     },
@@ -156,7 +160,7 @@ export default {
 
         }, 1000);
         // this.getCategory();
-        // this.getonSale();
+        this.getonSale();
     },
     computed: {
         selected_category() {
@@ -171,13 +175,7 @@ export default {
         // categories() {
         //     return this.$store.getters.categories
         // },
-        category_products() {
-            return this.$store.getters.category_products
-        },
-        onSale() {
-            return this.$store.getters.onSale
-        },
-        ...mapState(['categories']),
+        ...mapState(['categories', 'onSale', 'category_products']),
         // activeName() {
         //     // console.log(this.categories.length);
         //     if (this.categories.data) {

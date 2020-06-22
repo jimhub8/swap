@@ -29,12 +29,13 @@
                             <!-- Block2 -->
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew" v-if="product.new_product === 1">
-                                    <img :src="product.image" @error="imageUrlAlt">
+                                    <!-- <img :src="product.image" @error="imageUrlAlt"> -->
+                                    <img v-lazy="product.image" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" alt=" " />
 
                                     <div class="block2-overlay trans-0-4">
                                         <v-tooltip bottom v-if="product.wish_list === 1" style="margin-left: 90%;">
                                             <template v-slot:activator="{ on, attrs }">
-                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4"  style="margin-top: -20px;float: right;">
+                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4" style="margin-top: -20px;float: right;">
                                                     <v-icon color="grey lighten-1">mdi-heart</v-icon>
                                                 </v-btn>
                                             </template>
@@ -43,7 +44,7 @@
 
                                         <v-tooltip bottom style="margin-left: 90%;" v-else>
                                             <template v-slot:activator="{ on, attrs }">
-                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4"  style="margin-top: -20px;float: right;">
+                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4" style="margin-top: -20px;float: right;">
                                                     <v-icon color="grey lighten-1">mdi-heart</v-icon>
                                                 </v-btn>
                                             </template>
@@ -65,13 +66,15 @@
                                 </div>
 
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative" v-else>
-                                    <img :src="product.image" @error="imageUrlAlt">
+
+                                    <img v-lazy="product.image" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" alt=" " />
+                                    <!-- <img :src="product.image" @error="imageUrlAlt"> -->
 
                                     <div class="block2-overlay trans-0-4">
 
                                         <v-tooltip bottom v-if="product.wish_list === 1" style="margin-left: 90%;">
                                             <template v-slot:activator="{ on, attrs }">
-                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4"  style="margin-top: -20px;float: right;">
+                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4" style="margin-top: -20px;float: right;">
                                                     <v-icon color="grey lighten-1">mdi-heart</v-icon>
                                                 </v-btn>
                                             </template>
@@ -80,7 +83,7 @@
 
                                         <v-tooltip bottom style="margin-left: 90%;" v-else>
                                             <template v-slot:activator="{ on, attrs }">
-                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4"  style="margin-top: -20px;float: right;">
+                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4" style="margin-top: -20px;float: right;">
                                                     <v-icon color="grey lighten-1">mdi-heart</v-icon>
                                                 </v-btn>
                                             </template>
@@ -148,6 +151,7 @@ export default {
     },
     data() {
         return {
+            placeholder: process.env.PLACEHOLDER_URL,
             form: {
                 search: ""
             },
