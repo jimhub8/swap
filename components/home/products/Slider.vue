@@ -1,5 +1,8 @@
 <template>
 <div>
+        <img src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-01.jpg" style="margin: 20px 0 20px -30px; width: 100vw; height: 300px" />
+        <!-- <img id="banner_img" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-01.jpg" /> -->
+
     <div class="box-title" style="margin: 30px 0;">
         <h3><span>Trending items</span></h3>
     </div>

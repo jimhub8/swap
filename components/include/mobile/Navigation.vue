@@ -1,20 +1,30 @@
 <template>
 <v-app id="inspire">
     <v-app-bar app clipped-right color="black" dark id="light_theme">
-        <v-app-bar-nav-icon @click.stop="drawer = !drawer" color="primary"  v-if="!search_show"></v-app-bar-nav-icon>
-        <v-toolbar-title  v-if="!search_show">
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer" color="primary" v-if="!search_show"></v-app-bar-nav-icon>
+        <v-toolbar-title v-if="!search_show">
             <nuxt-link to="/" class="logo2">
                 <img :src="logo" alt="Swap" style="height: 50px !important;">
             </nuxt-link>
         </v-toolbar-title>
         <v-spacer v-if="!search_show"></v-spacer>
         <v-btn text icon color="primary" v-if="!search_show" @click="search_show = true">
-          <v-icon small>search</v-icon>
+            <v-icon small>search</v-icon>
         </v-btn>
-
-        <myAccount v-if="!search_show"/>
-        <myCart v-if="!search_show"/>
-
+        <myCart v-if="!search_show" />
+        <div v-if="!search_show">
+            <div class="icon icon-sm rounded-circle border" v-if="this.$store.state.auth.loggedIn">
+                <!-- <v-icon>account_circle</v-icon> -->
+                <myAccount />
+            </div>
+            <div class="text">
+                <div v-if="!this.$store.state.auth.loggedIn">
+                    <nuxt-link to="/login">Sign in</nuxt-link>
+                    <nuxt-link to="/register">Register</nuxt-link>
+                </div>
+                <span class="text-muted" v-else>Welcome {{ this.$store.state.auth.user.name }}! </span>
+            </div>
+        </div>
         <mySearch v-else />
     </v-app-bar>
 
@@ -110,9 +120,11 @@ import mySearch from '../Search'
 import myCart from "../nav/cart";
 import myAccount from "../nav/login";
 export default {
-  components: {
-    mySearch, myCart, myAccount
-  },
+    components: {
+        mySearch,
+        myCart,
+        myAccount
+    },
     props: {
         source: String,
     },
@@ -128,13 +140,16 @@ export default {
         search_show: false,
     }),
     computed: {
-        ...mapGetters(['isAuthenticated', 'loggedInUser', 'menu']),
+        ...mapGetters(['isAuthenticated', 'menu', 'cart_count', 'user']),
+        loggedIn() {
+            this.$store.state.auth.loggedIn
+        }
     },
-    mounted () {
-      this.getMenu();
+    mounted() {
+        this.getMenu();
     },
     methods: {
-      getMenu() {
+        getMenu() {
             var payload = {
                 model: 'menu',
                 update: 'updateMenuList',
@@ -157,5 +172,11 @@ export default {
             this.window.height = window.innerHeight;
         }
     },
+    created () {
+      this.$nuxt.$on('showMenuEvent', data => {
+        this.search_show = data
+      });
+    },
+
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
 <v-layout row wrap>
     <v-flex sm3>
-        <img src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-left2.jpg" style="width: 25vw;height: 50vh;" />
+        <img id="banner_img" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-left2.jpg" style="width: 25vw;height: 50vh;margin-top: 68px;" />
 
         <div>
             <div class="box-title">
@@ -204,5 +204,12 @@ export default {
 
 .v-menu__content--fixed {
     margin-top: 40px;
+}
+
+@media only screen and (max-width: 991px) {
+    #banner_img {
+        width: 90vw !important;
+        height: 30vh !important;
+    }
 }
 </style>

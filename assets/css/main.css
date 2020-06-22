@@ -176,3 +176,11 @@ body {
   color: #fff !important;
   background-color: transparent !important;
 }
+
+.v-application a {
+  color: #e6edf5 !important;
+}
+
+.v-application a:hover {
+  color: #54cafd !important;
+}

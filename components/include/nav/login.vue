@@ -13,10 +13,10 @@
 
                     <v-list-item>
                         <!-- <avatar username="Jane Doe"></avatar> -->
-                        <avatar :username="this.$store.state.auth.user.name" style="font-size: 20px;margin: auto;padding: 20px;"></avatar>
+                        <!-- <avatar :username="this.$store.state.auth.user.name" style="font-size: 20px;margin: auto;padding: 20px;"></avatar>
                         <v-list-item-content>
                             <v-list-item-title>{{ this.$store.state.auth.user.name }}</v-list-item-title>
-                        </v-list-item-content>
+                        </v-list-item-content> -->
 
                     </v-list-item>
                     <v-divider></v-divider>
