@@ -265,10 +265,10 @@ export default {
             this.loadingalert();
         });
         this.$nuxt.$on("progressEvent", data => {
-            this.$refs.topProgress.start();
+            // this.$refs.topProgress.start();
         });
         this.$nuxt.$on("StoprogEvent", data => {
-            this.$refs.topProgress.done();
+            // this.$refs.topProgress.done();
         });
         this.$nuxt.$on("ScollEvent", data => {
             // window.scrollTo(0, 300);

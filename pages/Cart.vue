@@ -8,16 +8,17 @@
     <div v-show="loader" style="text-align: center; width: 100%; margin-top: 200px;">
         <v-progress-circular :width="3" indeterminate color="red" style="margin: 1rem"></v-progress-circular>
     </div>
-
-    <v-tooltip bottom>
-        <v-btn slot="activator" icon class="mx-0" @click="getCart">
-            <v-icon small color="orange darken-2">refresh</v-icon>
-        </v-btn>
-        <span>Cart</span>
-    </v-tooltip>
     <section class="cart bgwhite" v-show="!loader">
         <v-card style="padding: 20px;width: 80%; margin: auto;box-shadow: 7px 7px 8px -4px rgb(210, 225, 246),0 12px 17px 2px rgb(210, 225, 246),0 5px 22px 4px rgb(210, 225, 246) !important;">
 
+            <v-tooltip bottom @click="getCart">
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn icon v-bind="attrs" v-on="on">
+                        <v-icon color="primary" small>mdi-refresh</v-icon>
+                    </v-btn>
+                </template>
+                <span>Refresh Cart</span>
+            </v-tooltip>
             <div class="container" v-if="Object.keys(carts).length > 0">
                 <!-- <div class="container" v-if="carts.length > 0"> -->
                 <!-- Cart item -->
@@ -36,7 +37,9 @@
                             <tr class="table-row" v-for="cart in carts" :key="cart.id">
                                 <td class="column-1">
                                     <div class="cart-img-product b-rad-4 o-f-hidden" @click="flashCart(cart)">
-                                        <!-- <img :src="cart.product.image" alt=""> -->
+                                        <img :src="cart.name.image" alt="" @error="imageUrlAlt">
+                                        <!-- <img :src="not_found" /> -->
+
                                     </div>
                                     <div v-if="cart.attributes.length > 0">
                                         <div v-for="(attribute, index) in cart.attributes" :key="index">
@@ -49,7 +52,7 @@
                                 <td class="column-4">
                                     <div class="flex-w bo5 of-hidden w-size17">
                                         <v-btn icon small @click="subtructCart(cart, -1)">
-                                            <i class="fa fa-minus"></i>
+                                            <v-icon color="grey lighten-1">mdi-minus</v-icon>
                                         </v-btn>
                                         <p style="text-align: center; margin: auto;">{{ cart.quantity }}</p>
                                         <v-btn icon small @click="addToCart(cart, 1)">
@@ -128,7 +131,7 @@ import headerP from "../components/include/Headerpartial";
 // import headerP from "../include/Headerpartial";
 import axios from 'axios';
 export default {
-  name: 'cart_page',
+    name: 'cart_page',
     props: ['checkout'],
     components: {
         headerP
@@ -149,6 +152,7 @@ export default {
             form: {
                 total: null
             },
+            not_found: process.env.NOT_FOUND
         };
     },
     async fetch({
@@ -161,6 +165,10 @@ export default {
         await store.dispatch('getItems', payload)
     },
     methods: {
+
+        imageUrlAlt(e) {
+            event.target.src = this.not_found
+        },
         getCart() {
             var payload = {
                 model: 'getCart',

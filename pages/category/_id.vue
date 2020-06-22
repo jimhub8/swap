@@ -37,17 +37,20 @@
                                             <span>Wish list</span>
                                         </v-tooltip>
 
+
                                         <v-tooltip bottom style="margin-left: 90%;" v-else>
-                                            <v-btn icon class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4" slot="activator" @click="addToWish(product.id)" style="margin-top: -20px;float: right;">
-                                                <v-icon color="white darken-2" large>favorite</v-icon>
-                                            </v-btn>
-                                            <span>Wish list</span>
+                                            <template v-slot:activator="{ on, attrs }">
+                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4"  style="margin-top: -20px;float: right;">
+                                                    <v-icon color="grey lighten-1">mdi-heart</v-icon>
+                                                </v-btn>
+                                            </template>
+                                            <span>Add to Wish list</span>
                                         </v-tooltip>
 
                                         <div class="block2-btn-addcart w-size1 trans-0-4" style="text-align: center;">
                                             <!-- Button -->
-                                            <!-- <v-btn color="success" @click="addToCart(product)">Add to Cart</v-btn> -->
-                                            <v-tooltip bottom>
+
+                                            <v-tooltip top>
                                                 <template v-slot:activator="{ on, attrs }">
                                                     <v-btn icon v-bind="attrs" v-on="on" @click="addToCart(product)">
                                                         <v-icon color="grey lighten-1">mdi-cart</v-icon>
@@ -69,17 +72,21 @@
                                             </v-btn>
                                             <span>Wish list</span>
                                         </v-tooltip>
+
                                         <v-tooltip bottom style="margin-left: 90%;" v-else>
-                                            <v-btn icon class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4" slot="activator" @click="addToWish(product.id)" style="margin-top: -20px;float: right;">
-                                                <v-icon color="white darken-2" large>favorite</v-icon>
-                                            </v-btn>
-                                            <span>Wish list</span>
+                                            <template v-slot:activator="{ on, attrs }">
+                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4"  style="margin-top: -20px;float: right;">
+                                                    <v-icon color="grey lighten-1">mdi-heart</v-icon>
+                                                </v-btn>
+                                            </template>
+                                            <span>Add to Wish list</span>
                                         </v-tooltip>
 
                                         <div class="block2-btn-addcart w-size1 trans-0-4" style="text-align: center;">
                                             <!-- Button -->
                                                 <!-- <v-btn color="primary" @click="addToCart(product)">Add to Cart</v-btn> -->
-                                                <v-tooltip bottom>
+
+                                            <v-tooltip top>
                                                 <template v-slot:activator="{ on, attrs }">
                                                     <v-btn icon v-bind="attrs" v-on="on" @click="addToCart(product)">
                                                         <v-icon color="grey lighten-1">mdi-cart</v-icon>

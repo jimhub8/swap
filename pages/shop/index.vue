@@ -1,16 +1,11 @@
 <template>
 <div id="shop_theme">
     <headerP></headerP>
-    <!-- <div v-show="loading" style="text-align: center; width: 100%; margin-top: 200px;">
-        <v-progress-circular :width="3" indeterminate color="red" style="margin: 1rem"></v-progress-circular>
-    </div> -->
     <section class="bgwhite p-t-55 p-b-65">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
                     <div class="leftbar p-r-20 p-r-0-sm">
-                        <!--  -->
-                        <!-- <h4 class="m-text14 p-b-7">Categories</h4> -->
                         <myFilter />
 
                     </div>
@@ -21,10 +16,7 @@
                     <div class="flex-sb-m flex-w p-b-35">
                         <div class="flex-w">
                             <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-                                <!-- <v-layout wrap> -->
-                                <!-- <v-flex xs12 sm12>
-                                    <v-select :items="items" v-model="itemSelect" label="Filter By" single-line item-text="state" item-value="abbr" return-object persistent-hint @change="FilterShop"></v-select>
-                                </v-flex> -->
+
                             </div>
                         </div>
 
@@ -33,30 +25,34 @@
 
                     <!-- Product -->
                     <div class="row" v-if="products.data.length > 0">
-                        <div class="col-sm-12 col-md-6 col-lg-4 p-b-50" v-for="product in products.data" :key="product.id">
+                        <div class="col-sm-12 col-md-6 col-lg-4 p-b-50" v-for="(product, index) in products.data" :key="index">
                             <!-- Block2 -->
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew" v-if="product.new_product === 1">
                                     <img :src="product.image" @error="imageUrlAlt">
 
                                     <div class="block2-overlay trans-0-4">
-                                        <v-tooltip bottom style="margin-left: 90%;" v-if="product.wish_list === 1">
-                                            <v-btn icon class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4" slot="activator" @click="addToWish(product.id)" style="margin-top: -20px;float: right;">
-                                                <v-icon color="pink darken-2" large>favorite</v-icon>
-                                            </v-btn>
-                                            <span>Wish list</span>
+                                        <v-tooltip bottom v-if="product.wish_list === 1" style="margin-left: 90%;">
+                                            <template v-slot:activator="{ on, attrs }">
+                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4"  style="margin-top: -20px;float: right;">
+                                                    <v-icon color="grey lighten-1">mdi-heart</v-icon>
+                                                </v-btn>
+                                            </template>
+                                            <span>Add to Wish list</span>
                                         </v-tooltip>
 
                                         <v-tooltip bottom style="margin-left: 90%;" v-else>
-                                            <v-btn icon class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4" slot="activator" @click="addToWish(product.id)" style="margin-top: -20px;float: right;">
-                                                <v-icon color="white darken-2" large>favorite</v-icon>
-                                            </v-btn>
-                                            <span>Wish list</span>
+                                            <template v-slot:activator="{ on, attrs }">
+                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4"  style="margin-top: -20px;float: right;">
+                                                    <v-icon color="grey lighten-1">mdi-heart</v-icon>
+                                                </v-btn>
+                                            </template>
+                                            <span>Add to Wish list</span>
                                         </v-tooltip>
 
                                         <div class="block2-btn-addcart w-size1 trans-0-4" style="text-align: center;">
-                                            <!-- Button -->
-                                            <v-tooltip bottom>
+
+                                            <v-tooltip top>
                                                 <template v-slot:activator="{ on, attrs }">
                                                     <v-btn icon v-bind="attrs" v-on="on" @click="addToCart(product)">
                                                         <v-icon color="grey lighten-1">mdi-cart</v-icon>
@@ -64,7 +60,6 @@
                                                 </template>
                                                 <span>Add to Cart</span>
                                             </v-tooltip>
-                                            <!-- <v-btn color="success" @click="addToCart(product)">Add to Cart</v-btn> -->
                                         </div>
                                     </div>
                                 </div>
@@ -73,22 +68,28 @@
                                     <img :src="product.image" @error="imageUrlAlt">
 
                                     <div class="block2-overlay trans-0-4">
-                                        <v-tooltip bottom style="margin-left: 90%;" v-if="product.wish_list === 1">
-                                            <v-btn icon class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4" slot="activator" @click="addToWish(product.id)" style="margin-top: -20px;float: right;">
-                                                <v-icon color="pink darken-2" large>favorite</v-icon>
-                                            </v-btn>
-                                            <span>Wish list</span>
+
+                                        <v-tooltip bottom v-if="product.wish_list === 1" style="margin-left: 90%;">
+                                            <template v-slot:activator="{ on, attrs }">
+                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4"  style="margin-top: -20px;float: right;">
+                                                    <v-icon color="grey lighten-1">mdi-heart</v-icon>
+                                                </v-btn>
+                                            </template>
+                                            <span>Add to Wish list</span>
                                         </v-tooltip>
+
                                         <v-tooltip bottom style="margin-left: 90%;" v-else>
-                                            <v-btn icon class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4" slot="activator" @click="addToWish(product.id)" style="margin-top: -20px;float: right;">
-                                                <v-icon color="white darken-2" large>favorite</v-icon>
-                                            </v-btn>
-                                            <span>Wish list</span>
+                                            <template v-slot:activator="{ on, attrs }">
+                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4"  style="margin-top: -20px;float: right;">
+                                                    <v-icon color="grey lighten-1">mdi-heart</v-icon>
+                                                </v-btn>
+                                            </template>
+                                            <span>Add to Wish list</span>
                                         </v-tooltip>
 
                                         <div class="block2-btn-addcart w-size1 trans-0-4" style="text-align: center;">
                                             <!-- Button -->
-                                            <v-tooltip bottom>
+                                            <v-tooltip top>
                                                 <template v-slot:activator="{ on, attrs }">
                                                     <v-btn icon v-bind="attrs" v-on="on" @click="addToCart(product)">
                                                         <v-icon color="grey lighten-1">mdi-cart</v-icon>
@@ -96,7 +97,6 @@
                                                 </template>
                                                 <span>Add to Cart</span>
                                             </v-tooltip>
-                                            <!-- <v-btn color="primary" @click="addToCart(product)">Add to Cart</v-btn> -->
                                         </div>
                                     </div>
                                 </div>
@@ -331,6 +331,7 @@ export default {
 .theme--dark.v-btn.v-btn--icon {
     color: #FFFFFF;
 }
+
 #shop_theme .theme--dark {
     color: #0276a5 !important;
     background-color: transparent !important;

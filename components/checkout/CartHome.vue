@@ -1,11 +1,13 @@
 <template>
-<div>
+<div id="cart_home">
     <section class="cart bgwhite p-t-70 p-b-100">
-        <v-tooltip bottom>
-            <v-btn slot="activator" icon class="mx-0" @click="getCartProduct">
-                <v-icon small color="orange darken-2">refresh</v-icon>
-            </v-btn>
-            <span>Cart</span>
+        <v-tooltip bottom @click="getCart">
+            <template v-slot:activator="{ on, attrs }">
+                <v-btn icon v-bind="attrs" v-on="on">
+                    <v-icon color="primary" small>mdi-refresh</v-icon>
+                </v-btn>
+            </template>
+            <span>Refresh Cart</span>
         </v-tooltip>
         <div class="container">
             <!-- Cart item -->
@@ -24,7 +26,7 @@
                         <tr class="table-row" v-for="cart in carts" :key="cart.id">
                             <td class="column-1">
                                 <div class="cart-img-product b-rad-4 o-f-hidden" @click="flashCart(cart)">
-                                    <!-- <img :src="cart.product.image" alt=""> -->
+                                        <img :src="cart.name.image" alt="" @error="imageUrlAlt">
                                 </div>
                             </td>
                             <td class="column-2">{{ cart.name.product_name }}</td>
@@ -32,7 +34,7 @@
                             <td class="column-4">
                                 <div class="flex-w bo5 of-hidden w-size17">
                                     <v-btn icon small @click="subtructCart(car, -1)">
-                                        <i class="fa fa-minus"></i>
+                                        <v-icon>mdi-minus</v-icon>
                                     </v-btn>
                                     <p style="text-align: center; margin: auto;">{{ cart.quantity }}</p>
                                     <v-btn icon small @click="addToCart(cart,1)">
@@ -122,7 +124,6 @@ export default {
             // csrf: document
             //     .querySelector('meta[name="csrf-token"]')
             //     .getAttribute("content"),
-
             loader: false,
             totalCoupon: 0,
             totalPrice: 0,
@@ -137,9 +138,14 @@ export default {
             form: {
                 total: null
             },
+            not_found: process.env.NOT_FOUND
         };
     },
     methods: {
+
+        imageUrlAlt(e) {
+            event.target.src = this.not_found
+        },
         getCart() {
             var payload = {
                 model: 'getCart',
@@ -356,4 +362,7 @@ export default {
 </script>
 
 <style>
+.theme--dark.v-stepper .v-stepper__label {
+    color: #000;
+}
 </style>
