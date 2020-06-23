@@ -1,9 +1,9 @@
 <template>
 <div id="cart_home">
     <section class="cart bgwhite p-t-70 p-b-100">
-        <v-tooltip bottom @click="getCart">
+        <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
-                <v-btn icon v-bind="attrs" v-on="on">
+                <v-btn icon v-bind="attrs" v-on="on" @click="getCart">
                     <v-icon color="primary" small>mdi-refresh</v-icon>
                 </v-btn>
             </template>
@@ -26,7 +26,7 @@
                         <tr class="table-row" v-for="cart in carts" :key="cart.id">
                             <td class="column-1">
                                 <div class="cart-img-product b-rad-4 o-f-hidden" @click="flashCart(cart)">
-                                        <img :src="cart.name.image" alt="" @error="imageUrlAlt">
+                                    <img :src="cart.name.image" alt="" @error="imageUrlAlt">
                                 </div>
                             </td>
                             <td class="column-2">{{ cart.name.product_name }}</td>
@@ -147,18 +147,21 @@ export default {
             event.target.src = this.not_found
         },
         getCart() {
-            var payload = {
-                model: 'getCart',
-                update: 'updateCartsList',
-            }
-            this.$store.dispatch('getItems', payload)
+            $nuxt.$emit("cartEvent")
+
         },
         cash_delivery() {
+            this.$store.dispatch('overlayAction', true)
             var payload = {
                 model: 'cash_delivery',
                 data: this.account
             }
-            this.$store.dispatch('postItems', payload)
+            this.$store.dispatch('postItems', payload).then((res) => {
+                this.$router.push('/thankyou')
+                this.$store.dispatch('overlayAction', false)
+
+            })
+
             return
 
             $nuxt.$emit("progressEvent");
@@ -169,6 +172,8 @@ export default {
                     $nuxt.$emit("cartEvent", response.data);
                     $nuxt.$emit("alertRequest", "Order placed");
                     // this.goToCheckout()
+                    this.$router.push('/thankyou')
+
                     // this.carts = response.data;
                     // this.message = "added";
                     // this.snackbar = true;
@@ -185,12 +190,7 @@ export default {
             });
         },
         get_cart_total() {
-
-            var payload = {
-                model: 'cart_total',
-                update: 'updateCartTotalList',
-            }
-            this.$store.dispatch('getItems', payload)
+            $nuxt.$emit("cartTotalEvent");
         },
         flashCart(cart) {
             console.log(cart);

@@ -122,11 +122,23 @@ export default {
             this.scrollPosition = window.scrollY
         },
         getCart() {
+
+            if (this.$store.state.auth.loggedIn) {
+                var cookie_id = this.$store.state.auth.user.id
+            } else {
+                var rString = this.randomString(15, '0123456789');
+                if (this.$cookie.get('cart_session') == null) {
+                    this.$cookie.set('cart_session', rString);
+                }
+                var cookie_id = this.$cookie.get('cart_session')
+            }
+
             var payload = {
                 model: 'getCart',
+                id: cookie_id,
                 update: 'updateCartsList',
             }
-            this.$store.dispatch('getItems', payload)
+            this.$store.dispatch('getItem', payload)
         },
 
         getMenu() {
@@ -139,19 +151,47 @@ export default {
         },
 
         get_cart_total() {
-            var payload = {
-                model: 'cart_total',
-                update: 'updateCartTotalList',
-            }
-            this.$store.dispatch('getItems', payload)
-        },
-        get_cart_count() {
-            var payload = {
-                model: 'cart_count',
-                update: 'updateCartCountList',
+            if (this.$store.state.auth.loggedIn) {
+                var cookie_id = this.$store.state.auth.user.id
+            } else {
+                var rString = this.randomString(15, '0123456789');
+                if (this.$cookie.get('cart_session') == null) {
+                    this.$cookie.set('cart_session', rString);
+                }
+                var cookie_id = this.$cookie.get('cart_session')
             }
 
-            this.$store.dispatch('getItems', payload)
+            var payload = {
+                model: 'cart_total',
+                id: cookie_id,
+                update: 'updateCartTotalList',
+            }
+            this.$store.dispatch('getItem', payload)
+        },
+        get_cart_count() {
+
+            if (this.$store.state.auth.loggedIn) {
+                var cookie_id = this.$store.state.auth.user.id
+            } else {
+                var rString = this.randomString(15, '0123456789');
+                if (this.$cookie.get('cart_session') == null) {
+                    this.$cookie.set('cart_session', rString);
+                }
+                var cookie_id = this.$cookie.get('cart_session')
+            }
+            var payload = {
+                model: 'cart_count',
+                id: cookie_id,
+                update: 'updateCartCountList',
+            }
+            this.$store.dispatch('getItem', payload)
+
+            // var payload = {
+            //     model: 'cart_count',
+            //     update: 'updateCartCountList',
+            // }
+
+            // this.$store.dispatch('getItems', payload)
         },
 
         showerror(data) {
@@ -179,12 +219,22 @@ export default {
         },
 
         update_cart(data) {
-            console.log(data);
+            // console.log(data);
             // var cart = data.cart
+
+            if (this.$store.state.auth.loggedIn) {
+                var cookie_id = this.$store.state.auth.user.id
+            } else {
+                var rString = this.randomString(15, '0123456789');
+                if (this.$cookie.get('cart_session') == null) {
+                    this.$cookie.set('cart_session', rString);
+                }
+                var cookie_id = this.$cookie.get('cart_session')
+            }
             // cart.quantity = data.order_qty
             var payload = {
                 model: 'update_cart',
-                id: data.cart.id,
+                id: cookie_id,
                 data: data,
             }
             this.$store.dispatch('postItem', payload).then((res) => {
@@ -195,10 +245,25 @@ export default {
         },
         addToCart(cart) {
             // console.log(cart);
+
+            if (this.$store.state.auth.loggedIn) {
+                var cookie_id = this.$store.state.auth.user.id
+            } else {
+                var rString = this.randomString(15, '0123456789');
+                if (this.$cookie.get('cart_session') == null) {
+                    this.$cookie.set('cart_session', rString);
+                }
+                var cookie_id = this.$cookie.get('cart_session')
+            }
+
+            // console.log(this.$cookie.get('cart_session'))
+            // return
+
             $nuxt.$emit("progressEvent");
             var payload = {
                 model: 'cartAdd',
-                id: cart.id,
+                id: this.$cookie.get('cart_session'),
+                // id: cart.id,
                 data: cart,
             }
 
@@ -207,6 +272,11 @@ export default {
                 this.get_cart_count()
                 this.get_cart_total()
             })
+        },
+        randomString(length, chars) {
+            var result = '';
+            for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+            return result;
         },
 
         progressBar() {
@@ -234,7 +304,7 @@ export default {
         // this.progressBar();
         this.getCart();
         // // this.getWish();
-        // this.get_cart_total()
+        this.get_cart_total()
         this.get_cart_count()
         // this.getCategory()
         this.getMenu()
@@ -249,6 +319,9 @@ export default {
         });
         this.$nuxt.$on("WishListEvent", data => {
             this.addToWish(data);
+        });
+        this.$nuxt.$on("cartTotalEvent", data => {
+            this.get_cart_total()
         });
         this.$nuxt.$on("cartEvent", data => {
             this.getCart()

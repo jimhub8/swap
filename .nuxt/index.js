@@ -15,10 +15,12 @@ import { createStore } from './store.js'
 import nuxt_plugin_workbox_87bb4740 from 'nuxt_plugin_workbox_87bb4740' // Source: ./workbox.js (mode: 'client')
 import nuxt_plugin_nuxticons_38eacb84 from 'nuxt_plugin_nuxticons_38eacb84' // Source: ./nuxt-icons.js (mode: 'all')
 import nuxt_plugin_plugin_42857a80 from 'nuxt_plugin_plugin_42857a80' // Source: ./vuetify/plugin.js (mode: 'all')
+import nuxt_plugin_cookieuniversalnuxt_ae990028 from 'nuxt_plugin_cookieuniversalnuxt_ae990028' // Source: ./cookie-universal-nuxt.js (mode: 'all')
 import nuxt_plugin_googleanalytics_4d2b5d62 from 'nuxt_plugin_googleanalytics_4d2b5d62' // Source: ./google-analytics.js (mode: 'client')
 import nuxt_plugin_axios_2d2a2f78 from 'nuxt_plugin_axios_2d2a2f78' // Source: ./axios.js (mode: 'all')
 import nuxt_plugin_elementui_72a9ed1c from 'nuxt_plugin_elementui_72a9ed1c' // Source: ../plugins/element-ui.js (mode: 'all')
 import nuxt_plugin_vuelazyload_211b2937 from 'nuxt_plugin_vuelazyload_211b2937' // Source: ../plugins/vue-lazyload (mode: 'all')
+import nuxt_plugin_vuesession_3ffc8819 from 'nuxt_plugin_vuesession_3ffc8819' // Source: ../plugins/vue-session (mode: 'all')
 import nuxt_plugin_instantSearch_5017ec38 from 'nuxt_plugin_instantSearch_5017ec38' // Source: ../plugins/instantSearch.js (mode: 'client')
 import nuxt_plugin_plugin_210bb280 from 'nuxt_plugin_plugin_210bb280' // Source: ./auth/plugin.js (mode: 'all')
 
@@ -194,6 +196,10 @@ async function createApp (ssrContext) {
     await nuxt_plugin_plugin_42857a80(app.context, inject)
   }
 
+  if (typeof nuxt_plugin_cookieuniversalnuxt_ae990028 === 'function') {
+    await nuxt_plugin_cookieuniversalnuxt_ae990028(app.context, inject)
+  }
+
   if (process.client && typeof nuxt_plugin_googleanalytics_4d2b5d62 === 'function') {
     await nuxt_plugin_googleanalytics_4d2b5d62(app.context, inject)
   }
@@ -208,6 +214,10 @@ async function createApp (ssrContext) {
 
   if (typeof nuxt_plugin_vuelazyload_211b2937 === 'function') {
     await nuxt_plugin_vuelazyload_211b2937(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_vuesession_3ffc8819 === 'function') {
+    await nuxt_plugin_vuesession_3ffc8819(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_instantSearch_5017ec38 === 'function') {

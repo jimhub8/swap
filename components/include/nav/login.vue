@@ -12,11 +12,10 @@
                 <v-list dense>
 
                     <v-list-item>
-                        <!-- <avatar username="Jane Doe"></avatar> -->
-                        <!-- <avatar :username="this.$store.state.auth.user.name" style="font-size: 20px;margin: auto;padding: 20px;"></avatar>
+                        <avatar :username="this.$store.state.auth.user.name" style="font-size: 20px;margin: auto;padding: 20px;"></avatar>
                         <v-list-item-content>
                             <v-list-item-title>{{ this.$store.state.auth.user.name }}</v-list-item-title>
-                        </v-list-item-content> -->
+                        </v-list-item-content>
 
                     </v-list-item>
                     <v-divider></v-divider>
@@ -35,7 +34,16 @@
                 </v-list>
             </v-card-text>
 
-            <v-divider></v-divider>
+            <v-card-actions>
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn icon v-bind="attrs" v-on="on" @click="logout">
+                            <v-icon color="grey lighten-1">mdi-logout</v-icon>
+                        </v-btn>
+                    </template>
+                    <span>Logout</span>
+                </v-tooltip>
+            </v-card-actions>
 
         </v-card>
     </v-menu>
@@ -60,13 +68,12 @@ export default {
         hints: true,
     }),
     methods: {
+        logout() {
+            this.$auth.logout()
+        },
 
         getCart() {
-            var payload = {
-                model: 'getCart',
-                update: 'updateCartsList',
-            }
-            this.$store.dispatch('getItems', payload)
+            $nuxt.$emit("cartEvent")
         },
     },
     mounted() {

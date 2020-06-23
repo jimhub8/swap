@@ -11,13 +11,13 @@
     <section class="cart bgwhite" v-show="!loader">
         <v-card style="padding: 20px;width: 80%; margin: auto;box-shadow: 7px 7px 8px -4px rgb(210, 225, 246),0 12px 17px 2px rgb(210, 225, 246),0 5px 22px 4px rgb(210, 225, 246) !important;">
 
-            <v-tooltip bottom @click="getCart">
+            <v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
-                    <v-btn icon v-bind="attrs" v-on="on">
+                    <v-btn icon v-bind="attrs" v-on="on" @click="getCart">
                         <v-icon color="primary" small>mdi-refresh</v-icon>
                     </v-btn>
                 </template>
-                <span>Refresh Cart</span>
+                <span>Refresh</span>
             </v-tooltip>
             <div class="container" v-if="Object.keys(carts).length > 0">
                 <!-- <div class="container" v-if="carts.length > 0"> -->
@@ -155,26 +155,24 @@ export default {
             not_found: process.env.NOT_FOUND
         };
     },
-    async fetch({
-        store
-    }) {
-        var payload = {
-            model: 'getCart',
-            update: 'updateCartsList',
-        }
-        await store.dispatch('getItems', payload)
-    },
+    // async fetch({
+    //     store
+    // }) {
+    //     var payload = {
+    //         model: 'getCart',
+    //         update: 'updateCartsList',
+    //     }
+    //     await store.dispatch('getItems', payload)
+    // },
     methods: {
 
         imageUrlAlt(e) {
             event.target.src = this.not_found
         },
         getCart() {
-            var payload = {
-                model: 'getCart',
-                update: 'updateCartsList',
-            }
-            this.$store.dispatch('getItems', payload)
+
+            $nuxt.$emit("cartEvent")
+
         },
         cash_delivery() {
             $nuxt.$emit("progressEvent");
@@ -195,12 +193,7 @@ export default {
                 });
         },
         get_cart_total() {
-
-            var payload = {
-                model: 'cart_total',
-                update: 'updateCartTotalList',
-            }
-            this.$store.dispatch('getItems', payload)
+            $nuxt.$emit("cartTotalEvent");
         },
         flashCart(cart) {
             $nuxt.$emit("progressEvent");
@@ -303,14 +296,14 @@ export default {
         // this.loader = true;
         // this.getCouponSess();
         // this.get_cart_total();
-        // this.getCart();
+        this.getCart();
         // $nuxt.$emit("ScollTopEvent");
     },
     created() {
-        this.$nuxt.$on("cartEvent", data => {
-            this.carts = data;
-            this.cartAdd = true;
-        });
+        // this.$nuxt.$on("cartEvent", data => {
+        //     this.carts = data;
+        //     this.cartAdd = true;
+        // });
         // this.$nuxt.$on("flashEvent", data => {
         //   this.flashCart(data)
         // });

@@ -22,6 +22,7 @@ import myAddress from '../../components/account/content/address'
 import myOrders from '../../components/orders/Orders'
 
 export default {
+    middleware: 'auth',
   name: 'account',
     components: {
         myAddress,

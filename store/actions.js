@@ -31,12 +31,12 @@ export default {
 
 
   async getItems({ commit, state }, payload) {
-            // $nuxt.$emit("progressEvent");
-            // this.$emit('my-custom-event')
+    // $nuxt.$emit("progressEvent");
+    // this.$emit('my-custom-event')
 
 
-            commit('overlayLoader', true)
-            var model = payload.model
+    commit('overlayLoader', true)
+    var model = payload.model
     var update = payload.update
     // console.log(state.auth.access_local);
     if (state.auth.loggedIn) {
@@ -56,7 +56,39 @@ export default {
     }
     commit('overlayLoader', false)
 
-            // $nuxt.$emit("StoprogEvent");
+    // $nuxt.$emit("StoprogEvent");
+
+  },
+
+
+  async getItem({ commit, state }, payload) {
+    // $nuxt.$emit("progressEvent");
+    // this.$emit('my-custom-event')
+
+
+    commit('overlayLoader', true)
+    var model = payload.model
+    var update = payload.update
+    var id = payload.id
+    // console.log(state.auth.access_local);
+    if (state.auth.loggedIn) {
+      var headers = {
+        'Content-type': 'Application/json',
+        'Accept': 'Application/json',
+        'Authorization': state.auth.access_local
+      }
+
+      let response = await axios.get(api_url + model + '/' + id, {
+        'headers': headers
+      })
+      commit(update, response.data)
+    } else {
+      let response = await axios.get(api_url + model + '/' + id)
+      commit(update, response.data)
+    }
+    commit('overlayLoader', false)
+
+    // $nuxt.$emit("StoprogEvent");
 
   },
 

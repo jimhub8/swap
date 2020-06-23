@@ -36,6 +36,7 @@ export default {
             form: {
                 email: '',
                 password: '',
+                // cookie_id: cookie_id
             }
         };
     },
@@ -79,6 +80,10 @@ export default {
                 //     email: this.form.email,
                 //     password: this.form.password
                 // }
+                this.form.cookie_id = this.$cookie.get('cart_session')
+                // console.log(this.$cookie.get('cart_session'));
+                // return
+
 
                 this.$store.dispatch('overlayAction', true)
 
@@ -115,7 +120,11 @@ export default {
         ...mapState(['errors']),
         loged_in() {
             this.$store.state.auth.loggedIn
-        }
+        },
+
+        cookie_id() {
+          this.$cookie.get('cart_session')
+        },
     },
     beforeRouteLeave(to, from, next) {
         // $nuxt.$emit("progressEvent");

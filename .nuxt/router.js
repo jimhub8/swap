@@ -16,6 +16,7 @@ const _32ac1e53 = () => interopDefault(import('../pages/privacy/index.vue' /* we
 const _546b8364 = () => interopDefault(import('../pages/register/index.vue' /* webpackChunkName: "pages/register/index" */))
 const _4a7b86e1 = () => interopDefault(import('../pages/shop/index.vue' /* webpackChunkName: "pages/shop/index" */))
 const _1b0a3227 = () => interopDefault(import('../pages/subcategories/index.vue' /* webpackChunkName: "pages/subcategories/index" */))
+const _00d63506 = () => interopDefault(import('../pages/Thankyou.vue' /* webpackChunkName: "pages/Thankyou" */))
 const _195b829a = () => interopDefault(import('../pages/vendor/index.vue' /* webpackChunkName: "pages/vendor/index" */))
 const _f3984a5e = () => interopDefault(import('../pages/login/index copy.vue' /* webpackChunkName: "pages/login/index copy" */))
 const _a84900de = () => interopDefault(import('../pages/category/_id.vue' /* webpackChunkName: "pages/category/_id" */))
@@ -91,6 +92,10 @@ export const routerOptions = {
     path: "/subcategories",
     component: _1b0a3227,
     name: "subcategories"
+  }, {
+    path: "/Thankyou",
+    component: _00d63506,
+    name: "Thankyou"
   }, {
     path: "/vendor",
     component: _195b829a,

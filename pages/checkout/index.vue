@@ -1,6 +1,6 @@
 <template>
 <div>
-    <v-card style="padding: 20px;width: 80%; margin: auto;box-shadow: 7px 7px 8px -4px rgb(210, 225, 246),0 12px 17px 2px rgb(210, 225, 246),0 5px 22px 4px rgb(210, 225, 246) !important;margin-top: 200px;" v-if="loggedIn">
+    <v-card style="padding: 20px;width: 80%; margin: auto;box-shadow: 7px 7px 8px -4px rgb(210, 225, 246),0 12px 17px 2px rgb(210, 225, 246),0 5px 22px 4px rgb(210, 225, 246) !important;margin-top: 200px;" >
         <v-stepper v-model="e6" vertical>
             <v-stepper-step :complete="e6 > 1" step="1">User information</v-stepper-step>
             <v-stepper-content step="1" style="background: #fff;">
@@ -31,7 +31,7 @@
             </v-stepper-content>
         </v-stepper>
     </v-card>
-    <div v-else style="padding: 20px 0;margin-top: 200px;">
+    <!-- <div v-else style="padding: 20px 0;margin-top: 200px;">
         <v-card style="padding: 20px;width: 80%; margin: auto;box-shadow: 7px 7px 8px -4px rgb(210, 225, 246),0 12px 17px 2px rgb(210, 225, 246),0 5px 22px 4px rgb(210, 225, 246) !important;" class="text-center">
             <v-card-text>
               <strong style="color: #333">You are not loged in! Please login or sign up to checkout.</strong>
@@ -42,7 +42,7 @@
                 <nuxt-link  to="/register" color="primary" style="color: #555 !important">Sign up</nuxt-link>
             </v-card-actions>
         </v-card>
-    </div>
+    </div> -->
 </div>
 </template>
 
@@ -52,6 +52,8 @@ import myPayment from '../../components/checkout/Payment'
 import myComplete from '../../components/checkout/Complete'
 import { mapState } from 'vuex'
 export default {
+    middleware: 'auth',
+
     props: ['user'],
     components: {
         myAddress,

@@ -53,6 +53,7 @@ export default {
   plugins: [
     '~/plugins/element-ui.js',
     '~/plugins/vue-lazyload',
+    '~/plugins/vue-session',
     {src: '~/plugins/instantSearch.js', ssr: false},
 
 
@@ -74,6 +75,8 @@ export default {
     'nuxt-material-design-icons',
     '@nuxtjs/auth',
     '@nuxtjs/google-analytics',
+    'cookie-universal-nuxt',
+
     '@nuxtjs/sitemap'
 
     // '@nuxtjs/bootstrap',

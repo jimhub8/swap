@@ -35,7 +35,7 @@
                                 </div>
                                 <div v-if="cart.attributes.length > 0">
                                     <div v-for="(attribute, index) in cart.attributes" :key="index">
-                                        <el-tag  v-for="(attr, key) in attribute" :key="key">{{ attr }}</el-tag>
+                                        <el-tag v-for="(attr, key) in attribute" :key="key">{{ attr }}</el-tag>
                                     </div>
                                 </div>
                             </td>
@@ -148,11 +148,7 @@ export default {
     },
     methods: {
         getCart() {
-            var payload = {
-                model: 'getCart',
-                update: 'updateCartsList',
-            }
-            this.$store.dispatch('getItems', payload)
+            $nuxt.$emit("cartEvent")
         },
         cash_delivery() {
             $nuxt.$emit("progressEvent");
@@ -173,12 +169,7 @@ export default {
                 });
         },
         get_cart_total() {
-
-            var payload = {
-                model: 'cart_total',
-                update: 'updateCartTotalList',
-            }
-            this.$store.dispatch('getItems', payload)
+            $nuxt.$emit("cartTotalEvent");
         },
         flashCart(cart) {
             $nuxt.$emit("progressEvent");

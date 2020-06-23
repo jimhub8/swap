@@ -178,7 +178,8 @@ body {
 }
 
 .v-application a {
-  color: #e6edf5 !important;
+  /* color: #e6edf5 !important; */
+  color: #748698 !important;
 }
 
 .v-application a:hover {
@@ -190,4 +191,13 @@ body {
 }
 .v-application .mb-2 {
   color: #000000a1;
+}
+
+.el-loading-parent--relative {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.5) !important;
 }
