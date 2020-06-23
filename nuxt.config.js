@@ -89,8 +89,8 @@ export default {
   // http://admin.jim/api/auth/login
   axios: {
     // baseURL: process.env.API_URL
-    baseURL: 'http://admin.jim'
-    // baseURL: 'https://seller.swapstore.co.ke'
+    // baseURL: 'http://admin.jim'
+    baseURL: 'https://seller.swapstore.co.ke'
   },
 
   // auth: {
@@ -201,8 +201,8 @@ export default {
     gzip: true,
     generate: false,
     routes: async () => {
-      let apiUrl = process.env.API_URL || 'http://admin.jim/api/'
-      // let apiUrl = process.env.API_URL || 'https://seller.swapstore.co.ke/api/'
+      // let apiUrl = process.env.API_URL || 'http://admin.jim/api/'
+      let apiUrl = process.env.API_URL || 'https://seller.swapstore.co.ke/api/'
       const { data } = await axios.get(`${apiUrl}products`)
       return data.data.map(v => `/shop/${v.id}`)
     },
