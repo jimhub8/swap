@@ -34,8 +34,9 @@
             <div class="w-size14 p-t-30 respon5">
                 <h4 class="product-detail-name m-text16 p-b-13">{{ product.product_name }}</h4>
 
-                <span class="m-text17">Price: {{ product.price }}</span>
-                <p>Available: {{ product.quantity }}</p>
+                <span class="m-text17">Price: <el-tag>KES {{ product.price }}</el-tag> </span>
+                <p style="color: #008a00;font-weight: bold;" id="stock">
+                    In stock: {{ product.quantity }}</p>
                 <div v-html="product.description"></div>
 
                 <!--  -->
@@ -325,6 +326,18 @@ export default {
 </script>
 
 <style scoped>
+#stock::before {
+    position: absolute;
+    display: inline-block;
+    content: '';
+    width: 8px;
+    height: 8px;
+    left: 0;
+    top: 0.45em;
+    border-radius: 100%;
+    background: currentColor;
+}
+
 .wrap-pic-w img {
     height: 300px;
 }

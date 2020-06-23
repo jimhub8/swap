@@ -159,68 +159,26 @@ export default {
             this.$store.dispatch('postItems', payload).then((res) => {
                 this.$router.push('/thankyou')
                 this.$store.dispatch('overlayAction', false)
+                this.get_cart_total()
+                this.get_count()
+            }).catch((error) => {
+                console.log(error);
 
+                this.$store.dispatch('overlayAction', false)
             })
 
             return
 
-            $nuxt.$emit("progressEvent");
-            this.account.total = parseInt(this.getSubTotal) - parseInt(this.getCouponT)
-            axios.post('cash_delivery', this.account)
-                .then(response => {
-                    $nuxt.$emit("StoprogEvent");
-                    $nuxt.$emit("cartEvent", response.data);
-                    $nuxt.$emit("alertRequest", "Order placed");
-                    // this.goToCheckout()
-                    this.$router.push('/thankyou')
-
-                    // this.carts = response.data;
-                    // this.message = "added";
-                    // this.snackbar = true;
-                })
-                .catch(error => {
-                    $nuxt.$emit("StoprogEvent");
-                    this.loading = false;
-                    this.errors = error.response.data.errors;
-                });
-        },
-        goToCheckout() {
-            this.$router.push({
-                name: "thankyou"
-            });
         },
         get_cart_total() {
             $nuxt.$emit("cartTotalEvent");
         },
-        flashCart(cart) {
-            console.log(cart);
-            $nuxt.$emit("progressEvent");
-            // $nuxt.$emit("loadingRequest");
-            axios
-                .post('/flashCart', cart)
-                .then(response => {
-                    $nuxt.$emit("StoprogEvent");
-                    $nuxt.$emit("cartEvent", response.data);
-                    $nuxt.$emit("alertRequest", "Item Removed");
-                    this.carts = response.data;
-                    // this.message = "added";
-                    // this.snackbar = true;
-                })
-                .catch(error => {
-                    $nuxt.$emit("StoprogEvent");
-                    this.loading = false;
-                    this.errors = error.response.data.errors;
-                });
+        get_count() {
+            $nuxt.$emit("cartCountEvent");
         },
-        // subtructCart(cart) {
-        //     cart.order_qty = -1
-        //     $nuxt.$emit("subCartEvent", cart)
-        // },
-        // addToCart(cart) {
-        //     cart.order_qty = 1
-        //     $nuxt.$emit("subCartEvent", cart)
-        // },
-
+        flashCart(cart) {
+            $nuxt.$emit("flashCartEvent", cart);
+        },
         subtructCart(cart) {
             var payload = {
                 order_qty: -1,

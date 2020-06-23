@@ -256,13 +256,13 @@ export default {
                 var cookie_id = this.$cookie.get('cart_session')
             }
 
-            // console.log(this.$cookie.get('cart_session'))
+            // console.log(cookie_id)
             // return
 
             $nuxt.$emit("progressEvent");
             var payload = {
                 model: 'cartAdd',
-                id: this.$cookie.get('cart_session'),
+                id: cookie_id,
                 // id: cart.id,
                 data: cart,
             }
@@ -286,6 +286,33 @@ export default {
         onScroll(e) {
             // this.offsetTop = window.pageYOffset || document.documentElement.scrollTop;
         },
+        flashCart(cart) {
+            if (this.$store.state.auth.loggedIn) {
+                var cookie_id = this.$store.state.auth.user.id
+            } else {
+                var rString = this.randomString(15, '0123456789');
+                if (this.$cookie.get('cart_session') == null) {
+                    this.$cookie.set('cart_session', rString);
+                }
+                var cookie_id = this.$cookie.get('cart_session')
+            }
+
+            this.$store.dispatch('overlayAction', true)
+            var payload = {
+                model: 'flashCart',
+                data: cart,
+                id: cookie_id
+            }
+            this.$store.dispatch('postItem', payload).then((res) => {
+                this.get_cart_total()
+                this.getCart()
+                this.get_cart_count()
+
+            }).catch((error) => {
+                console.log(error);
+                this.$store.dispatch('overlayAction', false)
+            })
+        }
 
     },
 
@@ -322,6 +349,13 @@ export default {
         });
         this.$nuxt.$on("cartTotalEvent", data => {
             this.get_cart_total()
+        });
+
+        this.$nuxt.$on("flashCartEvent", data => {
+            this.flashCart(data)
+        });
+        this.$nuxt.$on("cartCountEvent", data => {
+            this.get_cart_count()
         });
         this.$nuxt.$on("cartEvent", data => {
             this.getCart()

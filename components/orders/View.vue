@@ -1,6 +1,6 @@
 <template>
 <v-layout row justify-center>
-    <v-dialog v-model="dialog" persistent max-width="1200px">
+    <v-dialog v-model="dialog" persistent max-width="900px">
         <v-card>
             <v-card-title>
                 <span class="headline text-center" style="margin: auto;">Order Details</span>
@@ -19,7 +19,7 @@
             <v-card-text>
                 <v-container grid-list-md>
                     <v-layout row wrap>
-                        <v-flex sm12>
+                        <v-flex sm12 class="text-center">
 
                             <table class="table table-striped table-hover table-responsive">
                                 <thead>
@@ -49,11 +49,16 @@
                                             <el-tag type="success">{{ product.pivot.quantity * product.pivot.price }}</el-tag>
                                         </td>
                                     </tr>
-
                                 </tbody>
                                 <tfoot>
-                                    <td>Total</td>
-                                    <td colspan="5">{{ total }}</td>
+                                  <tr>
+                                    <td>
+                                  <strong>Total</strong>
+                                    </td>
+                                    <td colspan="7">
+                                        <el-tag type="danger">{{total_price}}</el-tag>
+                                    </td>
+                                    </tr>
                                 </tfoot>
                             </table>
                             <v-divider />
@@ -86,7 +91,7 @@
             </v-card-text>
 
             <v-card-actions>
-              <v-btn color="primary" text @click="close">Close</v-btn>
+                <v-btn color="primary" text @click="close">Close</v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>
@@ -103,12 +108,14 @@ export default {
         payload: {
             model: '/leaves',
         },
+        total_price: 0
     }),
     created() {
         this.$nuxt.$on("viewOrdEvent", data => {
             console.log(data);
             this.dialog = true;
             this.form = data;
+            this.get_total(data)
             if (data.ordershipping) {
                 this.getOrderAddress()
             }
@@ -128,16 +135,18 @@ export default {
             }
             this.$store.dispatch("showItem", payload);
         },
+        get_total(data) {
+            console.log(data);
+
+            var price = 0
+            data.products.forEach(element => {
+                price += parseFloat(element.pivot.price) * parseFloat(element.pivot.quantity)
+            });
+            this.total_price = price
+        },
     },
 
     computed: {
-        total() {
-            var price = 0
-            // this.form.products.forEach(element => {
-            //     price += parseFloat(element.pivot.price) * parseFloat(element.pivot.quantity)
-            // });
-            return price
-        },
         order_address() {
             return this.$store.getters.order_address
         }

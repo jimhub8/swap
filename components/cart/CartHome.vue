@@ -171,13 +171,9 @@ export default {
         get_cart_total() {
             $nuxt.$emit("cartTotalEvent");
         },
+
         flashCart(cart) {
-            $nuxt.$emit("progressEvent");
-            var payload = {
-                model: 'flashCart',
-                update: 'updateCartsList',
-            }
-            this.$store.dispatch('getItems', payload)
+            $nuxt.$emit("flashCartEvent", cart);
         },
         subtructCart(cart) {
             cart.order_qty = -1
