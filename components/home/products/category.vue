@@ -7,9 +7,8 @@
             <div class="box-title">
                 <h3><span>On sale</span></h3>
             </div>
-
-                <nuxt-link :to="'/shop/' + sale.id" v-for="sale in onSale.data" :key="sale.id">
-            <v-layout row wrap style="margin-top: 30px; background: #fff">
+            <nuxt-link :to="buildUrl(sale)" v-for="sale in onSale.data" :key="sale.id">
+                <v-layout row wrap style="margin-top: 30px; background: #fff">
                     <v-flex sm7 style="text-align: right">
                         <el-rate v-model="value" disabled></el-rate>
                         <small> {{ sale.price }} </small>
@@ -22,8 +21,8 @@
                     <v-flex sm12>
                         <v-divider />
                     </v-flex>
-            </v-layout>
-                </nuxt-link>
+                </v-layout>
+            </nuxt-link>
             <!-- <ul class="list-group">
                 <li class="list-group-item" v-for="sale in onSale.data" :key="sale.id">{{ sale.product_name }}</li>
             </ul> -->
@@ -66,9 +65,9 @@
                                         </div>
                                     </v-expand-transition>
                                 </v-img>
-                                <nuxt-link :to="'shop/' + product.id">
+                                <nuxt-link :to="buildUrl(product)">
                                     <v-card-text class="pt-6" style="position: relative;">
-                                        <p>{{ product.product_name }}</p>
+                                        <h1>{{ product.product_name }}</h1>
                                         <div class="font-weight-light title mb-2">
                                             {{ product.price }}
                                         </div>
@@ -148,6 +147,10 @@ export default {
                 id: data,
             }
             this.$store.dispatch('showItem', payload)
+        },
+
+        buildUrl(product) {
+          return '/shop/' + this.$slugify(product.id, product.product_name)
         }
         // addToCart(cart) {
         //     cart.order_qty = 1
@@ -209,5 +212,9 @@ export default {
         width: 90vw !important;
         height: 30vh !important;
     }
+}
+
+h1 {
+    font-size: 20px !important;
 }
 </style>

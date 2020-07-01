@@ -105,7 +105,7 @@
                                 </div>
 
                                 <div class="block2-txt p-t-20">
-                                    <nuxt-link :to="'shop/' + product.id">
+                                    <nuxt-link :to="buildUrl(product)">
                                         <button class="block2-name dis-block s-text3 p-b-5" @click="redirect(product.id)">{{ product.product_name }}</button>
                                     </nuxt-link>
                                     <hr>
@@ -286,6 +286,9 @@ export default {
 
         imageUrlAlt(e) {
             event.target.src = "/assets/notfound/notfound.jpg"
+        },
+        buildUrl(product) {
+          return '/shop/' + this.$slugify(product.id, product.product_name)
         }
     },
     mounted() {

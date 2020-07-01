@@ -41,9 +41,9 @@
                                     </div>
                                 </v-expand-transition>
                             </v-img>
-                            <nuxt-link :to="'shop/' + item.id">
+                            <nuxt-link :to="buildUrl(item)">
                                 <v-card-text class="pt-6" style="position: relative;">
-                                    <p>{{ item.product_name }}</p>
+                                    <h1>{{ item.product_name }}</h1>
                                     <div class="font-weight-light title mb-2">
                                         {{ item.price }}
                                     </div>
@@ -150,6 +150,10 @@ export default {
         },
         Productdetails(id) {
             $nuxt.$emit('Productdetails', id)
+        },
+
+        buildUrl(product) {
+          return '/shop/' + this.$slugify(product.id, product.product_name)
         }
     },
 }
@@ -163,5 +167,8 @@ export default {
     opacity: .5;
     position: absolute;
     width: 100%;
+}
+h1 {
+    font-size: 20px !important;
 }
 </style>

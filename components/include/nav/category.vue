@@ -34,11 +34,11 @@
                                 <v-col sm="4" v-for="category in categories" :key="category.id">
                                     <v-list-item>
                                         <v-list-item-content>
-                                            <nuxt-link :to="'/category/' + category.id">
+                                            <nuxt-link :to="buildUrl(category)">
                                                 <v-list-item-title>{{ category.category }}</v-list-item-title>
                                             </nuxt-link>
                                             <v-list-item-subtitle v-for="sub in category.subcategories" :key="sub.id">
-                                                <nuxt-link :to="'/subcategories/' + sub.id">
+                                                <nuxt-link :to="buildUrl_sub(sub)">
                                                     {{ sub.subcategory }}
                                                 </nuxt-link>
                                             </v-list-item-subtitle>
@@ -87,6 +87,12 @@ export default {
         changeCategory(data) {
             // console.log(data);
             this.categories = data.categories
+        },
+        buildUrl(category) {
+          return '/category/' + this.$slugify(category.id, category.category)
+        },
+        buildUrl_sub(category) {
+          return '/subcategories/' + this.$slugify(category.id, category.subcategory)
         }
     },
 }

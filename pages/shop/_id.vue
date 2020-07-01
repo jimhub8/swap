@@ -32,7 +32,7 @@
             <!-- <v-btn color="success" @click="getRelated">getRelated</v-btn> -->
 
             <div class="w-size14 p-t-30 respon5">
-                <h4 class="product-detail-name m-text16 p-b-13">{{ product.product_name }}</h4>
+                <h1 class="product-detail-name m-text16 p-b-13">{{ product.product_name }}</h1>
 
                 <span class="m-text17">Price: <el-tag>KES {{ product.price }}</el-tag> </span>
                 <p style="color: #008a00;font-weight: bold;" id="stock">
@@ -151,10 +151,13 @@ export default {
         store,
         route
     }) {
+
+        var len = route.params.id.split('-').length - 1
+        var arr = route.params.id.split('-')
         var payload = {
             model: "products",
             update: "updateShowProduct",
-            id: route.params.id
+            id: arr[len]
         };
         let response = await store.dispatch("showItem", payload);
 
@@ -287,11 +290,19 @@ export default {
                     $nuxt.$emit("StoprogEvent");
                     this.errors = error.response.data.errors;
                 });
+        },
+        split_id() {
+            console.log(this.$route.params.id)
+            console.log(this.$route.params.id.split('-').length)
+            var len = this.$route.params.id.split('-').length - 1
+            var arr = this.$route.params.id.split('-')
+            console.log(arr[len]);
+
         }
     },
     mounted() {
         this.update_data()
-        // this.getProduct();
+        // this.split_id();
         $nuxt.$emit("ScollEvent");
         // this.getRelated();
         // this.getReviews();

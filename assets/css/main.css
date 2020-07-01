@@ -1,3 +1,10 @@
+
+
+
+body, .v-application {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
 #__layout {
   overflow-x: hidden;
 }
@@ -13,10 +20,6 @@
   background-color: #f0f0f0 !important;
 }
 
-.theme--dark.v-card {
-  /* background-color: #fff !important; */
-  /* color: #999 !important; */
-}
 
 .theme--dark.v-stepper {
   background: #ffffff !important;
@@ -36,11 +39,6 @@
 }
 
 
-
-
-body {
-  font-family: 'Open Sans', 'sans-serif';
-}
 .mega-dropdown {
   position: static !important;
 }

@@ -28,7 +28,7 @@ export default {
       // { rel: 'script', href: 'http://dellmat.jim/js/main.min.js' },
       // { rel: 'script', href: 'http://bootstrap-ecommerce.com/bootstrap-ecommerce-html/js/bootstrap.bundle.min.js' },
       // { rel: 'script', href: 'http://bootstrap-ecommerce.com/bootstrap-ecommerce-html/js/script.js' },
-
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Montserrat&display=swap' },
 
 
     ]
@@ -42,9 +42,9 @@ export default {
   */
   css: [
     '@/assets/sass/app.scss',
-    '~/assets/css/main.css',
     '~/assets/css/all.css',
     '~/assets/css/responsive.css',
+    '~/assets/css/main.css',
   ],
 
   /*
@@ -53,6 +53,7 @@ export default {
   plugins: [
     '~/plugins/element-ui.js',
     '~/plugins/vue-lazyload',
+    '~/plugins/slugify',
     '~/plugins/vue-session',
     {src: '~/plugins/instantSearch.js', ssr: false},
 
@@ -204,7 +205,7 @@ export default {
       // let apiUrl = process.env.API_URL || 'http://admin.jim/api/'
       let apiUrl = process.env.API_URL || 'https://seller.swapstore.co.ke/api/'
       const { data } = await axios.get(`${apiUrl}products`)
-      return data.data.map(v => `/shop/${v.id}`)
-    },
+      return data.data.map(v => `/shop/${v.product_name}-${v.id}`)
+    }
   }
 }

@@ -7,7 +7,7 @@
             </div>
             <div class="widget-content">
                 <ul class="product-categories">
-                    <nuxt-link :to="'/category/' + category.id"  v-for="category in categories.data" :key="category.id">
+                    <nuxt-link :to="buildUrl(category)"  v-for="category in categories.data" :key="category.id">
                         <li class="cat-item">
                             <p style="cursor: pointer" @click="FilterShop(category.id)">{{ category.category }}</p>
                             <!-- <span class="count">(5)</span> -->
@@ -72,6 +72,9 @@ export default {
                 update: 'updateCategoryList',
             }
             this.$store.dispatch('getItems', payload)
+        },
+        buildUrl(category) {
+          return '/category/' + this.$slugify(category.id, category.category)
         }
     },
     mounted() {

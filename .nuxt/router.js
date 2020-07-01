@@ -18,7 +18,6 @@ const _4a7b86e1 = () => interopDefault(import('../pages/shop/index.vue' /* webpa
 const _1b0a3227 = () => interopDefault(import('../pages/subcategories/index.vue' /* webpackChunkName: "pages/subcategories/index" */))
 const _00d63506 = () => interopDefault(import('../pages/Thankyou.vue' /* webpackChunkName: "pages/Thankyou" */))
 const _195b829a = () => interopDefault(import('../pages/vendor/index.vue' /* webpackChunkName: "pages/vendor/index" */))
-const _f3984a5e = () => interopDefault(import('../pages/login/index copy.vue' /* webpackChunkName: "pages/login/index copy" */))
 const _a84900de = () => interopDefault(import('../pages/category/_id.vue' /* webpackChunkName: "pages/category/_id" */))
 const _a16064ee = () => interopDefault(import('../pages/shop/_id.vue' /* webpackChunkName: "pages/shop/_id" */))
 const _1006db62 = () => interopDefault(import('../pages/subcategories/_id.vue' /* webpackChunkName: "pages/subcategories/_id" */))
@@ -100,10 +99,6 @@ export const routerOptions = {
     path: "/vendor",
     component: _195b829a,
     name: "vendor"
-  }, {
-    path: "/login/index copy",
-    component: _f3984a5e,
-    name: "login-index copy"
   }, {
     path: "/category/:id",
     component: _a84900de,

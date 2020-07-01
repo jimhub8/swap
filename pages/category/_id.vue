@@ -198,17 +198,20 @@ export default {
         route
     }) {
 
+        var len = route.params.id.split('-').length - 1
+        var arr = route.params.id.split('-')
+
         var payload = {
             model: 'categories',
             update: 'updateProduct',
-            id: route.params.id
+            id: arr[len]
         }
         await store.dispatch("showItem", payload);
 
         var payload = {
             model: 'category',
             update: 'CategoryList',
-            id: route.params.id
+            id: arr[len]
         }
         await store.dispatch("showItem", payload);
 

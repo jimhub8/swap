@@ -38,11 +38,6 @@
  *               Buddha Bless:  "No Bugs"
  *
  * ========================================================= */
- body{
-    font-family: 'Source Sans';
-}
-
-
 
 .fade-enter-active{
   transition: opacity 1s, transform 1s;
@@ -855,7 +850,6 @@ li.megamenu-img a {
     font-weight: 700;
     color: rgb(255, 255, 255);
     letter-spacing: 0px;
-    font-family: Open Sans;
     visibility: inherit;
     transition: none 0s ease 0s;
     text-align: inherit;
@@ -1156,7 +1150,6 @@ li.megamenu-img a {
   border-radius: 25px;
   box-shadow: none;
   color: #e23e57;
-  font-family: Open Sans,Arial,Helvetica,sans-serif;
   font-size: 12px;
   font-weight: bold;
   height: 24px;
@@ -1367,7 +1360,6 @@ li.megamenu-img a {
   border-radius: 25px;
   box-shadow: none;
   color: #e23e57;
-  font-family: Open Sans,Arial,Helvetica,sans-serif;
   font-size: 12px;
   font-weight: bold;
   height: 24px;
@@ -1961,7 +1953,7 @@ li.megamenu-img a {
     border: none;
     color: #fff;
     display: block;
-    font-family: Open Sans, Arial, Helvetica, sans-serif;
+
     font-size: 1em;
     float: left;
     height: 54px;
@@ -2215,7 +2207,7 @@ li.megamenu-img a {
 .woocommerce-breadcrumb, .breadcrumbs {
     color: #12a4dd;
     display: block;
-    font-family: Open Sans, Arial, Helvetica, sans-serif;
+
     font-size: 1em;
     margin: 0;
     padding: 0;
@@ -2277,7 +2269,7 @@ button.owl-dot {
 }
 .single-product-info span.price {
   color: #12a4dd;
-  font-family: Open Sans, Arial, Helvetica, sans-serif;
+
   font-size: 36px;
   font-weight: 600;
   line-height: normal;
@@ -2309,7 +2301,7 @@ button.owl-dot {
   background: none;
   border: 2px solid #12a4dd;
   color: #12a4dd;
-  font-family: Open Sans, Arial, Helvetica, sans-serif;
+
   font-size: 15px;
   font-weight: bold;
   height: 45px;
@@ -2342,7 +2334,7 @@ button.owl-dot {
   border: 1px solid #ededed;
   color: #333;
   display: inline-block;
-  font-family: Open Sans, Arial, Helvetica, sans-serif;
+
   font-size: 1em;
   font-weight: normal;
   height: 45px;
@@ -2382,7 +2374,7 @@ button.owl-dot {
 }
 .product_meta span.posted_in{
   color: #333;
-  font-family: Open Sans, Arial, Helvetica, sans-serif;
+
   font-size: 1em;
   font-weight: bold;
   margin-right: 10px;
@@ -2390,7 +2382,7 @@ button.owl-dot {
 }
 .product_meta span.posted_in a{
   color: #555555;
-  font-family: Open Sans, Arial, Helvetica, sans-serif;
+
   font-weight: 400;
   text-transform: none;
 }
@@ -2404,7 +2396,7 @@ button.owl-dot {
   margin: 0;
   color: #333;
   display: inline-block;
-  font-family: Open Sans, Arial, Helvetica, sans-serif;
+
   font-size: 1em;
   font-weight: bold;
   margin-right: 15px;
@@ -2534,7 +2526,7 @@ button.owl-dot {
     border: none;
     color: #999;
     display: block;
-    font-family: Open Sans, Arial, Helvetica, sans-serif;
+
     font-size: 20px;
     font-weight: bold;
     padding: 16px 0;
@@ -2627,7 +2619,7 @@ button.owl-dot {
 }
 .home-two .main-menu nav > ul > li > a {
     color: #ffffff;
-    font-family: Open Sans, Arial, Helvetica, sans-serif;
+
     font-size: 15px;
     padding: 0 33px;
     font-weight: 700;
@@ -2751,7 +2743,7 @@ button.owl-dot {
 .tab-area-product .home-tabs-title li a {
     color: #838383;
     cursor: pointer;
-    font-family: Open Sans, Arial, Helvetica, sans-serif;
+
     font-size: 20px;
     font-weight: 600;
     position: relative;
@@ -4732,7 +4724,6 @@ p.checkout-coupon input[type="submit"] {
 .country-select label,
 .checkout-form-list label {
     color: #333;
-    font-family: Montserrat, Arial, Helvetica, sans-serif;
     margin: 0 0 5px;
     display: block;
     font-weight: 700;
@@ -4832,7 +4823,7 @@ p.checkout-coupon input[type="submit"] {
 }
 .your-order-table table th {
     border-top: medium none;
-    font-family: Montserrat, Arial, Helvetica, sans-serif;
+
     font-weight: normal;
     text-align: center;
     text-transform: uppercase;
@@ -5274,7 +5265,7 @@ section.service-item-area {
     font-style: normal;
 }
 .our-service-area.service-two p {
-    font-family: "Open Sans";
+
     line-height: 25px;
     font-weight: 400;
     font-style: normal;
@@ -9009,28 +9000,28 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 ///////////////////////////////////////////////////////////
 */
 .s-text1 {
-	font-family: Montserrat-Regular;
+
 	font-size: 15px;
 	color: white;
 	text-transform: uppercase;
 }
 
 .s-text2 {
-	font-family: Montserrat-Regular;
+
 	font-size: 15px;
 	color: #111111;
 	text-transform: uppercase;
 }
 
 .s-text3 {
-	font-family: Montserrat-Regular;
+
 	font-size: 15px;
 	color: #555555;
 	line-height: 1.5;
 }
 
 .s-text4 {
-	font-family: Montserrat-Regular;
+
 	font-size: 15px;
 	color: white;
 	text-transform: uppercase;
@@ -9038,56 +9029,56 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .s-text5 {
-	font-family: Montserrat-Regular;
+
 	font-size: 15px;
 	color: #999999;
 	line-height: 1;
 }
 
 .s-text6 {
-	font-family: Montserrat-Regular;
+
 	font-size: 13px;
 	color: #999999;
 	line-height: 1.8;
 }
 
 .s-text7 {
-	font-family: Montserrat-Regular;
+
 	font-size: 13px;
 	color: #555555;
 	line-height: 1.8;
 }
 
 .s-text8, .s-text8 a {
-	font-family: Montserrat-Regular;
+
 	font-size: 13px;
 	color: #888888;
 	line-height: 1.8;
 }
 
 .s-text9 {
-	font-family: Montserrat-Regular;
+
 	font-size: 13px;
 	color: #adadad;
 	line-height: 1.8;
 }
 
 .s-text10 {
-	font-family: Montserrat-Regular;
+
 	font-size: 13px;
 	color: #cccccc;
 	line-height: 1.8;
 }
 
 .s-text11 {
-	font-family: Montserrat-Italic;
+
 	font-size: 13px;
 	color: #888888;
 	line-height: 1.8;
 }
 
 .s-text12 {
-	font-family: Montserrat-Bold;
+
 	font-size: 15px;
 	color: #222222;
 	line-height: 1.5;
@@ -9095,49 +9086,49 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .s-text13 {
-	font-family: Montserrat-Regular;
+
 	font-size: 15px;
 	color: #888888;
 	line-height: 1.8;
 }
 
 .s-text14 {
-	font-family: Montserrat-Regular;
+
 	font-size: 13px;
 	color: white;
 	text-transform: uppercase;
 }
 
 .s-text15 {
-	font-family: Montserrat-Regular;
+
 	font-size: 13px;
 	color: #666666;
 	line-height: 1.8;
 }
 
 .s-text16 {
-	font-family: Montserrat-Regular;
+
 	font-size: 12px;
 	color: #555555;
 	line-height: 1.8;
 }
 
 .s-text17 {
-	font-family: Montserrat-Regular;
+
 	font-size: 12px;
 	color: #888888;
 	line-height: 1.8;
 }
 
 .s-text18 {
-	font-family: Montserrat-Bold;
+
 	font-size: 15px;
 	color: #555555;
 	line-height: 1.5;
 }
 
 .s-text19 {
-	font-family: Montserrat-Regular;
+
 	font-size: 13px;
 	color: #555555;
 	line-height: 1.8;
@@ -9145,21 +9136,21 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .s-text20 {
-	font-family: Montserrat-Regular;
+
 	font-size: 15px;
 	color: #555555;
 	line-height: 1.2;
 }
 
 .s-text21 {
-	font-family: Montserrat-Regular;
+
 	font-size: 13px;
 	color: white;
 	line-height: 1.8;
 }
 
 .s-text22 {
-	font-family: Montserrat-Regular;
+
 	font-size: 13px;
 	color: white;
 	line-height: 1.8;
@@ -9170,7 +9161,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 ///////////////////////////////////////////////////////////
 */
 .m-text1 {
-	font-family: Montserrat-Regular;
+
 	font-size: 18px;
 	color: white;
 	line-height: 1.5;
@@ -9178,21 +9169,21 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .m-text2 {
-	font-family: Montserrat-Regular;
+
 	font-size: 16px;
 	color: #333333;
 	text-transform: uppercase;
 }
 
 .m-text3 {
-	font-family: Montserrat-Regular;
+
 	font-size: 16px;
 	color: white;
 	text-transform: uppercase;
 }
 
 .m-text4 {
-	font-family: Montserrat-Medium;
+
 	font-size: 30px;
 	color: #111111;
 	line-height: 1.2;
@@ -9200,7 +9191,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .m-text5 {
-	font-family: Montserrat-Bold;
+
 	font-size: 30px;
 	color: #222222;
 	line-height: 1.2;
@@ -9208,14 +9199,14 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .m-text6 {
-	font-family: Montserrat-Regular;
+
 	font-size: 16px;
 	color: #555555;
 	text-transform: uppercase;
 }
 
 .m-text7 {
-	font-family: Montserrat-Regular;
+
 	font-size: 16px;
 	color: #555555;
 	text-transform: uppercase;
@@ -9223,14 +9214,14 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .m-text8 {
-	font-family: Montserrat-Regular;
+
 	font-size: 16px;
 	color: #e65540;
 	text-transform: uppercase;
 }
 
 .m-text9 {
-	font-family: Montserrat-Bold;
+
 	font-size: 30px;
 	color: white;
 	line-height: 1.2;
@@ -9238,77 +9229,77 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .m-text10 {
-	font-family: Montserrat-Regular;
+
 	font-size: 18px;
 	color: #555555;
 	line-height: 1;
 }
 
 .m-text11 {
-	font-family: Montserrat-Medium;
+
 	font-size: 16px;
 	color: #333333;
 	line-height: 1.5;
 }
 
 .m-text12 {
-	font-family: Montserrat-Regular;
+
 	font-size: 18px;
 	color: #555555;
 	line-height: 1.5;
 }
 
 .m-text13 {
-	font-family: Montserrat-Regular;
+
 	font-size: 18px;
 	color: white;
 	line-height: 1.8;
 }
 
 .m-text14 {
-	font-family: Montserrat-Black;
+
 	font-size: 18px;
 	color: #333333;
 	line-height: 1.5;
 }
 
 .m-text15 {
-	font-family: Montserrat-Medium;
+
 	font-size: 18px;
 	color: #555555;
 	line-height: 1.5;
 }
 
 .m-text16 {
-	font-family: Montserrat-Regular;
+
 	font-size: 24px;
 	color: #222222;
 	line-height: 1.5;
 }
 
 .m-text17 {
-	font-family: Montserrat-Regular;
+
 	font-size: 30px;
 	color: #555555;
 	line-height: 1.2;
 }
 
 .m-text18 {
-	font-family: Montserrat-Regular;
+
 	font-size: 16px;
 	color: #666666;
 	line-height: 1.2;
 }
 
 .m-text19 {
-	font-family: Montserrat-Medium;
+
 	font-size: 16px;
 	color: #222222;
 	line-height: 1.5;
 }
 
 .m-text20 {
-	font-family: Montserrat-Bold;
+
 	font-size: 20px;
 	color: #333333;
 	line-height: 1.5;
@@ -9316,35 +9307,35 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .m-text21 {
-	font-family: Montserrat-Regular;
+
 	font-size: 18px;
 	color: #888888;
 	line-height: 1.5;
 }
 
 .m-text22 {
-	font-family: Montserrat-Bold;
+
 	font-size: 18px;
 	color: #555555;
 	line-height: 1.5;
 }
 
 .m-text23 {
-	font-family: Montserrat-Black;
+
 	font-size: 22px;
 	color: #333333;
 	line-height: 1.2;
 }
 
 .m-text24 {
-	font-family: Montserrat-Medium;
+
 	font-size: 26px;
 	color: #333333;
 	line-height: 1.3;
 }
 
 .m-text25 {
-	font-family: Montserrat-Bold;
+
 	font-size: 21px;
 	color: #333333;
 	line-height: 1.3;
@@ -9352,14 +9343,14 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .m-text26 {
-	font-family: Montserrat-Regular;
+
 	font-size: 25px;
 	color: #333333;
 	line-height: 1.2;
 }
 
 .m-text27 {
-	font-family: Montserrat-Regular;
+
 	font-size: 18px;
 	color: #888888;
 	line-height: 1.5;
@@ -9370,7 +9361,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 ///////////////////////////////////////////////////////////
 */
 .l-text1 {
-	font-family: Montserrat-Bold;
+
 	font-size: 50px;
 	color: white;
 	line-height: 1.2;
@@ -9379,7 +9370,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .l-text2 {
-	font-family: Montserrat-Bold;
+
 	font-size: 50px;
 	color: white;
 	line-height: 1.2;
@@ -9390,7 +9381,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 ///////////////////////////////////////////////////////////
 */
 .xl-text1 {
-	font-family: Poppins-Bold;
+
 	font-size: 60px;
 	color: white;
 	line-height: 1.2;
@@ -9399,7 +9390,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .xl-text2 {
-	font-family: Poppins-Black;
+
 	font-size: 80px;
 	color: white;
 	line-height: 1.2;
@@ -9408,7 +9399,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .xl-text3 {
-	font-family: Poppins-Bold;
+
 	font-size: 60px;
 	color: #111111;
 	line-height: 1.2;
@@ -10184,15 +10175,10 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 	box-sizing: border-box;
 }
 
-body, html {
-	height: 100%;
-	font-family: Montserrat-Regular, sans-serif;
-  font-weight: 400;
-}
 
 /* ------------------------------------ */
 a {
-	font-family: Montserrat-Regular;
+
   font-weight: 400;
 	font-size: 15px;
 	line-height: 1.7;
@@ -10219,7 +10205,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-	font-family: Montserrat-Regular;
+
 	font-size: 15px;
 	line-height: 1.7;
 	color: #888888;
@@ -10449,7 +10435,7 @@ iframe {
 /* in select */
 .select2-container .select2-selection--single .select2-selection__rendered {
   font-size: 13px;
-  font-family: Montserrat-Regular;
+
   line-height: 20px;
   color: #888888;
   padding-left: 0px ;
@@ -10516,14 +10502,14 @@ iframe {
 
 .select2-results__options {
   font-size: 13px;
-  font-family: Montserrat-Regular;
+
   color: #888888;
 }
 
 .select2-search--dropdown .select2-search__field {
   border: 1px solid #aaa;
   outline: none;
-  font-family: Montserrat-Regular;
+
   font-size: 13px;
   color: #888888;
 }
@@ -10672,7 +10658,7 @@ iframe {
 /* ------------------------------------ */
 .topbar-email,
 .topbar-child1 {
-  font-family: Montserrat-Regular;
+
   font-size: 13px;
   color: #888888;
   line-height: 1.7;
@@ -10765,7 +10751,7 @@ iframe {
 }
 
 .main_menu > li > a {
-  font-family: Montserrat-Regular;
+
   font-size: 15px;
   color: #333333;
   padding: 0;
@@ -10828,7 +10814,7 @@ li.sale-noti > a {
 
 .sub_menu li, .sub_menu a {
   padding: 10px;
-  font-family: Montserrat-Regular;
+
   font-size: 13px;
   color: white;
 }
@@ -10885,7 +10871,7 @@ li.sale-noti > a {
   border-radius: 50%;
   background-color: #111111;
   color: white;
-  font-family: Montserrat-Medium;
+
   font-size: 12px;
   position: absolute;
   top: 0;
@@ -10976,7 +10962,7 @@ li.sale-noti > a {
 
 .header-cart-item-img::after {
   content: '\e870';
-  font-family: Linearicons;
+
   font-size: 16px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -11011,7 +10997,7 @@ li.sale-noti > a {
 
 .header-cart-item-name {
   display: block;
-  font-family: Montserrat-Regular;
+
   font-size: 15px;
   color: #555555;
   line-height: 1.3;
@@ -11020,14 +11006,14 @@ li.sale-noti > a {
 
 .header-cart-item-info {
   display: block;
-  font-family: Montserrat-Regular;
+
   font-size: 12px;
   color: #888888;
   line-height: 1.5;
 }
 
 .header-cart-total {
-  font-family: Montserrat-Regular;
+
   font-size: 15px;
   color: #555555;
   line-height: 1.3;
@@ -11159,7 +11145,7 @@ li.sale-noti > a {
 
 .side-menu .main-menu > li > a {
   padding-left: 20px;
-  font-family: Montserrat-Regular;
+
   font-size: 15px;
   color: white;
   line-height: 2.86;
@@ -11197,7 +11183,7 @@ li.sale-noti > a {
 
 .side-menu .sub-menu a {
   padding-left: 20px;
-  font-family: Montserrat-Regular;
+
   font-size: 13px;
   color: #333333;
   line-height: 2.5;
@@ -11668,7 +11654,7 @@ li.sale-noti > a {
 
 .swal-button {
     background-color: #e65540;
-    font-family: Montserrat-Regular;
+
     font-size: 15px;
     color: white;
     text-transform: uppercase;
@@ -11689,7 +11675,7 @@ li.sale-noti > a {
 }
 
 .swal-title {
-  font-family: Montserrat-Medium;
+
   color: #333333;
   font-size: 16px;
   line-height: 1.5;
@@ -11697,7 +11683,7 @@ li.sale-noti > a {
 }
 
 .swal-text {
-  font-family: Montserrat-Regular;
+
   color: #333333;
   font-size: 15px;
   text-align: center;
@@ -11736,7 +11722,7 @@ li.sale-noti > a {
 .block2-labelnew::before
 {
   z-index: 100;
-  font-family: Montserrat-Regular;
+
   font-size: 12px;
   color: white;
   display: -webkit-box;
@@ -12049,7 +12035,7 @@ li.sale-noti > a {
 }
 
 .item-pagination {
-  font-family: Montserrat-Regular;
+
   font-size: 13px;
   color: #808080;
   width: 36px;
@@ -12192,7 +12178,7 @@ li.sale-noti > a {
 }
 
 .table-shopping-cart .table-head th {
-  font-family: Montserrat-Bold;
+
   font-size: 13px;
   color: #555555;
   line-height: 1.5;
@@ -12202,7 +12188,7 @@ li.sale-noti > a {
 }
 
 .table-shopping-cart td {
-  font-family: Montserrat-Regular;
+
   font-size: 16px;
   color: #555555;
   line-height: 1.5;
@@ -12227,7 +12213,7 @@ li.sale-noti > a {
 
 .cart-img-product::after {
   content: '\e870';
-  font-family: Linearicons;
+
   font-size: 16px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -12266,7 +12252,7 @@ li.sale-noti > a {
 
 .tag-item {
   display: block;
-  font-family: Montserrat-Regular;
+
   font-size: 13px;
   color: #888888;
   line-height: 1.5;
@@ -12308,7 +12294,7 @@ li.sale-noti > a {
   border-radius: 0px;
   border: none;
   border-bottom: 1px solid transparent;
-  font-family: Montserrat-Regular;
+
   font-size: 15px;
   color: #888888;
   line-height: 1.1;

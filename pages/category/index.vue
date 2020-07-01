@@ -9,7 +9,7 @@
                             <v-card-title>{{ category.category }}</v-card-title>
                         </v-img>
                     </v-card> -->
-            <v-col v-for="category in categories.data" :key="category.id" cols="3" md="3" style="cursor: pointer" @click="category_path(category.id)">
+            <v-col v-for="category in categories.data" :key="category.id" cols="3" md="3" style="cursor: pointer" @click="category_path(category)">
                 <v-hover v-slot:default="{ hover }">
                     <v-card :elevation="hover ? 12 : 2" :class="{ 'on-hover': hover }">
                         <v-img src="https://cdn.vuetifyjs.com/images/cards/docks.jpg" height="225px">
@@ -75,12 +75,15 @@ export default {
         addToWish(item) {
             $nuxt.$emit("WishListEvent", item);
         },
-        category_path(id) {
+        category_path(category) {
 
             this.$router.push({
-                path: '/category/' + id
+                path: this.buildUrl(category)
             });
         },
+        buildUrl(category) {
+          return '/category/' + this.$slugify(category.id, category.category)
+        }
     },
     beforeRouteLeave(to, from, next) {
         // $nuxt.$emit("progressEvent");

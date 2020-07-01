@@ -81,6 +81,9 @@ export default {
                 path: '/category/' + id
             });
         },
+        buildUrl(category) {
+          return '/category/' + this.$slugify(category.id, category.category)
+        }
     },
     mounted() {
 
