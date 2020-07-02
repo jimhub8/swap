@@ -199,3 +199,24 @@ body, .v-application {
 .navbar-dark .navbar-nav .nav-link {
   color: rgba(255, 255, 255, 0.5) !important;
 }
+
+
+.v-overlay--active {
+    opacity: .8 !important;
+}
+
+.v-overlay__scrim {
+  opacity: 1 !important;
+}
+
+.v-application ul, .v-application ol {
+  color: #333 !important;
+}
+
+.v-application .pt-6 {
+  text-align: center;
+}
+
+h1 {
+  font-weight: normal !important;
+}

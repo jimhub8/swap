@@ -24,7 +24,7 @@
                                             </template>
                                             <span>Quick preview</span>
                                         </v-tooltip>
-                                        <nuxt-link :to="'/shop/' + product.id">
+                                        <nuxt-link :to="buildUrl(product)">
                                             <v-tooltip bottom>
                                                 <template v-slot:activator="{ on }">
                                                     <v-btn icon v-on="on">
@@ -100,6 +100,9 @@ export default {
         addToWish(wish) {
             $nuxt.$emit("WishListEvent", wish);
         },
+        buildUrl(product) {
+          return '/shop/' + this.$slugify(product.id, product.product_name)
+        }
     },
     computed: {
         chunkedItems() {

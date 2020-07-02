@@ -45,7 +45,7 @@
                                 <v-card-text class="pt-6" style="position: relative;">
                                     <h1>{{ item.product_name }}</h1>
                                     <div class="font-weight-light title mb-2">
-                                        {{ item.price }}
+                                       KES {{ item.price }}
                                     </div>
                                 </v-card-text>
                             </nuxt-link>

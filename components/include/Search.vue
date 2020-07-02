@@ -5,7 +5,7 @@
         <ais-search-box @focus="showMenu(true)" id="myInput" />
         <!-- <ais-search-box @focus="showMenu"  @blur="show_menu = false"/> -->
         <el-card class="box-card" v-show="show_menu" style="max-height: 80vh;overflow: scroll;">
-        <ais-stats style="color: #fff" v-show="show_menu" />
+            <ais-stats style="color: #fff" v-show="show_menu" />
             <!-- <v-card v-show="show_menu" style="width: 90%"> -->
             <!-- <ais-refinement-list attribute="brand" /> -->
             <ais-hits>
@@ -15,7 +15,7 @@
                     <ais-highlight attribute="brand" :hit="item" />
                 </p> -->
                     <ul class="list-group">
-                        <nuxt-link :to="'/shop/' + item.id">
+                        <nuxt-link :to="buildUrl(item)">
                             <li class="list-group-item" style="cursor: pointer" @click="showMenu(false)">
                                 <span style="float: left">
                                     <img v-if="item.images.length > 0" style="width:60px" :src="item.images[0].image" />
@@ -79,6 +79,9 @@ export default {
         },
         Productdetails(data) {
             $nuxt.$emit('Productdetails', data)
+        },
+        buildUrl(product) {
+          return '/shop/' + this.$slugify(product.id, product.product_name)
         }
     },
     mounted() {
@@ -155,8 +158,9 @@ li {
     .ais-SearchBox button:not(:disabled) {
         display: none;
     }
+
     .ais-Stats {
-      color: #000 !important;
+        color: #000 !important;
     }
 }
 </style>
