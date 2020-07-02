@@ -99,7 +99,7 @@
                                 </div>
 
                                 <div class="block2-txt p-t-20">
-                                    <nuxt-link :to="'/shop/' + product.id">
+                                    <nuxt-link :to="buildUrl(product)">
                                         <button class="block2-name dis-block s-text3 p-b-5">{{ product.product_name }}</button>
                                         <span class="block2-price m-text6 p-r-5">{{ product.price }}</span>
                                     </nuxt-link>
@@ -254,6 +254,9 @@ export default {
         addToWish(item) {
             $nuxt.$emit("WishListEvent", item);
         },
+        buildUrl(product) {
+          return '/shop/' + this.$slugify(product.id, product.product_name)
+        }
     },
     mounted() {
 

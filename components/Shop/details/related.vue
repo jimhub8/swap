@@ -43,7 +43,7 @@
                                 <!-- <v-btn absolute color="orange" class="white--text" fab large right top  @click="addToCart(item)">
                                 <v-icon>shopping_cart</v-icon>
                             </v-btn> -->
-                                <nuxt-link :to="'/shop/' + item.id">
+                                <nuxt-link :to="buildUrl(item)">
                                     <div class="font-weight-light grey--text title mb-2">{{ item.product_name }}</div>
                                     <div class="font-weight-light title mb-2">
                                         {{ item.price }}
@@ -157,6 +157,9 @@ export default {
         },
         wishList(item) {
             $nuxt.$emit("WishListEvent", item);
+        },
+        buildUrl(product) {
+          return '/shop/' + this.$slugify(product.id, product.product_name)
         }
     },
 }
