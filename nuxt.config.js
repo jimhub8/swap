@@ -17,6 +17,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/logo.jpg' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Montserrat&display=swap' },
       // { rel: 'stylesheet', href: 'http://dellmat.jim/css/all.css' },
 
       // { rel: 'stylesheet', href: 'http://bootstrap-ecommerce.com/bootstrap-ecommerce-html/css/ui.css' },
@@ -27,8 +28,7 @@ export default {
       // { rel: 'script', href: 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js' },
       // { rel: 'script', href: 'http://dellmat.jim/js/main.min.js' },
       // { rel: 'script', href: 'http://bootstrap-ecommerce.com/bootstrap-ecommerce-html/js/bootstrap.bundle.min.js' },
-      // { rel: 'script', href: 'http://bootstrap-ecommerce.com/bootstrap-ecommerce-html/js/script.js' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Montserrat&display=swap' },
+      { rel: 'script', href: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' },
 
 
     ]
