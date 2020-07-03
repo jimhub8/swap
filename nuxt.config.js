@@ -12,8 +12,13 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: "google-site-verification", content: "9nICd7bfcFZ7SaJjQGo5l_mMs_n_pXY68ZsRg6r9m2M"},
+      { name: "google-site-verification", content: "9nICd7bfcFZ7SaJjQGo5l_mMs_n_pXY68ZsRg6r9m2M" },
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+    ],
+    script: [
+      { src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', 'data-ad-client': "ca-pub-1017484296147530", async: true },
+      { src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js' },
+      { src: 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/logo.jpg' },
@@ -23,14 +28,13 @@ export default {
       // { rel: 'stylesheet', href: 'http://bootstrap-ecommerce.com/bootstrap-ecommerce-html/css/ui.css' },
       // { rel: 'stylesheet', href: 'http://bootstrap-ecommerce.com/bootstrap-ecommerce-html/css/responsive.css' },
 
-      { rel: 'script', href: 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js' },
-      { rel: 'script', href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js' },
+      // { rel: 'script', href: 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js' },
+      // { rel: 'script', href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js' },
       // { rel: 'script', href: 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js' },
       // { rel: 'script', href: 'http://dellmat.jim/js/main.min.js' },
       // { rel: 'script', href: 'http://bootstrap-ecommerce.com/bootstrap-ecommerce-html/js/bootstrap.bundle.min.js' },
-      { rel: 'script', href: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' },
 
-
+      // https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
     ]
   },
   /*
@@ -55,7 +59,7 @@ export default {
     '~/plugins/vue-lazyload',
     '~/plugins/slugify',
     '~/plugins/vue-session',
-    {src: '~/plugins/instantSearch.js', ssr: false},
+    { src: '~/plugins/instantSearch.js', ssr: false },
 
 
   ],
@@ -172,28 +176,28 @@ export default {
     id: "UA-169626171-1",
     dev: true
   },
-/*
-  sitemap: {
-    path: '/sitemap.xml',
-    hostname: 'https://swapstore.co.ke',
-    cacheTime: 1000 * 60 * 15,
-    gzip: true,
-    generate: false,
-    routes: [
-      '/',
-      '/shop',
-      '/category',
-      '/cart',
-      '/checkout',
-      '/privacy',
-      '/account',
-    ].map(route => ({
-      url: route,
-      changefreq: 'monthly',
-      priority: 1,
-      lastmodISO: new Date().toISOString().split('T')[0]
-    }))
-  },*/
+  /*
+    sitemap: {
+      path: '/sitemap.xml',
+      hostname: 'https://swapstore.co.ke',
+      cacheTime: 1000 * 60 * 15,
+      gzip: true,
+      generate: false,
+      routes: [
+        '/',
+        '/shop',
+        '/category',
+        '/cart',
+        '/checkout',
+        '/privacy',
+        '/account',
+      ].map(route => ({
+        url: route,
+        changefreq: 'monthly',
+        priority: 1,
+        lastmodISO: new Date().toISOString().split('T')[0]
+      }))
+    },*/
 
   sitemap: {
     path: '/sitemap.xml',
