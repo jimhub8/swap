@@ -151,19 +151,39 @@ export default {
         },
 
         get_cart_total() {
+            if (this.$store.state.auth.loggedIn) {
+                var cookie_id = this.$store.state.auth.user.id
+            } else {
+                var rString = this.randomString(15, '0123456789');
+                if (this.$cookie.get('cart_session') == null) {
+                    this.$cookie.set('cart_session', rString);
+                }
+                var cookie_id = this.$cookie.get('cart_session')
+            }
             var payload = {
                 model: 'cart_total',
+                id: cookie_id,
                 update: 'updateCartTotalList',
             }
-            this.$store.dispatch('getItems', payload)
+            this.$store.dispatch('getItem', payload)
         },
         get_cart_count() {
+            if (this.$store.state.auth.loggedIn) {
+                var cookie_id = this.$store.state.auth.user.id
+            } else {
+                var rString = this.randomString(15, '0123456789');
+                if (this.$cookie.get('cart_session') == null) {
+                    this.$cookie.set('cart_session', rString);
+                }
+                var cookie_id = this.$cookie.get('cart_session')
+            }
 
             var payload = {
                 model: 'cart_count',
+                id: cookie_id,
                 update: 'updateCartCountList',
             }
-            this.$store.dispatch('getItems', payload)
+            this.$store.dispatch('getItem', payload)
 
             // var payload = {
             //     model: 'cart_count',
