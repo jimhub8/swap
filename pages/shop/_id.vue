@@ -109,11 +109,31 @@ export default {
 
     head() {
         return {
-            title: 'Swap - ' + this.product.product_name,
+            title: this.product.product_name + ' | Swap',
             meta: [{
-                hid: 'description',
-                name: 'description123',
+                hid: 'og:description',
+                name: 'og:description',
                 content: this.product.short_description
+            },{
+                hid: 'twitter:title',
+                name: 'twitter:title',
+                content: this.product.product_name
+            },{
+                hid: 'og:title',
+                name: 'og:title',
+                content: this.product.product_name
+            },{
+                hid: 'twitter:image',
+                name: 'twitter:image',
+                content: this.product.image
+            },{
+                hid: 'product:price:amount',
+                name: 'product:price:amount',
+                content: this.product.price
+            },{
+                hid: 'twitter:description',
+                name: 'twitter:description',
+                content: this.product.description
             }]
         }
     },

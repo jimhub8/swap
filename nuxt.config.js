@@ -13,7 +13,7 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: "google-site-verification", content: "9nICd7bfcFZ7SaJjQGo5l_mMs_n_pXY68ZsRg6r9m2M" },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'og:site_name', name: 'og:site_name', content:  'Swap Store' },
     ],
     script: [
       { src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', 'data-ad-client': "ca-pub-1017484296147530", async: true },
@@ -23,18 +23,6 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/logo.jpg' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Montserrat&display=swap' },
-      // { rel: 'stylesheet', href: 'http://dellmat.jim/css/all.css' },
-
-      // { rel: 'stylesheet', href: 'http://bootstrap-ecommerce.com/bootstrap-ecommerce-html/css/ui.css' },
-      // { rel: 'stylesheet', href: 'http://bootstrap-ecommerce.com/bootstrap-ecommerce-html/css/responsive.css' },
-
-      // { rel: 'script', href: 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js' },
-      // { rel: 'script', href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js' },
-      // { rel: 'script', href: 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js' },
-      // { rel: 'script', href: 'http://dellmat.jim/js/main.min.js' },
-      // { rel: 'script', href: 'http://bootstrap-ecommerce.com/bootstrap-ecommerce-html/js/bootstrap.bundle.min.js' },
-
-      // https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
     ]
   },
   /*
@@ -199,17 +187,62 @@ export default {
       }))
     },*/
 
+  // sitemap: {
+  //   path: '/sitemap.xml',
+  //   hostname: process.env.BASE_URL,
+  //   cacheTime: 1000 * 60 * 15,
+  //   gzip: true,
+  //   generate: false,
+  //   routes: async () => {
+  //     // let apiUrl = process.env.API_URL || 'http://admin.jim/api/'
+  //     let apiUrl = process.env.API_URL || 'https://seller.swapstore.co.ke/api/'
+  //     const { data } = await axios.get(`${apiUrl}products`)
+  //     return data.data.map(v => `/shop/${v.product_name}-${v.id}`)
+  //   }
+  // }
+
+
   sitemap: {
+
     path: '/sitemap.xml',
     hostname: process.env.BASE_URL,
     cacheTime: 1000 * 60 * 15,
     gzip: true,
     generate: false,
-    routes: async () => {
-      // let apiUrl = process.env.API_URL || 'http://admin.jim/api/'
-      let apiUrl = process.env.API_URL || 'https://seller.swapstore.co.ke/api/'
-      const { data } = await axios.get(`${apiUrl}products`)
-      return data.data.map(v => `/shop/${v.product_name}-${v.id}`)
-    }
+    sitemaps: [
+      {
+        path: '/sitemap/sitemap.xml',
+      },
+      {
+        path: '/products/sitemap.xml',
+        exclude: ['/account', '/Cart', '/category', '/checkout', '/faq', '/login', '/privacy', '/register', '/shop', '/subcategories', '/Thankyou', '/vendor', '/Carousel', '/'],
+        routes: async () => {
+            // let apiUrl = process.env.API_URL || 'http://admin.jim/api/'
+            let apiUrl = process.env.API_URL || 'https://seller.swapstore.co.ke/api/'
+            const { data } = await axios.get(`${apiUrl}products`)
+            return data.data.map(v => `/shop/${v.product_name}-${v.id}`)
+          }
+      },
+      {
+        path: '/categories/sitemap.xml',
+        exclude: ['/account', '/Cart', '/category', '/checkout', '/faq', '/login', '/privacy', '/register', '/shop', '/subcategories', '/Thankyou', '/vendor', '/Carousel', '/'],
+        routes: async () => {
+            // let apiUrl = process.env.API_URL || 'http://admin.jim/api/'
+            let apiUrl = process.env.API_URL || 'https://seller.swapstore.co.ke/api/'
+            const { data } = await axios.get(`${apiUrl}categories`)
+            return data.data.map(v => `/category/${v.category}-${v.id}`)
+          }
+      },
+      {
+        path: '/subcategories/sitemap.xml',
+        exclude: ['/account', '/Cart', '/category', '/checkout', '/faq', '/login', '/privacy', '/register', '/shop', '/subcategories', '/Thankyou', '/vendor', '/Carousel', '/'],
+        routes: async () => {
+            // let apiUrl = process.env.API_URL || 'http://admin.jim/api/'
+            let apiUrl = process.env.API_URL || 'https://seller.swapstore.co.ke/api/'
+            const { data } = await axios.get(`${apiUrl}subcategories`)
+            return data.data.map(v => `/subcategories/${v.subcategory}-${v.id}`)
+          }
+      },
+    ]
   }
 }

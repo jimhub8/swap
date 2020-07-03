@@ -140,10 +140,26 @@ export default {
     },
     head() {
         return {
-            title: 'Swap - ' + this.category.category,
+            title: this.category.category + ' | Swap',
             meta: [{
                 hid: 'description',
                 name: 'description',
+                content: this.category.description
+            },{
+                hid: 'og:description',
+                name: 'og:description',
+                content: this.category.description
+            },{
+                hid: 'twitter:title',
+                name: 'twitter:title',
+                content: this.category.category
+            },{
+                hid: 'og:title',
+                name: 'og:title',
+                content: this.category.category
+            },{
+                hid: 'twitter:description',
+                name: 'twitter:description',
                 content: this.category.description
             }]
         }
