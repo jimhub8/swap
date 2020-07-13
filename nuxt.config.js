@@ -37,6 +37,7 @@ export default {
     '~/assets/css/all.css',
     '~/assets/css/responsive.css',
     '~/assets/css/main.css',
+    '~/assets/css/theme.css',
   ],
 
   /*
@@ -82,8 +83,8 @@ export default {
   // http://admin.jim/api/auth/login
   axios: {
     // baseURL: process.env.API_URL
-    // baseURL: 'http://admin.jim'
-    baseURL: 'https://seller.swapstore.co.ke'
+    baseURL: 'http://admin.jim'
+    // baseURL: 'https://www.seller.swapstore.co.ke'
   },
 
   // auth: {
@@ -195,7 +196,7 @@ export default {
   //   generate: false,
   //   routes: async () => {
   //     // let apiUrl = process.env.API_URL || 'http://admin.jim/api/'
-  //     let apiUrl = process.env.API_URL || 'https://seller.swapstore.co.ke/api/'
+  //     let apiUrl = process.env.API_URL || 'https://www.seller.swapstore.co.ke/api/'
   //     const { data } = await axios.get(`${apiUrl}products`)
   //     return data.data.map(v => `/shop/${v.product_name}-${v.id}`)
   //   }
@@ -218,7 +219,7 @@ export default {
         exclude: ['/account', '/Cart', '/category', '/checkout', '/faq', '/login', '/privacy', '/register', '/shop', '/subcategories', '/Thankyou', '/vendor', '/Carousel', '/'],
         routes: async () => {
             // let apiUrl = process.env.API_URL || 'http://admin.jim/api/'
-            let apiUrl = process.env.API_URL || 'https://seller.swapstore.co.ke/api/'
+            let apiUrl = process.env.API_URL || 'https://www.seller.swapstore.co.ke/api/'
             const { data } = await axios.get(`${apiUrl}products`)
             return data.data.map(v => `/shop/${v.product_name}-${v.id}`)
           }
@@ -228,7 +229,7 @@ export default {
         exclude: ['/account', '/Cart', '/category', '/checkout', '/faq', '/login', '/privacy', '/register', '/shop', '/subcategories', '/Thankyou', '/vendor', '/Carousel', '/'],
         routes: async () => {
             // let apiUrl = process.env.API_URL || 'http://admin.jim/api/'
-            let apiUrl = process.env.API_URL || 'https://seller.swapstore.co.ke/api/'
+            let apiUrl = process.env.API_URL || 'https://www.seller.swapstore.co.ke/api/'
             const { data } = await axios.get(`${apiUrl}categories`)
             return data.data.map(v => `/category/${v.category}-${v.id}`)
           }
@@ -237,8 +238,8 @@ export default {
         path: '/subcategories/sitemap.xml',
         exclude: ['/account', '/Cart', '/category', '/checkout', '/faq', '/login', '/privacy', '/register', '/shop', '/subcategories', '/Thankyou', '/vendor', '/Carousel', '/'],
         routes: async () => {
-            // let apiUrl = process.env.API_URL || 'http://admin.jim/api/'
-            let apiUrl = process.env.API_URL || 'https://seller.swapstore.co.ke/api/'
+            let apiUrl = process.env.API_URL || 'http://admin.jim/api/'
+            // let apiUrl = process.env.API_URL || 'https://www.seller.swapstore.co.ke/api/'
             const { data } = await axios.get(`${apiUrl}subcategories`)
             return data.data.map(v => `/subcategories/${v.subcategory}-${v.id}`)
           }

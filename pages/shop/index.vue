@@ -149,6 +149,29 @@ export default {
         myFilter,
         myVariants
     },
+
+    head() {
+        return {
+            title: 'Swap - Home',
+            meta: [{
+                hid: 'og:title',
+                name: 'og:title',
+                content: 'Products'
+            },{
+                hid: 'description',
+                name: 'description',
+                content: process.env.META_CONTENT
+            },{
+                hid: 'og:description',
+                name: 'og:description',
+                content: "Free delivery on millions of items with Swap. Low prices across earth's biggest selection of electronics, computers, software, apparel & accessories, shoes, jewelry, tools & hardware, housewares, furniture, sporting goods, beauty & personal care, groceries & just about anything else"
+            },{
+                hid: 'keywords',
+                name: 'keywords',
+                content: 'Swap, Online Shopping, Electronics, Video Games, Computers, Cell Phones, Toys, Games, Apparel, Accessories, Shoes, Jewelry, Watches, Office, Sports & Outdoors, Sporting Goods, Babies, Health, Personal Care, Beauty, Home, Garden, Bed & Bath, Furniture, Tools, Vacuums, Outdoor Living, Automotive Parts'
+            },]
+        }
+    },
     data() {
         return {
             placeholder: process.env.PLACEHOLDER_URL,

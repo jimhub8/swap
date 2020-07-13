@@ -19,6 +19,8 @@ import '../assets/css/responsive.css'
 
 import '../assets/css/main.css'
 
+import '../assets/css/theme.css'
+
 import '../node_modules/material-design-icons/iconfont/material-icons.css'
 
 import _6f6c098b from '../layouts/default.vue'

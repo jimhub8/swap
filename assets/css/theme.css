@@ -1,0 +1,14 @@
+.elementor-2349 .elementor-element.elementor-element-999f79f {
+  margin-top: 0;
+  margin-bottom: 48px;
+}
+.elementor-section {
+  position: relative;
+}
+.elementor *, .elementor :after, .elementor :before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
