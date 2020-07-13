@@ -221,3 +221,33 @@ h1 {
   font-weight: normal !important;
 }
 
+
+.v-tooltip__content {
+  background: rgba(0, 0, 0, 0.9) !important;
+}
+.v-tooltip__content span {
+  font-size: 10px !important;
+}
+
+.slick-slide>.row-item>* {
+  height: 400px !important;
+}
+.product-item .thumb-link.hover-zoom figure {
+  height: 240px !important;
+}
+
+#slider .el-carousel__item {
+  height: 400px !important;
+}
+
+.border-bottom {
+  border-bottom: none !important;
+}
+
+.brand-wrap .logo, .navbar-brand .logo {
+  max-height: 95px !important;
+}
+
+.entry-summary .added_to_cart:not(:last-child), .entry-summary .single_add_to_cart_button:not(:last-child), .entry-summary .yith-wcwl-add-to-wishlist:not(:last-child), .entry-summary a.compare:not(:last-child), .v-btn:not(.v-btn--round).v-size--default, .theme--dark.v-btn.v-btn--icon {
+text-decoration:  none;
+}

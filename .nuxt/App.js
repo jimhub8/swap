@@ -17,9 +17,11 @@ import '../assets/css/all.css'
 
 import '../assets/css/responsive.css'
 
-import '../assets/css/main.css'
-
 import '../assets/css/theme.css'
+
+import '../assets/css/theme_2.css'
+
+import '../assets/css/main.css'
 
 import '../node_modules/material-design-icons/iconfont/material-icons.css'
 

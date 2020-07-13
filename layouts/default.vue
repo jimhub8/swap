@@ -9,7 +9,7 @@
         <transition name="fade">
             <nuxt />
         </transition>
-        <myFooter />
+        <!-- <myFooter /> -->
     </v-app>
 </div>
 </template>

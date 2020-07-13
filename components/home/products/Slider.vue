@@ -1,69 +1,88 @@
 <template>
-<div>
-    <img src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-01.jpg" style="margin: 20px 0 20px -30px; width: 100vw; height: 300px" />
+<div id="slider"> <img src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-01.jpg" style="margin: 20px 0 20px -30px; width: 100vw; height: 300px" />
     <!-- <img id="banner_img" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-01.jpg" /> -->
 
     <div class="box-title" style="margin: 30px 0;">
         <h3><span>Trending items</span></h3>
     </div>
-    <el-carousel :interval="5000" arrow="always">
+    <el-carousel indicator-position="outside" style="height: 550px">
         <el-carousel-item v-for="(item, index) in chunkedItems" :key="index">
-            <v-row>
-                <v-col v-for="product in item" :key="product.id" cols="12" sm="12" md="3" lg="3">
-                    <v-hover v-slot:default="{ hover }">
-                        <v-card class="mx-auto" color="grey lighten-4" max-width="800">
-                            <v-img :aspect-ratio="16/9" :src="product.image" lazy-src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" height="300px">
-                                <v-btn color="primary" text>{{ product.product_name }}</v-btn>
-                                <v-expand-transition>
-                                    <div v-if="hover" class="d-flex transition-fast-in-fast-out black darken-2 v-card--reveal display-3 white--text" style="height: 100%;">
-                                        <v-tooltip bottom>
-                                            <template v-slot:activator="{ on }">
-                                                <v-btn icon v-on="on" @click="product_view(product)">
-                                                    <v-icon color="primary">visibility</v-icon>
-                                                </v-btn>
-                                            </template>
-                                            <span>Quick preview</span>
-                                        </v-tooltip>
-                                        <nuxt-link :to="buildUrl(product)">
-                                            <v-tooltip bottom>
-                                                <template v-slot:activator="{ on }">
-                                                    <v-btn icon v-on="on">
-                                                        <v-icon color="primary">mdi-view-array</v-icon>
-                                                    </v-btn>
-                                                </template>
-                                                <span>Go to product</span>
-                                            </v-tooltip>
-                                        </nuxt-link>
 
-                                        <v-tooltip bottom>
-                                            <template v-slot:activator="{ on }">
-                                                <v-btn icon v-on="on" @click="addToCart(product)">
-                                                    <v-icon color="primary">shopping_cart</v-icon>
-                                                </v-btn>
-                                            </template>
-                                            <span>add to cart</span>
-                                        </v-tooltip>
+            <div class="tab-panel active" id="tab-fd608df-5f0c145939c26">
+                <div data-id="products_fd608df_5f0c145939c25" class="ovic-products   style-14">
+                    <div class="woocommerce columns-3 ">
+                        <ul class="products recent_products equal-container better-height product-list-owl owl-slick rows-space-30 slick-initialized slick-slider">
+                            <div class="slick-list draggable">
+                                <div class="slick-track" style="opacity: 1; width: 1560px; transform: translate3d(0px, 0px, 0px);">
+                                    <div class="slick-slide slick-current slick-active first-slick" data-slick-index="0" aria-hidden="false" tabindex="0" style="margin-right: 30px; width: 258px;" v-for="product in item" :key="product.id">
+                                        <div class="row-item">
+                                            <li data-product_id="4446" class="product-item style-14 short-title product type-product post-4446 status-publish first instock product_cat-brid product_cat-pets product_tag-pets has-post-thumbnail shipping-taxable purchasable product-type-simple" style="width: 100%; display: inline-block;">
+                                                <div class="product-inner">
+                                                    <div class="product-thumb">
+                                                        <div class="thumb-wrapper">
+                                                            <nuxt-link :to="buildUrl(product)" class="thumb-link hover-zoom woocommerce-product-gallery__image" tabindex="0">
+                                                                <figure class="primary-thumb"><img width="228" height="228" :src="product.image" class="attachment-228x228 size-228x228 wp-post-image" alt=""></figure>
+                                                            </nuxt-link>
+                                                        </div>
+                                                        <div class="group-button">
+                                                            <v-tooltip bottom>
+                                                                <template v-slot:activator="{ on }">
+                                                                    <v-btn icon v-on="on" @click="product_view(product)">
+                                                                        <v-icon color="primary">mdi-magnify</v-icon>
+                                                                    </v-btn>
+                                                                </template>
+                                                                <span>Quick View</span>
+                                                            </v-tooltip>
+                                                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-4446  wishlist-fragment on-first-load">
+
+                                                                <v-tooltip bottom>
+                                                                    <template v-slot:activator="{ on }">
+                                                                        <v-btn icon v-on="on">
+                                                                            <v-icon color="primary">favorite</v-icon>
+                                                                        </v-btn>
+                                                                    </template>
+                                                                    <span>add to wish list</span>
+                                                                </v-tooltip>
+                                                                <!-- COUNT TEXT -->
+
+                                                            </div>
+                                                            <span>
+                                                                <v-tooltip bottom>
+                                                                    <template v-slot:activator="{ on }">
+                                                                        <v-btn icon v-on="on" @click="addToCart(product)">
+                                                                            <v-icon color="primary">mdi-cart</v-icon>
+                                                                        </v-btn>
+                                                                    </template>
+                                                                    <span>Add to cart</span>
+                                                                </v-tooltip>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-info equal-elem" style="height: 71px;">
+                                                        <h2 class="product-title">
+                                                            <nuxt-link :to="buildUrl(product)">
+                                                                {{ product.product_name }}
+                                                            </nuxt-link>
+                                                        </h2>
+                                                        <div class="star-rating-wrap">
+                                                            <div class="star-rating" role="img" aria-label="Rated 5.00 out of 5"><span style="width:100%">Rated <strong class="rating">5.00</strong> out of 5</span></div><strong class="rating">(01)</strong>
+                                                        </div>
+                                                        <span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">KSH</span>{{ product.price }}</span></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </div>
+
                                     </div>
-                                </v-expand-transition>
-                            </v-img>
-                            <!-- <v-card-text class="pt-6" style="position: relative;">
-                                <div style="cursor: pointer" class="font-weight-light grey--text title mb-2" @click="Productdetails(product.id)">{{ product.product_name }}</div>
-                                <div class="font-weight-light title mb-2">
-                                    {{ product.price }}
+
                                 </div>
-                            </v-card-text> -->
-                        </v-card>
-                    </v-hover>
-
-                </v-col>
-            </v-row>
-
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </el-carousel-item>
     </el-carousel>
-    <div>
-        <!-- {{ length_val }} -->
-
-    </div>
 </div>
 </template>
 
@@ -101,7 +120,7 @@ export default {
             $nuxt.$emit("WishListEvent", wish);
         },
         buildUrl(product) {
-          return '/shop/' + this.$slugify(product.id, product.product_name)
+            return '/shop/' + this.$slugify(product.id, product.product_name)
         }
     },
     computed: {

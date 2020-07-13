@@ -23,6 +23,9 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/logo.jpg' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Montserrat&display=swap' },
+      // { rel: 'stylesheet', href: 'https://armania.b-cdn.net/wp-content/themes/armania/assets/css/style.min.css?ver=1.0.4' },
+      // { rel: 'stylesheet', href: 'https://armania.b-cdn.net/wp-content/uploads/elementor/css/post-4002.css?ver=1593868108' },
+      // { rel: 'stylesheet', href: 'https://armania.b-cdn.net/wp-content/plugins/ovic-addon-toolkit/assets/3rd-party/slick/slick.min.css?ver=1.0.1' },
     ]
   },
   /*
@@ -36,8 +39,9 @@ export default {
     '@/assets/sass/app.scss',
     '~/assets/css/all.css',
     '~/assets/css/responsive.css',
-    '~/assets/css/main.css',
     '~/assets/css/theme.css',
+    '~/assets/css/theme_2.css',
+    '~/assets/css/main.css',
   ],
 
   /*

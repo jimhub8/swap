@@ -25,110 +25,60 @@
 
                     <!-- Product -->
                     <div class="row" v-if="products.data.length > 0">
-                        <div class="col-sm-12 col-md-6 col-lg-4 p-b-50" v-for="(product, index) in products.data" :key="index">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew" v-if="product.new_product === 1">
-                                    <!-- <img :src="product.image" @error="imageUrlAlt"> -->
-                                    <img v-lazy="product.image" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" alt=" " />
 
-                                    <div class="block2-overlay trans-0-4">
-                                        <v-tooltip bottom v-if="product.wish_list === 1" style="margin-left: 90%;">
-                                            <template v-slot:activator="{ on, attrs }">
-                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4" style="margin-top: -20px;float: right;">
-                                                    <v-icon color="grey lighten-1">mdi-heart</v-icon>
-                                                </v-btn>
-                                            </template>
-                                            <span>Add to Wish list</span>
-                                        </v-tooltip>
 
-                                        <v-tooltip bottom style="margin-left: 90%;" v-else>
-                                            <template v-slot:activator="{ on, attrs }">
-                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4" style="margin-top: -20px;float: right;">
-                                                    <v-icon color="grey lighten-1">mdi-heart</v-icon>
-                                                </v-btn>
-                                            </template>
-                                            <span>Add to Wish list</span>
-                                        </v-tooltip>
-
-                                        <div class="block2-btn-addcart w-size1 trans-0-4" style="text-align: center;">
-
-                                            <v-tooltip top>
-                                                <template v-slot:activator="{ on, attrs }">
-                                                    <v-btn icon v-bind="attrs" v-on="on" @click="addToCart(product)">
-                                                        <v-icon color="grey lighten-1">mdi-cart</v-icon>
-                                                    </v-btn>
-                                                </template>
-                                                <span>Add to Cart</span>
-                                            </v-tooltip>
+                        <ul class="products shop-page response-content columns-3 ovic-products style-15 equal-container better-height">
+                            <li data-product_id="3510" class="product-item style-15 short-title product type-product post-3510 status-publish first instock product_cat-cbd-oil-valey product_cat-medicine product_tag-medicine has-post-thumbnail shipping-taxable purchasable product-type-simple" v-for="(product, index) in products.data" :key="index">
+                                <div class="product-inner">
+                                    <div class="product-thumb">
+                                        <div class="thumb-wrapper">
+                                            <nuxt-link :to="buildUrl(product)">
+                                                <figure class="primary-thumb">
+                                                    <img v-lazy="product.image" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" :alt="product.product_name" width="320" height="320" style="display: inline;" /></figure>
+                                            </nuxt-link>
+                                        </div>
+                                        <div class="group-button">
+                                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-3510  wishlist-fragment on-first-load">
+                                                <div class="yith-wcwl-add-button">
+                                                    <a href="#" rel="nofollow" data-product-id="3510" data-product-type="simple" data-original-product-id="3510" class="add_to_wishlist single_add_to_wishlist" data-title="Wishlist" data-original-title="" title="">
+                                                        <v-icon>mdi-heart</v-icon><span>Wishlist</span>
+                                                    </a></div>
+                                            </div>
+                                            <!-- <a href="#" class="button yith-wcqv-button" title="">Quick View</a> -->
+                                        </div>
+                                    </div>
+                                    <div class="product-info equal-elem" style="height: 83px;">
+                                        <h2 class="product-title">
+                                            <nuxt-link :to="buildUrl(product)">
+                                                {{ product.product_name }}
+                                            </nuxt-link>
+                                        </h2>
+                                        <div class="box-wrap">
+                                            <div class="box-left">
+                                                <div class="star-rating-wrap">
+                                                    <div class="star-rating" role="img" aria-label="Rated 4.00 out of 5"><span style="width:80%">Rated <strong class="rating">4.00</strong> out of 5</span></div>
+                                                    <strong class="rating">(01)</strong>
+                                                </div>
+                                                <span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">KSH </span>{{ product.price }}</span></span>
+                                            </div>
+                                            <span class="add-to-cart" data-title="Add to cart">
+                                              <a href="#" class="button product_type_simple" rel="nofollow" @click="addToCart(product)">
+                                                <v-icon>mdi-cart</v-icon>
+                                                Add to cart</a>
+                                              </span>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative" v-else>
-
-                                    <img v-lazy="product.image" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" alt=" " />
-                                    <!-- <img :src="product.image" @error="imageUrlAlt"> -->
-
-                                    <div class="block2-overlay trans-0-4">
-
-                                        <v-tooltip bottom v-if="product.wish_list === 1" style="margin-left: 90%;">
-                                            <template v-slot:activator="{ on, attrs }">
-                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4" style="margin-top: -20px;float: right;">
-                                                    <v-icon color="grey lighten-1">mdi-heart</v-icon>
-                                                </v-btn>
-                                            </template>
-                                            <span>Add to Wish list</span>
-                                        </v-tooltip>
-
-                                        <v-tooltip bottom style="margin-left: 90%;" v-else>
-                                            <template v-slot:activator="{ on, attrs }">
-                                                <v-btn icon v-bind="attrs" v-on="on" @click="addToWish(product.id)" class="mx-0 block2-btn-addwishlist hov-pointer trans-0-4" style="margin-top: -20px;float: right;">
-                                                    <v-icon color="grey lighten-1">mdi-heart</v-icon>
-                                                </v-btn>
-                                            </template>
-                                            <span>Add to Wish list</span>
-                                        </v-tooltip>
-
-                                        <div class="block2-btn-addcart w-size1 trans-0-4" style="text-align: center;">
-                                            <!-- Button -->
-                                            <v-tooltip top>
-                                                <template v-slot:activator="{ on, attrs }">
-                                                    <v-btn icon v-bind="attrs" v-on="on" @click="addToCart(product)">
-                                                        <v-icon color="grey lighten-1">mdi-cart</v-icon>
-                                                    </v-btn>
-                                                </template>
-                                                <span>Add to Cart</span>
-                                            </v-tooltip>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <nuxt-link :to="buildUrl(product)">
-                                        <button class="block2-name dis-block s-text3 p-b-5" @click="redirect(product.id)">{{ product.product_name }}</button>
-                                    </nuxt-link>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <small class="list-price text-danger">List price: <s>{{ product.list_price }}</s></small>
-                                        </div>
-                                        <div class="col-6">
-                                            <p>Price {{ product.price }}</p>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                </div>
-                            </div>
-                        </div>
+                            </li>
+                        </ul>
                     </div>
                     <div v-else>
                         <p class="text-center" style="background: #f2dede; font-size: 13px; color: #a94442 !important;">No products available</p>
                     </div>
                 </div>
-                <div class="text-xs-center" style="margin: auto; width: 100%;" v-if="products.last_page > 1">
+                <!-- <div class="text-xs-center" style="margin: auto; width: 100%;" v-if="products.last_page > 1">
                     <v-pagination v-model="products.current_page" :length="products.last_page" total-visible="6" @input="next(products.path, products.current_page, 'products')" circle></v-pagination>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -157,19 +107,19 @@ export default {
                 hid: 'og:title',
                 name: 'og:title',
                 content: 'Products'
-            },{
+            }, {
                 hid: 'description',
                 name: 'description',
                 content: process.env.META_CONTENT
-            },{
+            }, {
                 hid: 'og:description',
                 name: 'og:description',
                 content: "Free delivery on millions of items with Swap. Low prices across earth's biggest selection of electronics, computers, software, apparel & accessories, shoes, jewelry, tools & hardware, housewares, furniture, sporting goods, beauty & personal care, groceries & just about anything else"
-            },{
+            }, {
                 hid: 'keywords',
                 name: 'keywords',
                 content: 'Swap, Online Shopping, Electronics, Video Games, Computers, Cell Phones, Toys, Games, Apparel, Accessories, Shoes, Jewelry, Watches, Office, Sports & Outdoors, Sporting Goods, Babies, Health, Personal Care, Beauty, Home, Garden, Bed & Bath, Furniture, Tools, Vacuums, Outdoor Living, Automotive Parts'
-            },]
+            }, ]
         }
     },
     data() {
@@ -268,12 +218,12 @@ export default {
         },
 
         next(page) {
+          var model = 'shop?page=' + this.products.current_page
             var payload = {
-                path: this.products.path,
-                page: this.products.current_page,
+                model: model,
                 update: 'updateProductsList',
             }
-            this.$store.dispatch('nextPage', payload)
+            this.$store.dispatch('getItems', payload)
         },
         getMenus() {
             var payload = {
@@ -311,7 +261,7 @@ export default {
             event.target.src = "/assets/notfound/notfound.jpg"
         },
         buildUrl(product) {
-          return '/shop/' + this.$slugify(product.id, product.product_name)
+            return '/shop/' + this.$slugify(product.id, product.product_name)
         }
     },
     mounted() {
@@ -365,5 +315,13 @@ export default {
 #shop_theme .theme--dark {
     color: #0276a5 !important;
     background-color: transparent !important;
+}
+
+a::before {
+  display: none !important;
+}
+img {
+    border-style: none;
+    height: 300px;
 }
 </style>

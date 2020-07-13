@@ -7,15 +7,18 @@ const _075e3ab8 = () => interopDefault(import('../pages/account/index.vue' /* we
 const _852e03b0 = () => interopDefault(import('../pages/Cart.vue' /* webpackChunkName: "pages/Cart" */))
 const _52e2d6e9 = () => interopDefault(import('../pages/category/index.vue' /* webpackChunkName: "pages/category/index" */))
 const _5259ad31 = () => interopDefault(import('../pages/checkout/index.vue' /* webpackChunkName: "pages/checkout/index" */))
+const _77b7e0b2 = () => interopDefault(import('../pages/example.vue' /* webpackChunkName: "pages/example" */))
 const _93b5773e = () => interopDefault(import('../pages/faq/index.vue' /* webpackChunkName: "pages/faq/index" */))
 const _36cbf0f4 = () => interopDefault(import('../pages/login/index.vue' /* webpackChunkName: "pages/login/index" */))
 const _32ac1e53 = () => interopDefault(import('../pages/privacy/index.vue' /* webpackChunkName: "pages/privacy/index" */))
 const _546b8364 = () => interopDefault(import('../pages/register/index.vue' /* webpackChunkName: "pages/register/index" */))
 const _4a7b86e1 = () => interopDefault(import('../pages/shop/index.vue' /* webpackChunkName: "pages/shop/index" */))
+const _58941c6a = () => interopDefault(import('../pages/shop copy/index.vue' /* webpackChunkName: "pages/shop copy/index" */))
 const _1b0a3227 = () => interopDefault(import('../pages/subcategories/index.vue' /* webpackChunkName: "pages/subcategories/index" */))
 const _00d63506 = () => interopDefault(import('../pages/Thankyou.vue' /* webpackChunkName: "pages/Thankyou" */))
 const _195b829a = () => interopDefault(import('../pages/vendor/index.vue' /* webpackChunkName: "pages/vendor/index" */))
 const _a84900de = () => interopDefault(import('../pages/category/_id.vue' /* webpackChunkName: "pages/category/_id" */))
+const _7c723152 = () => interopDefault(import('../pages/shop copy/_id.vue' /* webpackChunkName: "pages/shop copy/_id" */))
 const _a16064ee = () => interopDefault(import('../pages/shop/_id.vue' /* webpackChunkName: "pages/shop/_id" */))
 const _1006db62 = () => interopDefault(import('../pages/subcategories/_id.vue' /* webpackChunkName: "pages/subcategories/_id" */))
 const _3e10b01a = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
@@ -53,6 +56,10 @@ export const routerOptions = {
     component: _5259ad31,
     name: "checkout"
   }, {
+    path: "/example",
+    component: _77b7e0b2,
+    name: "example"
+  }, {
     path: "/faq",
     component: _93b5773e,
     name: "faq"
@@ -73,6 +80,10 @@ export const routerOptions = {
     component: _4a7b86e1,
     name: "shop"
   }, {
+    path: "/shop copy",
+    component: _58941c6a,
+    name: "shop copy"
+  }, {
     path: "/subcategories",
     component: _1b0a3227,
     name: "subcategories"
@@ -88,6 +99,10 @@ export const routerOptions = {
     path: "/category/:id",
     component: _a84900de,
     name: "category-id"
+  }, {
+    path: "/shop copy/:id",
+    component: _7c723152,
+    name: "shop copy-id"
   }, {
     path: "/shop/:id",
     component: _a16064ee,
