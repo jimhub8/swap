@@ -15,6 +15,7 @@ import { createStore } from './store.js'
 import nuxt_plugin_workbox_87bb4740 from 'nuxt_plugin_workbox_87bb4740' // Source: ./workbox.js (mode: 'client')
 import nuxt_plugin_nuxticons_38eacb84 from 'nuxt_plugin_nuxticons_38eacb84' // Source: ./nuxt-icons.js (mode: 'all')
 import nuxt_plugin_plugin_42857a80 from 'nuxt_plugin_plugin_42857a80' // Source: ./vuetify/plugin.js (mode: 'all')
+import nuxt_plugin_vuesocialsharingplugin_5de54d86 from 'nuxt_plugin_vuesocialsharingplugin_5de54d86' // Source: ./vue-social-sharing-plugin.js (mode: 'all')
 import nuxt_plugin_cookieuniversalnuxt_ae990028 from 'nuxt_plugin_cookieuniversalnuxt_ae990028' // Source: ./cookie-universal-nuxt.js (mode: 'all')
 import nuxt_plugin_googleanalytics_4d2b5d62 from 'nuxt_plugin_googleanalytics_4d2b5d62' // Source: ./google-analytics.js (mode: 'client')
 import nuxt_plugin_axios_2d2a2f78 from 'nuxt_plugin_axios_2d2a2f78' // Source: ./axios.js (mode: 'all')
@@ -195,6 +196,10 @@ async function createApp (ssrContext) {
 
   if (typeof nuxt_plugin_plugin_42857a80 === 'function') {
     await nuxt_plugin_plugin_42857a80(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_vuesocialsharingplugin_5de54d86 === 'function') {
+    await nuxt_plugin_vuesocialsharingplugin_5de54d86(app.context, inject)
   }
 
   if (typeof nuxt_plugin_cookieuniversalnuxt_ae990028 === 'function') {

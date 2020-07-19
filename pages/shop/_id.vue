@@ -1,56 +1,6 @@
 <template>
 <div>
-    <!-- <headerP></headerP>
-    <div class="container bgwhite p-t-35 p-b-80">
-        <div class="flex-w flex-sb">
-            <div class="w-size13 p-t-30 respon5">
-                <div class="wrap-slick3 flex-sb flex-w">
-                    <div class="wrap-slick3-dots" style="max-height: 60vh;overflow-y: scroll;overflow-x: hidden;">
-                        <div class="wrap-pic-w" v-for="image in product.images" :key="image.id">
-                            <img v-lazy="image.image" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" style="height: 100px; margin-bottom: 10px;" @click="displayImage = image.image" @error="imageUrlAlt" />
-                        </div>
-                    </div>
-                    <div class="slick3">
-                        <div class="item-slick3">
-                            <div class="wrap-pic-w">
-                                <img :src="displayImage" :alt="product.product_name" style="width: 250px" @error="imageUrlAlt" />
-                                <div class="text-xs-center">
-                                    <v-rating v-model="avgRating" readonly half-increments></v-rating>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="w-size14 p-t-30 respon5">
-                <h1 class="product-detail-name m-text16 p-b-13">{{ product.product_name }}</h1>
-
-                <span class="m-text17">Price: <el-tag>KES {{ product.price }}</el-tag> </span>
-                <p style="color: #008a00;font-weight: bold;" id="stock">
-                    In stock: {{ product.quantity }}</p>
-                <div v-html="product.description"></div>
-
-                <div class="p-t-33 p-b-60">
-                    <div class="flex-r-m flex-w p-t-10">
-                        <div class="w-size16 flex-m flex-w">
-                            <div class="flex-w bo5 of-hidden m-r-22 m-t-10 m-b-10">
-                                <input v-model="form.quantity" class="size8 m-text18 t-center num-product" type="number" min="1" name="num-product" value="1" />
-                            </div>
-
-                            <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
-
-                                <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" @click="addToCart">Add to Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div v-html="product.details"></div>
-            </div>
-        </div>
-    </div>
-    <relatedProducts /> -->
     <headerP></headerP>
     <v-layout row wrap class="">
         <v-flex sm2 offset-sm1>
@@ -67,7 +17,8 @@
                                     <!-- <a href="#" class="woocommerce-product-gallery__trigger">🔍</a> -->
                                     <div class="flex-viewport" style="overflow: hidden; position: relative; height: 400px;">
                                         <figure class="woocommerce-product-gallery__wrapper" style="width: 800%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-                                            <div data-thumb-alt="" class="woocommerce-product-gallery__image flex-active-slide" style="width: 400px; margin-right: 0px; float: left; display: block; position: relative; overflow: hidden;"><a href="https://armania.b-cdn.net/wp-content/uploads/2020/05/Pets_components_0000s_0012_Layer-14.jpg">
+                                            <div data-thumb-alt="" class="woocommerce-product-gallery__image flex-active-slide" style="width: 400px; margin-right: 0px; float: left; display: block; position: relative; overflow: hidden;">
+                                                <a href="https://armania.b-cdn.net/wp-content/uploads/2020/05/Pets_components_0000s_0012_Layer-14.jpg">
                                                     <!-- <img v-lazy="image.image" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" height="600" width="600" class="wp-post-image" alt=""> -->
                                                     <img :src="displayImage" :alt="product.product_name" height="600" width="600" @error="imageUrlAlt" />
                                                 </a>
@@ -100,38 +51,41 @@
                                     </div>
                                     <div class="armania-share-socials">
                                         <div class="inner">
-                                            <a class="facebook" href="#" title="Facebook">
-                                                <span class="icon fa fa-facebook"></span>
-                                                <span class="text">Facebook</span>
-                                            </a>
-                                            <a class="twitter" href="#" title="Twitter">
-                                                <span class="icon fa fa-twitter"></span>
-                                                <span class="text">Twitter</span>
-                                            </a>
-                                            <a class="pinterest" href="#" title="Pinterest">
-                                                <span class="icon fa fa-pinterest-square"></span>
-                                                <span class="text">Pinterest</span>
-                                            </a></div>
+
+                                            <!-- <ShareNetwork class="facebook" network="facebook" :url="app_url + route_" :title="'Buy this awesome product: '+product.product_name" :description="product.product_name" hashtags="onlineshopping" twitterUser="swapstore">
+                                                <v-icon style="background: rgba(0, 0, 0, 0) !important; color:white !important">mdi-twitter</v-icon>
+                                                <span style="color: #fff;">Share on Facebook</span>
+                                            </ShareNetwork> -->
+
+                                            <ShareNetwork class="facebook" network="facebook" :url="app_url + route_" :title="'Buy this awesome product: '+product.product_name" :description="product.product_name" quote="Go to swapstore.co.ke to get the best offers" hashtags="onlineshopping">
+                                                <v-icon style="background: rgba(0, 0, 0, 0) !important; color:white !important">mdi-facebook</v-icon>
+                                                <span style="color: #fff;">Share on Facebook</span>
+                                            </ShareNetwork>
+
+                                            <ShareNetwork class="twitter" network="twitter" :url="app_url + route_" :title="'Buy this awesome product: '+product.product_name" :description="product.product_name" hashtags="onlineshopping" twitterUser="swapstore">
+                                                <v-icon style="background: rgba(0, 0, 0, 0) !important; color:white !important">mdi-twitter</v-icon>
+                                                <span style="color: #fff;">Share on Twitter</span>
+                                            </ShareNetwork>
+
+                                            <ShareNetwork class="pinterest" network="pinterest" :url="app_url + route_" :title="'Buy this awesome product: '+product.product_name" :description="product.product_name" :media="product.image">
+                                                <v-icon style="background: rgba(0, 0, 0, 0) !important; color:white !important">mdi-pinterest</v-icon>
+                                                <span style="color: #fff;">Share on Pinterest</span>
+                                            </ShareNetwork>
+
+                                        </div>
                                     </div>
                                     <p class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">KSH </span>{{ product.price }}</span></p>
                                     <div class="quantity">
                                         <label class="text">
                                             Qty: </label>
                                         <div class="control">
-                                            <a class="btn-number qtyminus quantity-minus" href="#"  @click="form.quantity -= 1"  v-if="form.quantity > 1"><span class="fa fa-minus">
-                                              </span></a>
+                                            <p style="cursor: pointer" class="btn-number qtyminus quantity-minus" @click="form.quantity -= 1" v-if="form.quantity > 1"><span class="fa fa-minus">
+                                                </span></p>
                                             <input type="number" min="1" v-model="form.quantity" title="Qty" class="input-qty input-text qty text" size="4" placeholder="" pattern="[0-9]*">
-                                            <a class="btn-number qtyplus quantity-plus" href="#" @click="form.quantity +=1"><span class="fa fa-plus"></span></a>
+                                            <p style="cursor: pointer" class="btn-number qtyplus quantity-plus" @click="form.quantity +=1"><span class="fa fa-plus"></span></p>
                                         </div>
                                     </div>
                                     <button class="single_add_to_cart_button button alt" @click="addToCart">Add to cart</button>
-                                    <!-- <a href="#" class="compare button" data-product_id="4448" rel="nofollow">Compare</a> -->
-                                    <!-- <div class="yith-wcwl-add-to-wishlist add-to-wishlist-4448  wishlist-fragment on-first-load">
-                                            <div class="yith-wcwl-add-button">
-                                                <a href="#" rel="nofollow" data-product-id="4448" data-product-type="simple" data-original-product-id="4448" class="add_to_wishlist single_add_to_wishlist" data-title="Wishlist">
-                                                    <i class="yith-wcwl-icon fa main-icon-heart ovic-wl-icon"></i> <span>Wishlist</span>
-                                                </a></div>
-                                        </div> -->
                                     <div class="product_meta">
                                         <span class="posted_in"><span class="title">Categories:</span>
                                             <!-- <a href="#" rel="tag">Pets</a>, <a href="#" rel="tag">Reptile</a> -->
@@ -167,6 +121,7 @@ import headerP from "../../components/include/Headerpartial";
 // import Show from "../../components/home/Show";
 import relatedProducts from '../../components/Shop/details/related'
 import myAside from '../../components/Shop/details/aside'
+
 
 // import myVariants from '../../components/home/products/variants'
 
@@ -217,7 +172,7 @@ export default {
     data() {
         return {
             activeName: 'first',
-
+            app_url: process.env.APP_URL,
             form: {
                 quantity: 1
             },
@@ -233,7 +188,8 @@ export default {
             sizes: [],
             avgRating: null,
             displayImage: "",
-            originalImage: ""
+            originalImage: "",
+            route_: this.$route.fullPath
         };
     },
 
@@ -527,8 +483,13 @@ li {
     /* list-style-type: none; */
 }
 
-.bgwhite,
-.bg-title-page {
-    margin-top: 0px;
+@media(max-width:768px) {
+  .flex, .child-flex > * {
+        margin-top: -160px;
+  }
+    .entry-summary,
+    .el-tabs {
+        padding: 20px;
+    }
 }
 </style>

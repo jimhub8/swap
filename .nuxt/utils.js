@@ -150,7 +150,7 @@ export async function setContext (app, context) {
       payload: context.payload,
       error: context.error,
       base: '/',
-      env: {"BASE_URL":"http://localhost:3000","API_URL":"https://www.seller.swapstore.co.ke/api/","APP_NAME":"Swap","LOGO":"https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/logo.jpg","META_CONTENT":"Swap, Online Shopping, Electronics, Video Games, Computers, Cell Phones, Toys, Games, Apparel, Accessories, Shoes, Jewelry, Watches, Office, Sports & Outdoors, Sporting Goods, Babies, Health, Personal Care, Beauty, Home, Garden, Bed & Bath, Furniture, Tools, Vacuums, Outdoor Living, Automotive Parts","NOT_FOUND":"https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png","PLACEHOLDER_URL":"https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png"}
+      env: {"BASE_URL":"http://localhost:3000","API_URL":"https://www.seller.swapstore.co.ke/api/","APP_URL":"https://swapstore.co.ke","APP_NAME":"Swap","LOGO":"https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/logo.jpg","META_CONTENT":"Swap, Online Shopping, Electronics, Video Games, Computers, Cell Phones, Toys, Games, Apparel, Accessories, Shoes, Jewelry, Watches, Office, Sports & Outdoors, Sporting Goods, Babies, Health, Personal Care, Beauty, Home, Garden, Bed & Bath, Furniture, Tools, Vacuums, Outdoor Living, Automotive Parts","NOT_FOUND":"https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png","PLACEHOLDER_URL":"https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png"}
     }
     // Only set once
     if (context.req) {

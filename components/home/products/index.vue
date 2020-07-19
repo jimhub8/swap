@@ -3,13 +3,13 @@
 <div>
     <img src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner1.jpg" style="margin: 20px 0; width: 100vw" />
     <div>
-        <myCategory style="padding: 0 30px" />
-        <!-- <myVariants style="padding: 0 30px" /> -->
-        <myFeatured style="padding: 0 30px" />
-        <mySlider style="padding: 0 30px" />
+        <myCategory style="padding: 10px 30px 60px 30px;" />
+        <!-- <myVariants style="padding: 10px 30px 60px 30px;" /> -->
+        <myFeatured style="padding: 10px 30px 60px 30px;" />
+        <mySlider style="padding: 10px 30px 60px 30px;" />
         <myNew />
         <img src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/banners/banner-02.jpg" style="margin: 20px 0; width: 100vw; height: 300px" />
-        <myBest style="padding: 0 30px" />
+        <myBest style="padding: 10px 30px 60px 30px;" />
 
     </div>
 </div>

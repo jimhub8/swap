@@ -130,16 +130,6 @@ body, .v-application {
     color: #fff;
     background-color:#59b5fa;
 }
-@media(max-width:768px){
-    #login-dp{
-        background-color: inherit;
-        color: #fff;
-    }
-    #login-dp .bottom{
-        background-color: inherit;
-        border-top:0 none;
-    }
-}
 
 
 .bgwhite , .bg-title-page{
@@ -245,9 +235,41 @@ h1 {
 }
 
 .brand-wrap .logo, .navbar-brand .logo {
-  max-height: 95px !important;
+  max-height: 85px !important;
 }
 
 .entry-summary .added_to_cart:not(:last-child), .entry-summary .single_add_to_cart_button:not(:last-child), .entry-summary .yith-wcwl-add-to-wishlist:not(:last-child), .entry-summary a.compare:not(:last-child), .v-btn:not(.v-btn--round).v-size--default, .theme--dark.v-btn.v-btn--icon {
 text-decoration:  none;
+}
+
+.v-application .text-center, h3, .h3 {
+  color: #999 !important;
+}
+.ovic-iconbox.style-01 .desc {
+  color: #000 !important;
+}
+.ovic-iconbox.style-01 .v-icon {
+  color: #57cdfd !important;
+}
+@media(max-width:768px){
+  #login-dp{
+      background-color: inherit;
+      color: #fff;
+  }
+
+  #login-dp .bottom{
+      background-color: inherit;
+      border-top:0 none;
+  }
+  ul.shop-page:not(.armania-isotope):not(.columns-1)>.product-category, ul.shop-page:not(.armania-isotope):not(.columns-1)>.product-item {
+      width: 30%;
+      height: 200px;
+  }
+  ul.shop-page img {
+    border-style: none;
+    height: 140px;
+}
+.bgwhite, .bg-title-page {
+  margin-top: 0 !important;
+}
 }

@@ -26,50 +26,56 @@
                     <!-- Product -->
                     <div class="row" v-if="products.data.length > 0">
 
-
                         <ul class="products shop-page response-content columns-3 ovic-products style-15 equal-container better-height">
-                            <li data-product_id="3510" class="product-item style-15 short-title product type-product post-3510 status-publish first instock product_cat-cbd-oil-valey product_cat-medicine product_tag-medicine has-post-thumbnail shipping-taxable purchasable product-type-simple" v-for="(product, index) in products.data" :key="index">
-                                <div class="product-inner">
-                                    <div class="product-thumb">
-                                        <div class="thumb-wrapper">
-                                            <nuxt-link :to="buildUrl(product)">
-                                                <figure class="primary-thumb">
-                                                    <img v-lazy="product.image" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" :alt="product.product_name" width="320" height="320" style="display: inline;" /></figure>
-                                            </nuxt-link>
-                                        </div>
-                                        <div class="group-button">
-                                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-3510  wishlist-fragment on-first-load">
-                                                <div class="yith-wcwl-add-button">
-                                                    <a href="#" rel="nofollow" data-product-id="3510" data-product-type="simple" data-original-product-id="3510" class="add_to_wishlist single_add_to_wishlist" data-title="Wishlist" data-original-title="" title="">
-                                                        <v-icon>mdi-heart</v-icon><span>Wishlist</span>
-                                                    </a></div>
-                                            </div>
-                                            <!-- <a href="#" class="button yith-wcqv-button" title="">Quick View</a> -->
-                                        </div>
-                                    </div>
-                                    <div class="product-info equal-elem" style="height: 83px;">
-                                        <h2 class="product-title">
-                                            <nuxt-link :to="buildUrl(product)">
-                                                {{ product.product_name }}
-                                            </nuxt-link>
-                                        </h2>
-                                        <div class="box-wrap">
-                                            <div class="box-left">
-                                                <div class="star-rating-wrap">
-                                                    <div class="star-rating" role="img" aria-label="Rated 4.00 out of 5"><span style="width:80%">Rated <strong class="rating">4.00</strong> out of 5</span></div>
-                                                    <strong class="rating">(01)</strong>
+                            <v-layout row wrap>
+                                <v-flex sm4 v-for="(product, index) in products.data" :key="index" xs6>
+
+                                    <li data-product_id="3510" class="product-item style-15 short-title product type-product post-3510 status-publish first instock product_cat-cbd-oil-valey product_cat-medicine product_tag-medicine has-post-thumbnail shipping-taxable purchasable product-type-simple">
+                                        <div class="product-inner">
+                                            <div class="product-thumb">
+                                                <div class="thumb-wrapper">
+                                                    <nuxt-link :to="buildUrl(product)">
+                                                        <figure class="primary-thumb">
+                                                            <img v-lazy="product.image" src="https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png" :alt="product.product_name" width="320" height="320" style="display: inline;" /></figure>
+                                                    </nuxt-link>
                                                 </div>
-                                                <span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">KSH </span>{{ product.price }}</span></span>
+                                                <div class="group-button">
+                                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-3510  wishlist-fragment on-first-load">
+                                                        <div class="yith-wcwl-add-button">
+                                                            <a href="#" rel="nofollow" data-product-id="3510" data-product-type="simple" data-original-product-id="3510" class="add_to_wishlist single_add_to_wishlist" data-title="Wishlist" data-original-title="" title="">
+                                                                <v-icon>mdi-heart</v-icon><span>Wishlist</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <!-- <a href="#" class="button yith-wcqv-button" title="">Quick View</a> -->
+                                                </div>
                                             </div>
-                                            <span class="add-to-cart" data-title="Add to cart">
-                                              <a href="#" class="button product_type_simple" rel="nofollow" @click="addToCart(product)">
-                                                <v-icon>mdi-cart</v-icon>
-                                                Add to cart</a>
-                                              </span>
+                                            <div class="product-info equal-elem" style="height: 83px;">
+                                                <h2 class="product-title">
+                                                    <nuxt-link :to="buildUrl(product)">
+                                                        {{ product.product_name }}
+                                                    </nuxt-link>
+                                                </h2>
+                                                <div class="box-wrap">
+                                                    <div class="box-left">
+                                                        <div class="star-rating-wrap">
+                                                            <div class="star-rating" role="img" aria-label="Rated 4.00 out of 5"><span style="width:80%">Rated <strong class="rating">4.00</strong> out of 5</span></div>
+                                                            <strong class="rating">(01)</strong>
+                                                        </div>
+                                                        <span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">KSH </span>{{ product.price }}</span></span>
+                                                    </div>
+                                                    <span class="add-to-cart" data-title="Add to cart">
+                                                        <a href="#" class="button product_type_simple" rel="nofollow" @click="addToCart(product)">
+                                                            <v-icon>mdi-cart</v-icon>
+                                                            Add to cart
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </li>
+                                    </li>
+                                </v-flex>
+                            </v-layout>
+
                         </ul>
                     </div>
                     <div v-else>
@@ -218,7 +224,7 @@ export default {
         },
 
         next(page) {
-          var model = 'shop?page=' + this.products.current_page
+            var model = 'shop?page=' + this.products.current_page
             var payload = {
                 model: model,
                 update: 'updateProductsList',
@@ -318,10 +324,27 @@ export default {
 }
 
 a::before {
-  display: none !important;
+    display: none !important;
 }
+
 img {
     border-style: none;
     height: 300px;
+}
+
+.add-to-cart {
+    margin-right: 80px;
+}
+
+@media(max-width:768px) {
+    .flex.xs6 {
+        max-width: 50vw;
+        padding-left: 10px;
+    }
+
+    .v-application ul,
+    .v-application ol {
+        padding-left: 8px;
+    }
 }
 </style>

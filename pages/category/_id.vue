@@ -11,7 +11,8 @@
                     <div class="leftbar p-r-20 p-r-0-sm">
                         <!--  -->
                         <!-- <h4 class="m-text14 p-b-7">Categories</h4> -->
-                        <myFilter></myFilter>
+                        <myMobileFilter v-if="isMobile" />
+                        <myFilter v-else />
                     </div>
                 </div>
 
@@ -19,6 +20,9 @@
                     <!--  -->
                     <div class="flex-sb-m flex-w p-b-35">
                         <span class="s-text8 p-t-5 p-b-5">Showing page {{ products.current_page }} of {{ products.last_page }} pages</span>
+                        <v-btn text icon color="success" @click="filter">
+                          <v-icon>mdi-filter-variant</v-icon>
+                        </v-btn>
                     </div>
 
                     <!-- Product -->
@@ -128,15 +132,17 @@ import {
 } from 'vuex';
 import headerP from "../../components/include/Headerpartial";
 import myFilter from '../../components/Shop/details/filter'
+
+import myMobileFilter from '../../components/Shop/details/mobilefilter'
+
 import myVariants from '../../components/home/products/variants'
 export default {
     inject: ['theme'],
-
     name: 'cat_details',
     components: {
         headerP,
         myFilter,
-        myVariants
+        myVariants, myMobileFilter
     },
     head() {
         return {
@@ -145,19 +151,19 @@ export default {
                 hid: 'description',
                 name: 'description',
                 content: this.category.description
-            },{
+            }, {
                 hid: 'og:description',
                 name: 'og:description',
                 content: this.category.description
-            },{
+            }, {
                 hid: 'twitter:title',
                 name: 'twitter:title',
                 content: this.category.category
-            },{
+            }, {
                 hid: 'og:title',
                 name: 'og:title',
                 content: this.category.category
-            },{
+            }, {
                 hid: 'twitter:description',
                 name: 'twitter:description',
                 content: this.category.description
@@ -166,6 +172,7 @@ export default {
     },
     data() {
         return {
+            windowWidth: null,
             form: {
                 search: ""
             },
@@ -239,7 +246,9 @@ export default {
         // await store.dispatch('showItem', payload)
     },
     methods: {
-
+filter() {
+  $nuxt.$emit('openSheetEvent')
+},
         imageUrlAlt(e) {
             event.target.src =
                 "https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png";
@@ -271,10 +280,16 @@ export default {
             $nuxt.$emit("WishListEvent", item);
         },
         buildUrl(product) {
-          return '/shop/' + this.$slugify(product.id, product.product_name)
+            return '/shop/' + this.$slugify(product.id, product.product_name)
         }
     },
     mounted() {
+
+        window.addEventListener('resize', () => {
+            this.windowWidth = window.innerWidth
+            console.log(this.isMobile)
+        })
+        this.windowWidth = window.innerWidth
 
     },
     beforeRouteLeave(to, from, next) {
@@ -285,7 +300,10 @@ export default {
     },
 
     computed: {
-        ...mapState(['products', 'category'])
+        ...mapState(['products', 'category']),
+        isMobile() {
+            return this.windowWidth <= 768
+        }
     },
 };
 </script>

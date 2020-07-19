@@ -1,69 +1,28 @@
 <template>
-<div class="single-product-wrapper has-gallery">
-    <div class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images" data-columns="4" style="opacity: 1; transition: opacity 0.25s ease-in-out 0s;"><a href="#" class="woocommerce-product-gallery__trigger">🔍</a>
-        <div class="flex-viewport" style="overflow: hidden; position: relative; height: 400px;">
-            <figure class="woocommerce-product-gallery__wrapper" style="width: 800%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-                <div data-thumb-alt="" class="woocommerce-product-gallery__image flex-active-slide" style="width: 400px; margin-right: 0px; float: left; display: block; position: relative; overflow: hidden;"><a href="https://armania.b-cdn.net/wp-content/uploads/2020/05/Pets_components_0000s_0012_Layer-14.jpg"><img width="600" height="600" src="https://armania.b-cdn.net/wp-content/uploads/2020/05/Pets_components_0000s_0012_Layer-14-600x600.jpg" class="wp-post-image" alt=""></a></div>
+<div class="slider">
 
-            </figure>
-        </div>
-        <ol class="flex-control-nav flex-control-thumbs slick-initialized slick-slider">
-            <div class="slick-list draggable">
-                <div class="slick-track" style="opacity: 1; width: 420px; transform: translate3d(0px, 0px, 0px);">
-                    <li class="slick-slide slick-current slick-active first-slick" data-slick-index="0" aria-hidden="false" tabindex="0" style="margin-right: 10px; width: 87.5px;"><img src="https://armania.b-cdn.net/wp-content/uploads/2020/05/Pets_components_0000s_0012_Layer-14-83x83.jpg" class="flex-active" draggable="false"></li>
+    <a href="#slide-1">1</a>
+    <a href="#slide-2">2</a>
+    <a href="#slide-3">3</a>
+    <a href="#slide-4">4</a>
+    <a href="#slide-5">5</a>
 
-                </div>
-            </div>
-        </ol>
-    </div>
-    <div class="summary entry-summary">
-        <span class="sku_wrapper">
-            <span class="title">SKU:</span>
-            <span class="sku">
-                PT1297 </span>
-        </span>
-        <h1 class="product_title entry-title">Pet Craft Supply Self</h1>
-        <div class="woocommerce-product-rating">
-            <div class="star-rating-wrap">
-                <div class="star-rating" role="img" aria-label="Rated 5.00 out of 5"><span style="width:100%">Rated <strong class="rating">5.00</strong> out of 5 based on <span class="rating">1</span> customer rating</span></div><strong class="rating">(01)</strong>
-            </div> <a href="#reviews" class="woocommerce-review-link" rel="nofollow">(<span class="count">1</span> customer review)</a>
+    <div class="slides">
+        <div id="slide-1">
+            1
         </div>
-        <div class="armania-share-socials">
-            <div class="inner">
-                <a class="facebook" href="#" title="Facebook">
-                    <span class="icon fa fa-facebook"></span>
-                    <span class="text">Facebook</span>
-                </a>
-                <a class="twitter" href="#" title="Twitter">
-                    <span class="icon fa fa-twitter"></span>
-                    <span class="text">Twitter</span>
-                </a>
-                <a class="pinterest" href="#" title="Pinterest">
-                    <span class="icon fa fa-pinterest-square"></span>
-                    <span class="text">Pinterest</span>
-                </a></div>
+        <div id="slide-2">
+            2
         </div>
-        <p class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>210.00</span></p>
-        <form class="cart" action="https://armania.kutethemes.net/product/pet-craft-supply-self/" method="post" enctype="multipart/form-data">
-            <div class="quantity">
-                <label class="text">
-                    Qty: </label>
-                <div class="control">
-                    <a class="btn-number qtyminus quantity-minus" href="#"><span class="fa fa-minus"></span></a>
-                    <input type="number" data-step="1" id="quantity_5f0c370aefb67" min="1" max="" name="quantity" value="1" title="Qty" class="input-qty input-text qty text" size="4" placeholder="" pattern="[0-9]*">
-                    <a class="btn-number qtyplus quantity-plus" href="#"><span class="fa fa-plus"></span></a></div>
-            </div>
-            <button type="submit" name="add-to-cart" value="4448" class="single_add_to_cart_button button alt">Add to cart</button><a href="https://armania.kutethemes.net?action=yith-woocompare-add-product&amp;id=4448" class="compare button" data-product_id="4448" rel="nofollow">Compare</a>
-            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-4448  wishlist-fragment on-first-load">
-                <div class="yith-wcwl-add-button">
-                    <a href="#" rel="nofollow" data-product-id="4448" data-product-type="simple" data-original-product-id="4448" class="add_to_wishlist single_add_to_wishlist" data-title="Wishlist">
-                        <i class="yith-wcwl-icon fa main-icon-heart ovic-wl-icon"></i> <span>Wishlist</span>
-                    </a></div>
-            </div>
-        </form>
-        <div class="product_meta">
-            <span class="posted_in"><span class="title">Categories:</span> <a href="#" rel="tag">Pets</a>, <a href="#" rel="tag">Reptile</a></span>
-            <span class="tagged_as"><span class="title">Tag:</span> <a href="#" rel="tag">Pets</a></span></div>
+        <div id="slide-3">
+            3
+        </div>
+        <div id="slide-4">
+            4
+        </div>
+        <div id="slide-5">
+            5
+        </div>
     </div>
 </div>
 </template>
@@ -127,37 +86,132 @@ export default {
 </script>
 
 <style scoped>
-.el-carousel__item h3 {
-    color: #475669;
-    font-size: 18px;
-    opacity: 0.75;
-    /* line-height: 300px; */
+* {
+    box-sizing: border-box;
+}
+
+.slider {
+    width: 300px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    /*
+  scroll-snap-points-x: repeat(300px);
+  scroll-snap-type: mandatory;
+  */
+}
+
+.slides::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.slides::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 10px;
+}
+
+.slides::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.slides>div {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 300px;
+    height: 300px;
+    margin-right: 50px;
+    border-radius: 10px;
+    background: #eee;
+    transform-origin: center center;
+    transform: scale(1);
+    transition: transform 0.5s;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+}
+
+.slides>div:target {
+    /*   transform: scale(0.8); */
+}
+
+.author-info {
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 0.75rem;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     margin: 0;
 }
 
-.el-carousel__item:nth-child(2n) {
-    background-color: #fff;
+.author-info a {
+    color: white;
 }
 
-.el-carousel__item:nth-child(2n+1) {
-    background-color: #fff;
-}
-
-.v-card--reveal {
-    align-items: center;
-    bottom: 0;
-    justify-content: center;
-    opacity: .5;
+img {
+    object-fit: cover;
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
 }
 
-.el-carousel__item[data-v-6225075b]:nth-child(2n+1) {
-    background-color: #fff;
-    /* height: 420px; */
+.slider>a {
+    display: inline-flex;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: white;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 0 0.5rem 0;
+    position: relative;
 }
 
-.el-carousel--horizontal {
-    /* height: 420px; */
+.slider>a:active {
+    top: 1px;
+}
+
+.slider>a:focus {
+    background: #000;
+}
+
+/* Don't need button navigation */
+@supports (scroll-snap-type) {
+    .slider>a {
+        display: none;
+    }
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, #74ABE2, #5563DE);
+    font-family: 'Ropa Sans', sans-serif;
 }
 </style>

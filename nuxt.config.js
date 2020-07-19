@@ -74,7 +74,7 @@ export default {
     '@nuxtjs/auth',
     '@nuxtjs/google-analytics',
     'cookie-universal-nuxt',
-
+    'vue-social-sharing/nuxt',
     '@nuxtjs/sitemap'
 
     // '@nuxtjs/bootstrap',
@@ -87,8 +87,8 @@ export default {
   // http://admin.jim/api/auth/login
   axios: {
     // baseURL: process.env.API_URL
-    baseURL: 'http://admin.jim'
-    // baseURL: 'https://www.seller.swapstore.co.ke'
+    // baseURL: 'http://admin.jim'
+    baseURL: 'https://www.seller.swapstore.co.ke'
   },
 
   // auth: {
@@ -242,8 +242,8 @@ export default {
         path: '/subcategories/sitemap.xml',
         exclude: ['/account', '/Cart', '/category', '/checkout', '/faq', '/login', '/privacy', '/register', '/shop', '/subcategories', '/Thankyou', '/vendor', '/Carousel', '/'],
         routes: async () => {
-            let apiUrl = process.env.API_URL || 'http://admin.jim/api/'
-            // let apiUrl = process.env.API_URL || 'https://www.seller.swapstore.co.ke/api/'
+            // let apiUrl = process.env.API_URL || 'http://admin.jim/api/'
+            let apiUrl = process.env.API_URL || 'https://www.seller.swapstore.co.ke/api/'
             const { data } = await axios.get(`${apiUrl}subcategories`)
             return data.data.map(v => `/subcategories/${v.subcategory}-${v.id}`)
           }
