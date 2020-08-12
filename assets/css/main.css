@@ -272,4 +272,22 @@ text-decoration:  none;
 .bgwhite, .bg-title-page {
   margin-top: 0 !important;
 }
+
+.v-card:not(.v-sheet--tile):not(.v-card--shaped) {
+  padding: 0 !important;
+    width: 100% !important;
+}
+.v-application--is-ltr .theme--dark.v-stepper--vertical .v-stepper__content:not(:last-child), .v-application--is-ltr .v-stepper--vertical .v-stepper__content {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+}
+
+
+.cart-img-product img {
+  width: 30px !important;
+}
+.size12 {
+  width: 200px;
+  height: 45px;
 }

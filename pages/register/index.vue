@@ -1,7 +1,7 @@
 <template>
 <v-card id="register" style="margin-top: 200px">
     <v-card-title primary-title style="margin-left: 25%;" class="text-center">Register Page</v-card-title>
-    <v-card-text style="width:50%; margin:auto">
+    <v-card-text style="width:90%; margin:auto">
         <div>
             <label for="">Name</label>
             <el-input placeholder="jane@gmail.com" v-model="form.name"></el-input>

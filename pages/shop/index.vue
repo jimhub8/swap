@@ -6,7 +6,8 @@
             <div class="row">
                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
                     <div class="leftbar p-r-20 p-r-0-sm">
-                        <myFilter />
+                        <myMobileFilter v-if="isMobile" />
+                        <myFilter v-else />
 
                     </div>
                 </div>
@@ -20,7 +21,11 @@
                             </div>
                         </div>
 
-                        <span class="s-text8 p-t-5 p-b-5">Showing page {{ products.current_page }} of {{ products.last_page }} pages</span>
+                        <span class="s-text8 p-t-5 p-b-5">Showing page {{ products.current_page }} of {{ products.last_page }} pages
+                            <v-btn text icon color="success" @click="filter" v-if="isMobile">
+                                <v-icon>mdi-filter-variant</v-icon>
+                            </v-btn>
+                        </span>
                     </div>
 
                     <!-- Product -->
@@ -96,6 +101,7 @@
 import headerP from "../../components/include/Headerpartial";
 import myFilter from '../../components/Shop/details/filter'
 import myVariants from '../../components/home/products/variants'
+import myMobileFilter from '../../components/Shop/details/mobilefilter'
 import {
     mapState
 } from "vuex";
@@ -103,7 +109,8 @@ export default {
     components: {
         headerP,
         myFilter,
-        myVariants
+        myVariants,
+        myMobileFilter
     },
 
     head() {
@@ -130,6 +137,7 @@ export default {
     },
     data() {
         return {
+            windowWidth: null,
             placeholder: process.env.PLACEHOLDER_URL,
             form: {
                 search: ""
@@ -181,6 +189,10 @@ export default {
     methods: {
         searchItems() {
             $nuxt.$emit("progressEvent");
+        },
+
+        filter() {
+            $nuxt.$emit('openSheetEvent')
         },
         redirect(proId) {
             // alert('oooo')
@@ -276,6 +288,11 @@ export default {
         // this.getProducts();
         // this.getMenus();
         // $nuxt.$emit("ScollTopEvent");
+        window.addEventListener('resize', () => {
+            this.windowWidth = window.innerWidth
+            console.log(this.isMobile)
+        })
+        this.windowWidth = window.innerWidth
     },
     updated() {},
     beforeRouteLeave(to, from, next) {
@@ -293,6 +310,9 @@ export default {
     computed: {
         ...mapState(['products']),
 
+        isMobile() {
+            return this.windowWidth <= 768
+        },
         // products() {
         //     return this.$store.getters.products
         // },

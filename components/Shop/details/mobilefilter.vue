@@ -94,3 +94,9 @@ export default {
 
 }
 </script>
+
+<style >
+.v-dialog:not(.v-dialog--fullscreen) {
+    overflow-x: scroll !important;
+}
+</style>

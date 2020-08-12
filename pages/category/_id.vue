@@ -20,8 +20,8 @@
                     <!--  -->
                     <div class="flex-sb-m flex-w p-b-35">
                         <span class="s-text8 p-t-5 p-b-5">Showing page {{ products.current_page }} of {{ products.last_page }} pages</span>
-                        <v-btn text icon color="success" @click="filter">
-                          <v-icon>mdi-filter-variant</v-icon>
+                        <v-btn text icon color="success" @click="filter" v-if="isMobile">
+                            <v-icon>mdi-filter-variant</v-icon>
                         </v-btn>
                     </div>
 
@@ -142,7 +142,8 @@ export default {
     components: {
         headerP,
         myFilter,
-        myVariants, myMobileFilter
+        myVariants,
+        myMobileFilter
     },
     head() {
         return {
@@ -246,9 +247,9 @@ export default {
         // await store.dispatch('showItem', payload)
     },
     methods: {
-filter() {
-  $nuxt.$emit('openSheetEvent')
-},
+        filter() {
+            $nuxt.$emit('openSheetEvent')
+        },
         imageUrlAlt(e) {
             event.target.src =
                 "https://jimkiarie8.nyc3.digitaloceanspaces.com/swap/site/no_image.png";

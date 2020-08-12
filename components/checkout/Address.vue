@@ -27,7 +27,7 @@
             <v-flex xs12 sm6>
                 <v-text-field v-model="user.billing.postal_code" color="blue darken-2" label="Zip/Postcode" required></v-text-field>
             </v-flex>
-            <v-btn text color="primary">Save address</v-btn>
+            <!-- <v-btn text color="primary">Save address</v-btn> -->
         </v-layout>
 
         <v-layout wrap v-else>
